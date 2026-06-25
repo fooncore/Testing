@@ -1,57 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Front Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooncore</title>
 
-        .container {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        h1 {
-            color: #333;
-        }
+body{
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
 
-        p {
-            color: #666;
-        }
+/* Navigation */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 10%;
+    position:fixed;
+    width:100%;
+    top:0;
+    backdrop-filter:blur(10px);
+    background:rgba(15,23,42,0.7);
+}
 
-        button {
-            background: #0366d6;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#38bdf8;
+}
 
-        button:hover {
-            background: #024ea4;
-        }
-    </style>
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+/* Hero */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 10%;
+    background:
+    radial-gradient(circle at top right,#2563eb 0%,transparent 30%),
+    radial-gradient(circle at bottom left,#06b6d4 0%,transparent 30%);
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:#38bdf8;
+}
+
+.hero p{
+    font-size:1.2rem;
+    color:#cbd5e1;
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 30px;
+    border:none;
+    border-radius:50px;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+    text-decoration:none;
+}
+
+.primary{
+    background:#38bdf8;
+    color:#0f172a;
+    font-weight:600;
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+}
+
+.secondary{
+    border:2px solid #38bdf8;
+    color:white;
+}
+
+.secondary:hover{
+    background:#38bdf8;
+    color:#0f172a;
+}
+
+/* Features */
+.features{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:50px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#1e293b;
+    padding:30px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#38bdf8;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#020617;
+    color:#94a3b8;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.8rem;
+    }
+
+    nav ul{
+        display:none;
+    }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello, Welcome to Fooncore!</h1>
-        <p>This is just a testing page that coding by Tony.</p>
-        <button onclick="alert('Button works!')">
-            Test Button
-        </button>
+
+<nav>
+    <div class="logo">Fooncore</div>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to <span>Fooncore</span></h1>
+        <p>
+            Building innovative digital solutions with speed,
+            performance, and modern technology.
+        </p>
+
+        <div class="buttons">
+            <a href="#" class="btn primary">Get Started</a>
+            <a href="#" class="btn secondary">Learn More</a>
+        </div>
     </div>
+</section>
+
+<section class="features">
+    <h2 class="section-title">Why Choose Fooncore?</h2>
+
+    <div class="feature-grid">
+        <div class="card">
+            <h3>⚡ Fast Performance</h3>
+            <p>Optimized solutions designed for speed and efficiency.</p>
+        </div>
+
+        <div class="card">
+            <h3>🔒 Secure</h3>
+            <p>Enterprise-grade security for your business and users.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚀 Scalable</h3>
+            <p>Grow without limits using modern cloud technologies.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎨 Modern Design</h3>
+            <p>Beautiful user experiences that leave a lasting impression.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Fooncore. All Rights Reserved.
+</footer>
+
 </body>
 </html>
