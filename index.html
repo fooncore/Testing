@@ -1,39 +1,62 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fooncore</title>
+<title>Fooncore Solutions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#0f172a;
-    color:white;
+    font-family:'Poppins',sans-serif;
+    background:#0a0f1f;
+    color:#fff;
     overflow-x:hidden;
 }
 
-/* Navigation */
+/* Background */
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(0,140,255,.2), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(0,255,200,.15), transparent 30%);
+    z-index:-1;
+}
+
+/* Navbar */
 nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:25px 10%;
-    position:fixed;
-    width:100%;
-    top:0;
-    backdrop-filter:blur(10px);
-    background:rgba(15,23,42,0.7);
+    background:rgba(10,15,31,.75);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
 }
 
 .logo{
-    font-size:28px;
+    font-size:1.8rem;
     font-weight:700;
     color:#38bdf8;
 }
@@ -47,7 +70,7 @@ nav ul{
 nav a{
     text-decoration:none;
     color:white;
-    transition:0.3s;
+    transition:.3s;
 }
 
 nav a:hover{
@@ -61,10 +84,7 @@ nav a:hover{
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:100px 10%;
-    background:
-    radial-gradient(circle at top right,#2563eb 0%,transparent 30%),
-    radial-gradient(circle at bottom left,#06b6d4 0%,transparent 30%);
+    padding:120px 10%;
 }
 
 .hero-content{
@@ -72,19 +92,21 @@ nav a:hover{
 }
 
 .hero h1{
-    font-size:4rem;
+    font-size:4.5rem;
+    font-weight:800;
     margin-bottom:20px;
     line-height:1.1;
 }
 
-.hero h1 span{
+.hero span{
     color:#38bdf8;
 }
 
 .hero p{
-    font-size:1.2rem;
     color:#cbd5e1;
-    margin-bottom:35px;
+    font-size:1.2rem;
+    line-height:1.8;
+    margin-bottom:40px;
 }
 
 .buttons{
@@ -95,23 +117,21 @@ nav a:hover{
 }
 
 .btn{
-    padding:15px 30px;
-    border:none;
+    padding:16px 35px;
     border-radius:50px;
-    font-size:1rem;
-    cursor:pointer;
-    transition:0.3s;
     text-decoration:none;
+    transition:.3s;
+    font-weight:600;
 }
 
 .primary{
     background:#38bdf8;
-    color:#0f172a;
-    font-weight:600;
+    color:#06111f;
 }
 
 .primary:hover{
-    transform:translateY(-3px);
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(56,189,248,.4);
 }
 
 .secondary{
@@ -121,35 +141,51 @@ nav a:hover{
 
 .secondary:hover{
     background:#38bdf8;
-    color:#0f172a;
+    color:#06111f;
 }
 
-/* Features */
-.features{
+/* About */
+.about{
     padding:100px 10%;
+    text-align:center;
 }
 
 .section-title{
-    text-align:center;
-    font-size:2.5rem;
-    margin-bottom:50px;
+    font-size:2.8rem;
+    margin-bottom:20px;
 }
 
-.feature-grid{
+.section-text{
+    max-width:800px;
+    margin:auto;
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* Services */
+.services{
+    padding:100px 10%;
+}
+
+.grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
+    margin-top:50px;
 }
 
 .card{
-    background:#1e293b;
-    padding:30px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.08);
     border-radius:20px;
-    transition:0.3s;
+    padding:35px;
+    transition:.4s;
 }
 
 .card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px);
+    border-color:#38bdf8;
 }
 
 .card h3{
@@ -157,81 +193,207 @@ nav a:hover{
     color:#38bdf8;
 }
 
+/* Stats */
+.stats{
+    padding:80px 10%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+    text-align:center;
+}
+
+.stat{
+    padding:30px;
+}
+
+.stat h2{
+    font-size:3rem;
+    color:#38bdf8;
+}
+
+/* CTA */
+.cta{
+    padding:100px 10%;
+    text-align:center;
+}
+
+.cta-box{
+    background:linear-gradient(135deg,#0ea5e9,#2563eb);
+    padding:60px;
+    border-radius:30px;
+}
+
+.cta h2{
+    font-size:2.5rem;
+    margin-bottom:15px;
+}
+
+.cta p{
+    margin-bottom:30px;
+}
+
 /* Footer */
 footer{
+    background:#050814;
     text-align:center;
-    padding:30px;
-    background:#020617;
+    padding:40px 20px;
     color:#94a3b8;
 }
 
 @media(max-width:768px){
-    .hero h1{
-        font-size:2.8rem;
-    }
 
-    nav ul{
-        display:none;
-    }
+.hero h1{
+    font-size:3rem;
+}
+
+nav ul{
+    display:none;
+}
+
+.cta-box{
+    padding:40px 25px;
+}
+
 }
 </style>
 </head>
 <body>
 
 <nav>
-    <div class="logo">Fooncore</div>
+    <div class="logo">Fooncore Solutions</div>
+
     <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>Welcome to <span>Fooncore</span></h1>
+
+        <h1>Empowering Business Through <span>Technology</span></h1>
+
         <p>
-            Building innovative digital solutions with speed,
-            performance, and modern technology.
+            Fooncore Solutions delivers innovative software,
+            cloud infrastructure, AI automation, and digital
+            transformation services that help organizations
+            grow faster and operate smarter.
         </p>
 
         <div class="buttons">
-            <a href="#" class="btn primary">Get Started</a>
-            <a href="#" class="btn secondary">Learn More</a>
+            <a href="#services" class="btn primary">Explore Services</a>
+            <a href="#contact" class="btn secondary">Contact Us</a>
         </div>
+
     </div>
 </section>
 
-<section class="features">
-    <h2 class="section-title">Why Choose Fooncore?</h2>
+<section class="about" id="about">
 
-    <div class="feature-grid">
+    <h2 class="section-title">Who We Are</h2>
+
+    <p class="section-text">
+        Fooncore Solutions is a technology-focused company
+        committed to helping businesses succeed in the digital age.
+        Our team combines innovation, expertise, and modern
+        technologies to create powerful solutions that drive growth,
+        efficiency, and long-term success.
+    </p>
+
+</section>
+
+<section class="services" id="services">
+
+    <h2 class="section-title" style="text-align:center;">
+        Our Services
+    </h2>
+
+    <div class="grid">
+
         <div class="card">
-            <h3>⚡ Fast Performance</h3>
-            <p>Optimized solutions designed for speed and efficiency.</p>
+            <h3>💻 Software Development</h3>
+            <p>
+                Custom web applications, enterprise software,
+                and mobile solutions built for performance.
+            </p>
         </div>
 
         <div class="card">
-            <h3>🔒 Secure</h3>
-            <p>Enterprise-grade security for your business and users.</p>
+            <h3>☁ Cloud Solutions</h3>
+            <p>
+                Secure, scalable cloud infrastructure and migration
+                services for modern businesses.
+            </p>
         </div>
 
         <div class="card">
-            <h3>🚀 Scalable</h3>
-            <p>Grow without limits using modern cloud technologies.</p>
+            <h3>🤖 AI & Automation</h3>
+            <p>
+                Intelligent systems that automate workflows
+                and improve operational efficiency.
+            </p>
         </div>
 
         <div class="card">
-            <h3>🎨 Modern Design</h3>
-            <p>Beautiful user experiences that leave a lasting impression.</p>
+            <h3>🛡 IT Consulting</h3>
+            <p>
+                Strategic technology planning and expert guidance
+                tailored to your goals.
+            </p>
         </div>
+
     </div>
+
+</section>
+
+<section class="stats">
+
+    <div class="stat">
+        <h2>100+</h2>
+        <p>Projects Delivered</p>
+    </div>
+
+    <div class="stat">
+        <h2>50+</h2>
+        <p>Business Clients</p>
+    </div>
+
+    <div class="stat">
+        <h2>24/7</h2>
+        <p>Support Services</p>
+    </div>
+
+    <div class="stat">
+        <h2>99%</h2>
+        <p>Client Satisfaction</p>
+    </div>
+
+</section>
+
+<section class="cta" id="contact">
+
+    <div class="cta-box">
+
+        <h2>Ready to Build Something Great?</h2>
+
+        <p>
+            Partner with Fooncore Solutions and transform
+            your vision into reality.
+        </p>
+
+        <a href="mailto:info@fooncoresolutions.com" class="btn primary">
+            Get Started Today
+        </a>
+
+    </div>
+
 </section>
 
 <footer>
-    © 2026 Fooncore. All Rights Reserved.
+    <p>© 2026 Fooncore Solutions. All Rights Reserved.</p>
 </footer>
 
 </body>
 </html>
+```
