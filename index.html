@@ -1,333 +1,1497 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fooncore Solutions | Your One-Stop IT Management Partner</title>
-    <!-- Google Fonts for Modern Typography -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for visual anchors/icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        /* --- BRAND IDENTITY SYSTEM --- */
-        :root {
-            --cyan-primary: #00D2FF;      /* Matched from logo text */
-            --slate-dark: #0A0F18;        /* Professional dark background */
-            --slate-card: #141B27;        /* Distinct card element background */
-            --text-light: #FFFFFF;        /* Primary headers */
-            --text-muted: #94A3B8;        /* High-readability paragraph color */
-            --text-dark: #1E293B;         /* Dark text for white sections */
-            --bg-light: #F8FAFC;          /* Clean light section background */
-            --font-main: 'Inter', sans-serif;
-            --transition: all 0.3s ease;
-        }
 
-        /* --- GLOBAL RESETS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<meta charset="UTF-8">
 
-        body {
-            font-family: var(--font-main);
-            background-color: var(--slate-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        ul { list-style: none; }
-        a { text-decoration: none; color: inherit; }
+<title>Fooncore Solutions | Cybersecurity & IT Infrastructure Consulting</title>
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+ 
 
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
+<meta name="description" content="Cybersecurity & IT Infrastructure Consulting for SMEs in Edmonton. Helping businesses secure systems, protect sensitive data, and improve technology reliability.">
 
-        .section-tag {
-            color: var(--cyan-primary);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
-            display: inline-block;
-        }
+ 
 
-        .section-title {
-            font-size: 2.25rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-        .light-bg .section-title { color: var(--text-dark); }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 2rem;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: var(--transition);
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
+ 
 
-        .btn-primary {
-            background-color: var(--cyan-primary);
-            color: var(--slate-dark);
-        }
+<style>
 
-        .btn-primary:hover {
-            background-color: #00b4dc;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
-        }
+ 
 
-        .btn-secondary {
-            border: 2px solid var(--cyan-primary);
-            color: var(--cyan-primary);
-            background: transparent;
-        }
+:root{
 
-        .btn-secondary:hover {
-            background: rgba(0, 210, 255, 0.1);
-            transform: translateY(-2px);
-        }
+    --primary:#11D3E2;
 
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 15, 24, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1.25rem 0;
-        }
+    --dark:#0F172A;
 
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    --light:#F8FAFC;
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
+    --gray:#64748B;
 
-        .logo span { color: var(--cyan-primary); }
-        .logo::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background-color: var(--cyan-primary);
-            border-radius: 50%;
-            display: inline-block;
-            margin-left: 2px;
-        }
+    --border:#E2E8F0;
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
+    --white:#FFFFFF;
 
-        .nav-links a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
+}
 
-        .nav-links a:hover { color: var(--cyan-primary); }
+ 
 
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 12rem 0 7rem;
-            background: radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.07) 0%, transparent 50%);
-            position: relative;
-        }
+*{
 
-        .hero-content { max-width: 800px; }
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 650px;
-        }
+    margin:0;
 
-        /* --- ABOUT US & LEADERSHIP --- */
-        .about {
-            padding: 6rem 0;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-        }
+    padding:0;
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
-        }
+    box-sizing:border-box;
 
-        .about-text p {
-            color: var(--text-dark);
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.85;
-        }
+}
 
-        .founder-card {
-            background: var(--text-light);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-            border-left: 4px solid var(--cyan-primary);
-        }
+ 
 
-        .founder-card h3 { font-size: 1.4rem; margin-bottom: 0.25rem; color: var(--slate-dark); }
-        .founder-title { color: var(--cyan-primary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem; }
-        .founder-card p { font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; }
+html{
 
-        /* --- MISSION & VISION --- */
-        .mv-section {
-            padding: 5rem 0;
-            background: linear-gradient(180deg, var(--bg-light) 0%, var(--slate-dark) 100%);
-            color: var(--text-dark);
-        }
+    scroll-behavior:smooth;
 
-        .mv-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-        }
+}
 
-        .mv-card {
-            background: var(--text-light);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-        }
+ 
 
-        .mv-card i { font-size: 2rem; color: var(--cyan-primary); margin-bottom: 1.5rem; }
-        .mv-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--slate-dark); }
-        .mv-card p { color: var(--text-dark); opacity: 0.8; }
+body{
 
-        /* --- SERVICES SECTION --- */
-        .services { padding: 6rem 0; }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
+    font-family:'Inter',sans-serif;
 
-        .service-card {
-            background-color: var(--slate-card);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: var(--transition);
-        }
+    color:var(--dark);
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 210, 255, 0.3);
-        }
+    line-height:1.6;
 
-        .service-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 210, 255, 0.1);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
+}
 
-        .service-icon i { color: var(--cyan-primary); font-size: 1.25rem; }
-        .service-card h3 { font-size: 1.3rem; margin-bottom: 1rem; }
-        .service-card p { color: var(--text-muted); font-size: 0.95rem; }
+ 
 
-        /* --- WHY CHOOSE US & APPROACH --- */
-        .why-choose-us {
-            padding: 6rem 0;
-            background-color: var(--slate-card);
-        }
+.container{
 
-        .split-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-        }
+    width:90%;
 
-        .list-item {
-            display: flex;
-            gap: 1.25rem;
-            margin-bottom: 2rem;
-        }
+    max-width:1200px;
 
-        .list-icon {
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            background: rgba(0, 210, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cyan-primary);
-            font-size: 0.85rem;
-            margin-top: 0.25rem;
-        }
+    margin:auto;
 
-        .list-content h4 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-        .list-content p { color: var(--text-muted); font-size: 0.95rem; }
+}
 
-        .approach-step {
-            position: relative;
-            padding-left: 3rem;
-            margin-bottom: 2.5rem;
-        }
+ 
 
-        .approach-step::before {
-            content: '';
-            position: absolute;
-            left: 14px;
-            top: 30px;
-            bottom: -30px;
-            width: 2px;
-            background: rgba(255,255,255,0.05);
-        }
+section{
 
-        .approach-step:last-child::before { display: none; }
-        .step-num {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 30px;
+    padding:90px 0;
+
+}
+
+ 
+
+h1,h2,h3,h4{
+
+    line-height:1.2;
+
+}
+
+ 
+
+p{
+
+    color:var(--gray);
+
+}
+
+ 
+
+.btn{
+
+    display:inline-block;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    text-decoration:none;
+
+    padding:15px 28px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+ 
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.95;
+
+}
+
+ 
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+}
+
+ 
+
+.section-title h2{
+
+    font-size:2.3rem;
+
+    margin-bottom:15px;
+
+}
+
+ 
+
+.section-title p{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+ 
+
+/* HEADER */
+
+ 
+
+header{
+
+    background:#fff;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+ 
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+}
+
+ 
+
+.logo img{
+
+    height:50px;
+
+}
+
+ 
+
+nav ul{
+
+    display:flex;
+
+    gap:25px;
+
+    list-style:none;
+
+}
+
+ 
+
+nav a{
+
+    text-decoration:none;
+
+    color:var(--dark);
+
+    font-weight:500;
+
+}
+
+ 
+
+/* HERO */
+
+ 
+
+.hero{
+
+    background:linear-gradient(135deg,#0F172A,#1E293B);
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:120px 0;
+
+}
+
+ 
+
+.hero h1{
+
+    font-size:3.2rem;
+
+    margin-bottom:20px;
+
+}
+
+ 
+
+.hero h3{
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+ 
+
+.hero p{
+
+    color:#CBD5E1;
+
+    max-width:800px;
+
+    margin:auto;
+
+    margin-bottom:35px;
+
+    font-size:1.1rem;
+
+}
+
+ 
+
+/* ABOUT */
+
+ 
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:50px;
+
+    align-items:center;
+
+}
+
+ 
+
+.card{
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:30px;
+
+}
+
+ 
+
+.founder-card{
+
+    border-left:5px solid var(--primary);
+
+}
+
+ 
+
+/* MISSION */
+
+ 
+
+.mission-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+ 
+
+.icon{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+}
+
+ 
+
+/* PROCESS */
+
+ 
+
+.process{
+
+    background:var(--light);
+
+}
+
+ 
+
+.process-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+ 
+
+.process-box{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+}
+
+ 
+
+.number{
+
+    color:var(--primary);
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    margin-bottom:15px;
+
+}
+
+ 
+
+/* WHY US */
+
+ 
+
+.why-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+ 
+
+.why-box{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+}
+
+ 
+
+/* SERVICES */
+
+ 
+
+.services{
+
+    background:var(--light);
+
+}
+
+ 
+
+.service-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+ 
+
+.service-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+}
+
+ 
+
+.service-card h3{
+
+    margin-bottom:15px;
+
+}
+
+ 
+
+.service-card ul{
+
+    margin-top:15px;
+
+    padding-left:20px;
+
+}
+
+ 
+
+.service-card li{
+
+    margin-bottom:8px;
+
+}
+
+ 
+
+/* CTA */
+
+ 
+
+.cta{
+
+    background:var(--dark);
+
+    color:white;
+
+    text-align:center;
+
+}
+
+ 
+
+.cta p{
+
+    color:#CBD5E1;
+
+}
+
+ 
+
+/* FORM */
+
+ 
+
+.form-section{
+
+    background:#fff;
+
+}
+
+ 
+
+.form-wrapper{
+
+    max-width:800px;
+
+    margin:auto;
+
+}
+
+ 
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+ 
+
+input, textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+ 
+
+textarea{
+
+    min-height:150px;
+
+}
+
+ 
+
+.full{
+
+    grid-column:span 2;
+
+}
+
+ 
+
+button{
+
+    background:var(--primary);
+
+    color:white;
+
+    border:none;
+
+    padding:15px 30px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+ 
+
+/* FOOTER */
+
+ 
+
+footer{
+
+    background:#0F172A;
+
+    color:white;
+
+    padding:60px 0 30px;
+
+}
+
+ 
+
+.footer-top{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:40px;
+
+    margin-bottom:40px;
+
+}
+
+ 
+
+.footer-logo img{
+
+    height:55px;
+
+    margin-bottom:15px;
+
+}
+
+ 
+
+.footer-links a{
+
+    display:block;
+
+    color:#CBD5E1;
+
+    text-decoration:none;
+
+    margin-bottom:10px;
+
+}
+
+ 
+
+.footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+    padding-top:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    flex-wrap:wrap;
+
+}
+
+ 
+
+@media(max-width:900px){
+
+ 
+
+.about-grid,
+
+.mission-grid,
+
+.process-grid,
+
+.why-grid,
+
+.footer-top{
+
+    grid-template-columns:1fr;
+
+}
+
+ 
+
+.form-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+ 
+
+.full{
+
+    grid-column:span 1;
+
+}
+
+ 
+
+.hero h1{
+
+    font-size:2.2rem;
+
+}
+
+ 
+
+nav{
+
+    display:none;
+
+}
+
+ 
+
+}
+
+ 
+
+</style>
+
+</head>
+
+ 
+
+<body>
+
+ 
+
+<header>
+
+<div class="container navbar">
+
+ 
+
+<div class="logo">
+
+<img src="logo-horizontal.png" alt="Fooncore Solutions">
+
+</div>
+
+ 
+
+<nav>
+
+<ul>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#services">Services</a></li>
+
+<li><a href="#process">Process</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+ 
+
+</div>
+
+</header>
+
+ 
+
+<section class="hero">
+
+ 
+
+<div class="container">
+
+ 
+
+<h3>Your One-Stop IT Management Partner</h3>
+
+ 
+
+<h1>Cybersecurity & IT Infrastructure Consulting for SMEs</h1>
+
+ 
+
+<p>
+
+Helping clinics, professional firms, and growing organizations secure systems,
+
+protect sensitive data, and improve technology reliability.
+
+</p>
+
+ 
+
+<a href="#contact" class="btn">
+
+Book a Free 30-Minute Consultation
+
+</a>
+
+ 
+
+</div>
+
+ 
+
+</section>
+
+ 
+
+<section id="about">
+
+ 
+
+<div class="container">
+
+ 
+
+<div class="section-title">
+
+<h2>Who We Are</h2>
+
+</div>
+
+ 
+
+<div class="about-grid">
+
+ 
+
+<div>
+
+<p>
+
+Based in Edmonton, we provide independent IT consulting to help small and
+
+medium-sized businesses improve security, reliability, and performance.
+
+With over 20 years of experience in IT infrastructure, network systems,
+
+and enterprise technology operations, we deliver practical expertise in
+
+cybersecurity, backup and disaster recovery, cloud security, and network consulting.
+
+</p>
+
+ 
+
+<br>
+
+ 
+
+<p>
+
+We work closely with clients to identify technology risks, strengthen system resilience,
+
+and ensure IT solutions support long-term business goals.
+
+</p>
+
+</div>
+
+ 
+
+<div class="card founder-card">
+
+<h3>👨‍💼 Tony Siu</h3>
+
+<h4>Founder & Principal IT Consultant</h4>
+
+ 
+
+<br>
+
+ 
+
+<p>
+
+Tony is an IT professional with 20+ years of experience in enterprise technology.
+
+He held senior IT leadership roles supporting regional and global operations.
+
+Today, he helps Edmonton businesses strengthen their IT environment through practical,
+
+secure, and cost-effective solutions.
+
+</p>
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</section>
+
+ 
+
+<section>
+
+ 
+
+<div class="container">
+
+ 
+
+<div class="section-title">
+
+<h2>Building Secure, Resilient & Future-Ready Technology Environments</h2>
+
+</div>
+
+ 
+
+<div class="mission-grid">
+
+ 
+
+<div class="card">
+
+<div class="icon">🎯</div>
+
+<h3>Mission</h3>
+
+<p>
+
+Deliver reliable, secure, and cost-effective IT solutions that help SMEs grow.
+
+We minimize technology risk while keeping operations efficient.
+
+</p>
+
+</div>
+
+ 
+
+<div class="card">
+
+<div class="icon">🚀</div>
+
+<h3>Vision</h3>
+
+<p>
+
+Become a trusted technology advisor for organizations without dedicated IT leadership,
+
+helping Edmonton businesses build secure and resilient technology environments.
+
+</p>
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</section>
+
+ 
+
+<section id="process" class="process">
+
+ 
+
+<div class="container">
+
+ 
+
+<div class="section-title">
+
+<h2>How We Work</h2>
+
+<p>A structured four-step process designed to understand your needs and deliver practical results.</p>
+
+</div>
+
+ 
+
+<div class="process-grid">
+
+ 
+
+<div class="process-box">
+
+<div class="number">01</div>
+
+<h3>Understand</h3>
+
+<p>Your business and technology environment.</p>
+
+</div>
+
+ 
+
+<div class="process-box">
+
+<div class="number">02</div>
+
+<h3>Identify</h3>
+
+<p>IT and cybersecurity risks.</p>
+
+</div>
+
+ 
+
+<div class="process-box">
+
+<div class="number">03</div>
+
+<h3>Recommend</h3>
+
+<p>Practical, cost-effective solutions tailored to your business.</p>
+
+</div>
+
+ 
+
+<div class="process-box">
+
+<div class="number">04</div>
+
+<h3>Support</h3>
+
+<p>Implementation support with your team or IT provider.</p>
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</section>
+
+ 
+
+<section>
+
+ 
+
+<div class="container">
+
+ 
+
+<div class="section-title">
+
+<h2>The IT Advisor SMEs Actually Need</h2>
+
+</div>
+
+ 
+
+<div class="why-grid">
+
+ 
+
+<div class="why-box">
+
+<h3>20+ Years Experience</h3>
+
+</div>
+
+ 
+
+<div class="why-box">
+
+<h3>Independent Advice</h3>
+
+</div>
+
+ 
+
+<div class="why-box">
+
+<h3>Practical Solutions</h3>
+
+</div>
+
+ 
+
+<div class="why-box">
+
+<h3>Personalized Service</h3>
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</section>
+
+ 
+
+<section id="services" class="services">
+
+ 
+
+<div class="container">
+
+ 
+
+<div class="section-title">
+
+<h2>Core Services</h2>
+
+<p>Practical expertise across five critical areas.</p>
+
+</div>
+
+ 
+
+<div class="service-grid">
+
+ 
+
+<div class="service-card">
+
+<h3>🔒 Security</h3>
+
+<p>Cybersecurity Risk Assessment</p>
+
+<ul>
+
+<li>Threat & vulnerability review</li>
+
+<li>Identity & access audit</li>
+
+<li>Practical remediation roadmap</li>
+
+</ul>
+
+</div>
+
+ 
+
+<div class="service-card">
+
+<h3>🖥 Infrastructure</h3>
+
+<p>IT Infrastructure Consulting</p>
+
+<ul>
+
+<li>Network architecture review</li>
+
+<li>Technology planning</li>
+
+<li>Hardware lifecycle advisory</li>
+
+</ul>
+
+</div>
+
+ 
+
+<div class="service-card">
+
+<h3>🛡 Resilience</h3>
+
+<p>Backup & Disaster Recovery</p>
+
+<ul>
+
+<li>Backup strategy design</li>
+
+<li>Recovery objectives</li>
+
+<li>Disaster recovery testing</li>
+
+</ul>
+
+</div>
+
+ 
+
+<div class="service-card">
+
+<h3>☁ Cloud</h3>
+
+<p>Microsoft 365 Optimization</p>
+
+<ul>
+
+<li>Cloud migration planning</li>
+
+<li>Secure remote work setup</li>
+
+<li>Cost & licensing review</li>
+
+</ul>
+
+</div>
+
+ 
+
+<div class="service-card">
+
+<h3>🤝 Advisory</h3>
+
+<p>IT Vendor Advisory</p>
+
+<ul>
+
+<li>Vendor performance review</li>
+
+<li>Contract & SLA guidance</li>
+
+<li>Independent oversight</li>
+
+</ul>
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</section>
+
+ 
+
+<section class="cta">
+
+ 
+
+<div class="container">
+
+ 
+
+<h2>Free 30-Minute Consultation</h2>
+
+ 
+
+<br>
+
+ 
+
+<p>
+
+Discuss your IT and cybersecurity needs with an experienced consultant and receive
+
+practical recommendations.
+
+</p>
+
+ 
+
+<br>
+
+ 
+
+<a href="#contact" class="btn">
+
+Schedule Your Consultation
+
+</a>
+
+ 
+
+</div>
+
+ 
+
+</section>
+
+ 
+
+<section id="contact" class="form-section">
+
+ 
+
+<div class="container">
+
+ 
+
+<div class="section-title">
+
+<h2>Schedule Your Consultation</h2>
+
+<p>Tell us a bit about your business — we'll follow up to confirm a suitable time.</p>
+
+</div>
+
+ 
+
+<div class="form-wrapper">
+
+ 
+
+<!-- Replace action URL with Formspree or EmailJS -->
+
+ 
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+ 
+
+<div class="form-grid">
+
+ 
+
+<input type="text" name="first_name" placeholder="First Name *" required>
+
+ 
+
+<input type="text" name="last_name" placeholder="Last Name *" required>
+
+ 
+
+<input type="email" name="email" placeholder="Email *" required>
+
+ 
+
+<input type="text" name="phone" placeholder="Phone">
+
+ 
+
+<input type="text" name="company" class="full" placeholder="Company">
+
+ 
+
+<textarea name="notes" class="full" maxlength="500" placeholder="Notes (up to 500 characters)"></textarea>
+
+ 
+
+<div class="full">
+
+<button type="submit">Schedule Your Consultation</button>
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</form>
+
+ 
+
+<br>
+
+ 
+
+<p>
+
+By submitting this form, you agree to be contacted about your consultation request.
+
+</p>
+
+ 
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</section>
+
+ 
+
+<footer>
+
+ 
+
+<div class="container">
+
+ 
+
+<div class="footer-top">
+
+ 
+
+<div class="footer-logo">
+
+<img src="logo-horizontal.png" alt="Fooncore Solutions">
+
+<p>Your One-Stop IT Management Partner</p>
+
+</div>
+
+ 
+
+<div class="footer-links">
+
+<h3>Contact</h3>
+
+<br>
+
+<p>📍 Edmonton, AB</p>
+
+<p>✉ hello@fooncore.com</p>
+
+<p>🕒 Mon–Fri, 9am–5pm</p>
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+<div class="footer-bottom">
+
+ 
+
+<div>
+
+© 2026 Fooncore Solutions. All rights reserved.
+
+</div>
+
+ 
+
+<div>
+
+Your One-Stop IT Management Partner · Edmonton, Canada
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</div>
+
+ 
+
+</footer>
+
+ 
+
+</body>
+
+</html>
