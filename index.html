@@ -4,342 +4,150 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fooncore Solutions | IT Consulting Edmonton</title>
-
-  <style>
-    :root{
-      --primary:#0b1220;
-      --secondary:#111c33;
-      --accent:#38bdf8;
-      --text:#e5e7eb;
-      --muted:#94a3b8;
-      --card:#0f172a;
-      --border:#1f2a44;
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--primary);
-      color: var(--text);
-      line-height:1.6;
-    }
-
-    /* HEADER */
-    header{
-      position:sticky;
-      top:0;
-      z-index:999;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:14px 40px;
-      background: rgba(11,18,32,0.95);
-      backdrop-filter: blur(8px);
-      border-bottom:1px solid var(--border);
-    }
-
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .logo img{
-      height:42px;
-    }
-
-    .logo span{
-      font-weight:700;
-      letter-spacing:0.5px;
-    }
-
-    nav a{
-      color:var(--text);
-      text-decoration:none;
-      margin-left:18px;
-      font-size:14px;
-    }
-
-    nav a:hover{
-      color:var(--accent);
-    }
-
-    /* HERO */
-    .hero{
-      padding:90px 20px;
-      text-align:center;
-      background: radial-gradient(circle at top, #14213d, var(--primary));
-    }
-
-    .hero h1{
-      font-size:44px;
-      margin-bottom:12px;
-    }
-
-    .hero p{
-      color:var(--muted);
-      max-width:750px;
-      margin:0 auto 25px;
-      font-size:18px;
-    }
-
-    .cta-btn{
-      display:inline-block;
-      padding:12px 22px;
-      background:var(--accent);
-      color:#001018;
-      font-weight:bold;
-      border-radius:6px;
-      text-decoration:none;
-    }
-
-    .cta-btn:hover{
-      opacity:0.9;
-    }
-
-    /* SECTIONS */
-    section{
-      padding:70px 20px;
-      max-width:1100px;
-      margin:auto;
-    }
-
-    h2{
-      font-size:28px;
-      margin-bottom:20px;
-    }
-
-    p{
-      color:var(--muted);
-    }
-
-    /* GRID */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-      gap:18px;
-      margin-top:20px;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      padding:20px;
-      border-radius:10px;
-    }
-
-    .card h3{
-      margin-bottom:10px;
-      color:#fff;
-    }
-
-    /* CTA BOX */
-    .cta-section{
-      text-align:center;
-      background:var(--secondary);
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-    }
-
-    footer{
-      text-align:center;
-      padding:25px;
-      color:var(--muted);
-    }
-  </style>
 </head>
 
-<body>
+<body style="margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1220;color:#e5e7eb;line-height:1.6;">
 
 <!-- HEADER -->
-<header>
-  <div class="logo">
-    <img src="logo.png" alt="Fooncore Logo">
-    <span>Fooncore Solutions</span>
+<header style="position:sticky;top:0;z-index:999;display:flex;justify-content:space-between;align-items:center;padding:14px 30px;background:rgba(11,18,32,0.95);backdrop-filter:blur(8px);border-bottom:1px solid #1f2a44;">
+  
+  <!-- LOGO ONLY -->
+  <div style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Fooncore Logo" style="height:70px;width:auto;display:block;">
   </div>
 
+  <!-- NAV -->
   <nav>
-    <a href="#about">About</a>
-    <a href="#approach">Approach</a>
-    <a href="#services">Services</a>
-    <a href="#industries">Industries</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" style="color:#e5e7eb;text-decoration:none;margin-left:18px;font-size:14px;">About</a>
+    <a href="#approach" style="color:#e5e7eb;text-decoration:none;margin-left:18px;font-size:14px;">Approach</a>
+    <a href="#services" style="color:#e5e7eb;text-decoration:none;margin-left:18px;font-size:14px;">Services</a>
+    <a href="#industries" style="color:#e5e7eb;text-decoration:none;margin-left:18px;font-size:14px;">Industries</a>
+    <a href="#contact" style="color:#e5e7eb;text-decoration:none;margin-left:18px;font-size:14px;">Contact</a>
   </nav>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <h1>Cybersecurity & IT Infrastructure Consulting for SMEs</h1>
-  <p>
+<section style="text-align:center;padding:90px 20px;background:radial-gradient(circle at top,#14213d,#0b1220);">
+  <h1 style="font-size:42px;margin-bottom:12px;">Cybersecurity & IT Infrastructure Consulting for SMEs</h1>
+  <p style="color:#94a3b8;max-width:750px;margin:0 auto 25px;font-size:18px;">
     Helping clinics, professional firms, and growing organizations secure systems,
     protect sensitive data, and improve technology reliability.
   </p>
-  <a class="cta-btn" href="#contact">Book a Free 30-Minute Consultation</a>
+
+  <a href="#contact" style="display:inline-block;padding:12px 22px;background:#38bdf8;color:#001018;font-weight:bold;text-decoration:none;border-radius:6px;">
+    Book a Free 30-Minute Consultation
+  </a>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" style="padding:70px 20px;max-width:1000px;margin:auto;">
   <h2>Who We Are</h2>
-  <p>
-    Based in Edmonton, we provide independent IT consulting to help small and medium-sized
-    businesses improve security, reliability, and performance. With over 20 years of experience
-    in IT infrastructure, network systems, and enterprise operations, we deliver practical expertise
-    in cybersecurity, backup and disaster recovery, cloud security, and network consulting.
+  <p style="color:#94a3b8;">
+    Based in Edmonton, we provide independent IT consulting to help small and medium-sized businesses improve security, reliability, and performance. With over 20 years of experience in IT infrastructure, network systems, and enterprise technology operations, we deliver practical expertise in cybersecurity, backup and disaster recovery, cloud security, and network consulting.
   </p>
 </section>
 
 <!-- LEADERSHIP -->
-<section>
+<section style="padding:70px 20px;max-width:1000px;margin:auto;">
   <h2>Founder / Leadership</h2>
-  <p>
-    <strong>Tony Siu</strong><br><br>
-    IT professional with 20+ years of experience in enterprise technology.
-    Former senior IT roles supporting regional and global operations for commercial companies.<br><br>
+  <p style="color:#94a3b8;">
+    <strong style="color:#fff;">Tony Siu</strong><br><br>
+    IT professional with 20+ years of enterprise experience supporting regional and global operations.<br><br>
     Focused on helping Edmonton businesses build secure, cost-effective, and resilient IT environments.
   </p>
 </section>
 
-<!-- MISSION -->
-<section>
+<!-- MISSION & VISION -->
+<section style="padding:70px 20px;max-width:1000px;margin:auto;">
   <h2>Mission & Vision</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Mission</h3>
-      <p>
-        Deliver reliable, secure, and cost-effective IT solutions that help SMEs grow
-        while minimizing technology risks.
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:20px;">
+
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">
+      <h3 style="color:#fff;">Mission</h3>
+      <p style="color:#94a3b8;">
+        Deliver reliable, secure, and cost-effective IT solutions that help SMEs grow while minimizing technology risks.
       </p>
     </div>
 
-    <div class="card">
-      <h3>Vision</h3>
-      <p>
-        Become a trusted technology advisor for organizations without dedicated IT leadership,
-        building secure and future-ready environments.
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">
+      <h3 style="color:#fff;">Vision</h3>
+      <p style="color:#94a3b8;">
+        Become a trusted advisor for organizations without IT leadership, building secure and future-ready systems.
       </p>
     </div>
+
   </div>
 </section>
 
 <!-- APPROACH -->
-<section id="approach">
+<section id="approach" style="padding:70px 20px;max-width:1000px;margin:auto;">
   <h2>Our Approach</h2>
-  <div class="grid">
-    <div class="card">Understand your business and IT environment</div>
-    <div class="card">Identify IT and cybersecurity risks</div>
-    <div class="card">Provide practical, cost-effective recommendations</div>
-    <div class="card">Support implementation with your IT teams</div>
-  </div>
-</section>
 
-<!-- WHY CHOOSE -->
-<section>
-  <h2>Why Choose Us</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>20+ Years Experience</h3>
-      <p>Enterprise IT infrastructure and cybersecurity expertise.</p>
-    </div>
-
-    <div class="card">
-      <h3>Independent Advice</h3>
-      <p>Vendor-neutral recommendations focused on your business needs.</p>
-    </div>
-
-    <div class="card">
-      <h3>Practical Solutions</h3>
-      <p>Real-world, implementable and cost-effective strategies.</p>
-    </div>
-
-    <div class="card">
-      <h3>Personalized Service</h3>
-      <p>Direct collaboration with business owners and decision makers.</p>
-    </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:20px;">
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">Understand your business and environment</div>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">Identify IT and cybersecurity risks</div>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">Provide practical recommendations</div>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">Support implementation with IT teams</div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" style="padding:70px 20px;max-width:1000px;margin:auto;">
   <h2>Core Services</h2>
-  <div class="grid">
 
-    <div class="card">
-      <h3>Cybersecurity Risk Assessment</h3>
-      <p>Identify vulnerabilities and strengthen your security posture.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:20px;">
+
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">
+      <h3 style="color:#fff;">Cybersecurity Risk Assessment</h3>
+      <p style="color:#94a3b8;">Identify vulnerabilities and strengthen security.</p>
     </div>
 
-    <div class="card">
-      <h3>IT Infrastructure Consulting</h3>
-      <p>Network architecture, system design, and IT planning.</p>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">
+      <h3 style="color:#fff;">IT Infrastructure Consulting</h3>
+      <p style="color:#94a3b8;">Network architecture and system planning.</p>
     </div>
 
-    <div class="card">
-      <h3>Backup & Disaster Recovery</h3>
-      <p>Protect critical data and ensure business continuity.</p>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">
+      <h3 style="color:#fff;">Backup & Disaster Recovery</h3>
+      <p style="color:#94a3b8;">Protect critical business data and recovery.</p>
     </div>
 
-    <div class="card">
-      <h3>Microsoft 365 Optimization</h3>
-      <p>Cloud migration and productivity improvement solutions.</p>
-    </div>
-
-    <div class="card">
-      <h3>IT Vendor Advisory</h3>
-      <p>Ensure your outsourced IT providers deliver reliable service.</p>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">
+      <h3 style="color:#fff;">Microsoft 365 Optimization</h3>
+      <p style="color:#94a3b8;">Cloud migration and productivity setup.</p>
     </div>
 
   </div>
 </section>
 
 <!-- INDUSTRIES -->
-<section id="industries">
+<section id="industries" style="padding:70px 20px;max-width:1000px;margin:auto;">
   <h2>Industries We Serve</h2>
-  <div class="grid">
 
-    <div class="card">
-      <h3>Healthcare Clinics</h3>
-      <p>Protect patient data and ensure system reliability and compliance.</p>
-    </div>
-
-    <div class="card">
-      <h3>Professional Firms</h3>
-      <p>Secure accounting, legal, and consulting client data.</p>
-    </div>
-
-    <div class="card">
-      <h3>Engineering & Construction</h3>
-      <p>Protect project data and remote collaboration systems.</p>
-    </div>
-
-    <div class="card">
-      <h3>Small Businesses</h3>
-      <p>Build secure and scalable IT foundations for growth.</p>
-    </div>
-
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:20px;">
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">Healthcare Clinics</div>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">Professional Firms</div>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">Engineering & Construction</div>
+    <div style="background:#0f172a;border:1px solid #1f2a44;padding:20px;border-radius:10px;">Small Businesses</div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="contact">
+<!-- CONTACT CTA -->
+<section id="contact" style="padding:80px 20px;text-align:center;background:#111c33;border-top:1px solid #1f2a44;border-bottom:1px solid #1f2a44;">
   <h2>Free 30-Minute Consultation</h2>
-  <p style="max-width:700px;margin:auto;">
-    Discuss your IT and cybersecurity needs and receive practical recommendations
-    to improve your technology environment.
+  <p style="color:#94a3b8;max-width:700px;margin:auto;">
+    Discuss your IT and cybersecurity needs and receive practical recommendations.
   </p>
   <br>
-  <a class="cta-btn" href="mailto:contact@fooncore.com">
+  <a href="mailto:contact@fooncore.com" style="display:inline-block;padding:12px 22px;background:#38bdf8;color:#001018;font-weight:bold;text-decoration:none;border-radius:6px;">
     Schedule Your Consultation
   </a>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  © 2026 Fooncore Solutions. Edmonton, Canada. All rights reserved.
+<footer style="text-align:center;padding:25px;color:#94a3b8;">
+  © 2026 Fooncore Solutions | Edmonton, Canada
 </footer>
 
 </body>
