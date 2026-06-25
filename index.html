@@ -1,240 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fooncore Solutions | IT Consulting Edmonton</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fooncore Solutions | Your One-Stop IT Management Partner</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for visual anchors/icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        /* --- BRAND IDENTITY SYSTEM --- */
+        :root {
+            --cyan-primary: #00D2FF;      /* Matched from logo text */
+            --slate-dark: #0A0F18;        /* Professional dark background */
+            --slate-card: #141B27;        /* Distinct card element background */
+            --text-light: #FFFFFF;        /* Primary headers */
+            --text-muted: #94A3B8;        /* High-readability paragraph color */
+            --text-dark: #1E293B;         /* Dark text for white sections */
+            --bg-light: #F8FAFC;          /* Clean light section background */
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+        }
 
-<body style="margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#060a12;color:#eef2ff;line-height:1.6;">
+        /* --- GLOBAL RESETS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-<!-- HEADER -->
-<header style="position:sticky;top:0;z-index:999;
-background:rgba(6,10,18,0.85);
-backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(255,255,255,0.06);
-padding:18px 70px;
-display:flex;
-justify-content:space-between;
-align-items:center;">
+        body {
+            font-family: var(--font-main);
+            background-color: var(--slate-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-  <!-- TEXT LOGO (PROFESSIONAL WORDMARK) -->
-  <div style="display:flex;align-items:baseline;gap:12px;">
-    <div style="font-size:32px;font-weight:800;letter-spacing:0.5px;color:#ffffff;">
-      Fooncore
-    </div>
-    <div style="font-size:13px;font-weight:600;letter-spacing:3px;color:#4da3ff;text-transform:uppercase;">
-      Solutions
-    </div>
-  </div>
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
 
-  <!-- NAV -->
-  <nav style="display:flex;gap:26px;">
-    <a href="#about" style="color:#cbd5e1;text-decoration:none;font-size:14px;">About</a>
-    <a href="#approach" style="color:#cbd5e1;text-decoration:none;font-size:14px;">Approach</a>
-    <a href="#services" style="color:#cbd5e1;text-decoration:none;font-size:14px;">Services</a>
-    <a href="#industries" style="color:#cbd5e1;text-decoration:none;font-size:14px;">Industries</a>
-    <a href="#contact" style="color:#cbd5e1;text-decoration:none;font-size:14px;">Contact</a>
-  </nav>
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-</header>
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
 
-<!-- HERO -->
-<section style="padding:140px 20px 100px;text-align:center;
-background:radial-gradient(circle at top,#0f1c35,#060a12);">
+        .section-tag {
+            color: var(--cyan-primary);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
 
-  <div style="max-width:1000px;margin:auto;">
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
 
-    <div style="font-size:14px;letter-spacing:3px;color:#4da3ff;text-transform:uppercase;margin-bottom:18px;">
-      Edmonton • Canada • IT Consulting
-    </div>
+        .light-bg .section-title { color: var(--text-dark); }
 
-    <h1 style="font-size:56px;line-height:1.1;margin-bottom:20px;font-weight:800;">
-      Cybersecurity & IT Infrastructure Consulting for SMEs
-    </h1>
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
 
-    <p style="font-size:18px;color:#aab4c8;max-width:850px;margin:0 auto 38px;">
-      Helping clinics, professional firms, and growing organizations secure systems,
-      protect sensitive data, and improve technology reliability through practical enterprise-grade IT strategy.
-    </p>
+        .btn-primary {
+            background-color: var(--cyan-primary);
+            color: var(--slate-dark);
+        }
 
-    <a href="#contact"
-       style="display:inline-block;padding:15px 30px;background:#4da3ff;color:#06101f;
-       font-weight:700;text-decoration:none;border-radius:10px;">
-      Book a Free 30-Minute Consultation
-    </a>
+        .btn-primary:hover {
+            background-color: #00b4dc;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
+        }
 
-  </div>
-</section>
+        .btn-secondary {
+            border: 2px solid var(--cyan-primary);
+            color: var(--cyan-primary);
+            background: transparent;
+        }
 
-<!-- ABOUT -->
-<section id="about" style="padding:100px 20px;max-width:1100px;margin:auto;">
-  <h2 style="font-size:32px;margin-bottom:18px;">Who We Are</h2>
+        .btn-secondary:hover {
+            background: rgba(0, 210, 255, 0.1);
+            transform: translateY(-2px);
+        }
 
-  <p style="color:#aab4c8;font-size:16px;max-width:900px;">
-    Based in Edmonton, we provide independent IT consulting to help small and medium-sized businesses improve security,
-    reliability, and performance. With over 20 years of experience in IT infrastructure, network systems, and enterprise
-    technology operations, we deliver practical expertise in cybersecurity, backup and disaster recovery, cloud security,
-    and network consulting.
-  </p>
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 15, 24, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.25rem 0;
+        }
 
-  <p style="color:#aab4c8;font-size:16px;max-width:900px;margin-top:18px;">
-    We work closely with clients to identify technology risks, strengthen system resilience, and ensure IT solutions
-    align with long-term business objectives.
-  </p>
-</section>
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-<!-- LEADERSHIP -->
-<section style="padding:0 20px 90px;max-width:1100px;margin:auto;">
-  <h2 style="font-size:32px;">Leadership</h2>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
 
-  <div style="margin-top:18px;padding:28px;border-radius:14px;
-  border:1px solid rgba(255,255,255,0.08);
-  background:rgba(255,255,255,0.02);">
+        .logo span { color: var(--cyan-primary); }
+        .logo::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--cyan-primary);
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 2px;
+        }
 
-    <div style="font-size:20px;font-weight:800;">Tony Siu</div>
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
 
-    <div style="color:#aab4c8;margin-top:10px;">
-      IT professional with 20+ years of experience in enterprise technology.
-      Previously held senior IT roles supporting regional and global operations in commercial environments.
-      <br><br>
-      Now focused on helping Edmonton businesses strengthen IT environments with secure, practical, and cost-effective solutions.
-    </div>
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
 
-  </div>
-</section>
+        .nav-links a:hover { color: var(--cyan-primary); }
 
-<!-- MISSION / VISION -->
-<section style="padding:80px 20px;max-width:1100px;margin:auto;">
-  <h2 style="font-size:32px;">Mission & Vision</h2>
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 12rem 0 7rem;
+            background: radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.07) 0%, transparent 50%);
+            position: relative;
+        }
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:18px;margin-top:25px;">
+        .hero-content { max-width: 800px; }
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+        }
 
-    <div style="padding:26px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);
-    background:rgba(255,255,255,0.02);">
-      <div style="font-weight:800;margin-bottom:10px;">Mission</div>
-      <div style="color:#aab4c8;">
-        Deliver reliable, secure, and cost-effective IT solutions that help small and medium-sized businesses grow
-        while minimizing technology risks.
-      </div>
-    </div>
+        /* --- ABOUT US & LEADERSHIP --- */
+        .about {
+            padding: 6rem 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
 
-    <div style="padding:26px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);
-    background:rgba(255,255,255,0.02);">
-      <div style="font-weight:800;margin-bottom:10px;">Vision</div>
-      <div style="color:#aab4c8;">
-        Become a trusted technology advisor for organizations without dedicated IT leadership,
-        building secure and resilient technology environments.
-      </div>
-    </div>
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+        }
 
-  </div>
-</section>
+        .about-text p {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.85;
+        }
 
-<!-- APPROACH -->
-<section id="approach" style="padding:80px 20px;max-width:1100px;margin:auto;">
-  <h2 style="font-size:32px;">Our Approach</h2>
+        .founder-card {
+            background: var(--text-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--cyan-primary);
+        }
 
-  <div style="margin-top:20px;display:grid;gap:14px;">
+        .founder-card h3 { font-size: 1.4rem; margin-bottom: 0.25rem; color: var(--slate-dark); }
+        .founder-title { color: var(--cyan-primary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem; }
+        .founder-card p { font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; }
 
-    <div style="padding:18px;border-left:4px solid #4da3ff;color:#aab4c8;">
-      Understand your business and technology environment
-    </div>
+        /* --- MISSION & VISION --- */
+        .mv-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--slate-dark) 100%);
+            color: var(--text-dark);
+        }
 
-    <div style="padding:18px;border-left:4px solid #4da3ff;color:#aab4c8;">
-      Identify IT and cybersecurity risks
-    </div>
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
 
-    <div style="padding:18px;border-left:4px solid #4da3ff;color:#aab4c8;">
-      Provide practical, cost-effective recommendations
-    </div>
+        .mv-card {
+            background: var(--text-light);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
 
-    <div style="padding:18px;border-left:4px solid #4da3ff;color:#aab4c8;">
-      Support implementation with internal or external IT providers
-    </div>
+        .mv-card i { font-size: 2rem; color: var(--cyan-primary); margin-bottom: 1.5rem; }
+        .mv-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--slate-dark); }
+        .mv-card p { color: var(--text-dark); opacity: 0.8; }
 
-  </div>
-</section>
+        /* --- SERVICES SECTION --- */
+        .services { padding: 6rem 0; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
 
-<!-- SERVICES -->
-<section id="services" style="padding:80px 20px;max-width:1100px;margin:auto;">
-  <h2 style="font-size:32px;">Core Services</h2>
+        .service-card {
+            background-color: var(--slate-card);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: var(--transition);
+        }
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:18px;margin-top:25px;">
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 255, 0.3);
+        }
 
-    <div style="padding:24px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
-      <div style="font-weight:800;">Cybersecurity Risk Assessment</div>
-      <div style="color:#aab4c8;margin-top:8px;font-size:14px;">
-        Identify vulnerabilities that could expose your business to cyber threats.
-      </div>
-    </div>
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 210, 255, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
 
-    <div style="padding:24px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
-      <div style="font-weight:800;">IT Infrastructure Consulting</div>
-      <div style="color:#aab4c8;margin-top:8px;font-size:14px;">
-        Guidance on network architecture, system design, and IT modernization.
-      </div>
-    </div>
+        .service-icon i { color: var(--cyan-primary); font-size: 1.25rem; }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-    <div style="padding:24px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
-      <div style="font-weight:800;">Backup & Disaster Recovery</div>
-      <div style="color:#aab4c8;margin-top:8px;font-size:14px;">
-        Ensure business continuity and fast recovery from data loss events.
-      </div>
-    </div>
+        /* --- WHY CHOOSE US & APPROACH --- */
+        .why-choose-us {
+            padding: 6rem 0;
+            background-color: var(--slate-card);
+        }
 
-    <div style="padding:24px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
-      <div style="font-weight:800;">Microsoft 365 Optimization</div>
-      <div style="color:#aab4c8;margin-top:8px;font-size:14px;">
-        Cloud migration, secure remote work enablement, and cost optimization.
-      </div>
-    </div>
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
 
-  </div>
-</section>
+        .list-item {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
 
-<!-- INDUSTRIES -->
-<section id="industries" style="padding:80px 20px 100px;max-width:1100px;margin:auto;">
-  <h2 style="font-size:32px;">Industries We Serve</h2>
+        .list-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(0, 210, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan-primary);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:14px;margin-top:25px;color:#aab4c8;">
+        .list-content h4 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+        .list-content p { color: var(--text-muted); font-size: 0.95rem; }
 
-    <div>Medical & Healthcare Clinics</div>
-    <div>Professional Service Firms (Legal, Accounting, Consulting)</div>
-    <div>Engineering & Construction Companies</div>
-    <div>Small & Growing Businesses</div>
+        .approach-step {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2.5rem;
+        }
 
-  </div>
-</section>
+        .approach-step::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 30px;
+            bottom: -30px;
+            width: 2px;
+            background: rgba(255,255,255,0.05);
+        }
 
-<!-- CTA -->
-<section id="contact" style="padding:110px 20px;text-align:center;
-background:#0b1324;border-top:1px solid rgba(255,255,255,0.06);">
-
-  <h2 style="font-size:36px;margin-bottom:12px;">Free 30-Minute Consultation</h2>
-
-  <p style="color:#aab4c8;max-width:750px;margin:auto;">
-    Discuss your IT and cybersecurity needs with an experienced consultant and receive practical recommendations
-    to strengthen your technology environment.
-  </p>
-
-  <br><br>
-
-  <a href="mailto:contact@fooncore.com"
-     style="display:inline-block;padding:15px 32px;background:#4da3ff;
-     color:#06101f;font-weight:800;text-decoration:none;border-radius:10px;">
-    Schedule Your Consultation
-  </a>
-
-</section>
-
-<!-- FOOTER -->
-<footer style="text-align:center;padding:35px;color:#6f7c95;font-size:13px;">
-  © 2026 Fooncore Solutions — Edmonton, Alberta, Canada
-</footer>
-
-</body>
-</html>
+        .approach-step:last-child::before { display: none; }
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
