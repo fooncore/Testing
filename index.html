@@ -4,105 +4,150 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fooncore Solutions · IT Consulting</title>
-  <!-- Font & Icons -->
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
   <style>
-    /* ----- reset & base ----- */
+    /* ===== RESET & BASE ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fafcff;
-      color: #1a2639;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
+      color: #1a2332;
       line-height: 1.6;
     }
 
     .container {
-      max-width: 1220px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* ----- color palette (inspired by logo: deep navy + soft gold/amber) ----- */
+    /* ===== COLOR PALETTE (Navy + Gold) ===== */
     :root {
-      --primary-dark: #0b1a2e;      /* deep navy */
-      --primary-mid: #1e3a5f;
-      --accent-gold: #d4a54a;       /* warm gold from logo */
-      --accent-soft: #f0e6d0;
-      --gray-light: #f2f6fc;
-      --gray-border: #dce3ed;
-      --text-dark: #141f2b;
-      --text-soft: #2c3e50;
+      --navy-dark: #0b1a2e;
+      --navy-mid: #1a3050;
+      --navy-light: #2a4a6e;
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --gold-soft: #f5efe0;
+      --cream: #faf8f3;
       --white: #ffffff;
-      --shadow-sm: 0 8px 20px rgba(11, 26, 46, 0.06);
-      --shadow-hover: 0 18px 36px rgba(11, 26, 46, 0.10);
+      --gray-50: #f8fafc;
+      --gray-100: #f1f4f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-600: #64748b;
+      --gray-700: #334155;
+      --gray-900: #0f172a;
+      --shadow-sm: 0 2px 8px rgba(11, 26, 46, 0.06);
+      --shadow-md: 0 8px 30px rgba(11, 26, 46, 0.08);
+      --shadow-lg: 0 16px 48px rgba(11, 26, 46, 0.12);
+      --shadow-gold: 0 4px 16px rgba(201, 168, 76, 0.25);
     }
 
-    /* ----- typography (logo-inspired) ----- */
+    /* ===== TYPOGRAPHY ===== */
     h1, h2, h3, h4 {
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--primary-dark);
+      color: var(--navy-dark);
     }
 
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-      position: relative;
+    h1 { font-size: 3.2rem; line-height: 1.15; }
+    h2 { font-size: 2.4rem; line-height: 1.2; }
+    h3 { font-size: 1.5rem; line-height: 1.3; }
+    h4 { font-size: 1.2rem; line-height: 1.4; }
+
+    .section-label {
+      display: inline-block;
+      background: var(--gold-soft);
+      color: var(--navy-dark);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 16px;
+      border-radius: 40px;
+      margin-bottom: 12px;
     }
 
-    h2:after {
+    .section-title {
+      margin-bottom: 12px;
+    }
+
+    .section-title::after {
       content: '';
       display: block;
-      width: 64px;
+      width: 60px;
       height: 4px;
-      background: var(--accent-gold);
-      margin-top: 10px;
+      background: var(--gold);
       border-radius: 4px;
+      margin-top: 12px;
     }
 
-    .section-title-centered h2:after {
-      margin: 10px auto 0;
+    .section-title-centered {
+      text-align: center;
     }
 
-    .section-subhead {
-      color: var(--text-soft);
+    .section-title-centered::after {
+      margin: 12px auto 0;
+    }
+
+    .section-subtitle {
+      color: var(--gray-600);
       font-size: 1.1rem;
-      max-width: 700px;
+      max-width: 600px;
     }
 
-    /* ----- buttons & CTA ----- */
+    .section-title-centered + .section-subtitle {
+      margin: 0 auto;
+    }
+
+    /* ===== BUTTONS ===== */
     .btn-primary {
-      display: inline-block;
-      background: var(--accent-gold);
-      color: var(--primary-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--navy-dark);
       font-weight: 700;
       font-size: 1rem;
-      padding: 14px 34px;
+      padding: 14px 36px;
       border-radius: 60px;
       text-decoration: none;
-      transition: 0.2s ease;
-      border: 2px solid var(--accent-gold);
-      letter-spacing: 0.3px;
-      box-shadow: 0 4px 10px rgba(212, 165, 74, 0.25);
+      transition: all 0.25s ease;
+      border: 2px solid var(--gold);
+      box-shadow: var(--shadow-gold);
+      cursor: pointer;
     }
 
     .btn-primary:hover {
       background: transparent;
-      color: var(--accent-gold);
-      border-color: var(--accent-gold);
-      box-shadow: 0 8px 20px rgba(212, 165, 74, 0.15);
+      color: var(--gold);
+      border-color: var(--gold);
+      box-shadow: none;
+      transform: translateY(-2px);
     }
 
-    .btn-outline-light {
-      display: inline-block;
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       background: transparent;
       color: var(--white);
       font-weight: 600;
@@ -110,26 +155,47 @@
       padding: 12px 32px;
       border-radius: 60px;
       text-decoration: none;
-      border: 2px solid rgba(255, 255, 255, 0.5);
-      transition: 0.2s;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
 
-    .btn-outline-light:hover {
+    .btn-secondary:hover {
       background: var(--white);
-      color: var(--primary-dark);
+      color: var(--navy-dark);
       border-color: var(--white);
     }
 
-    /* ----- header / nav ----- */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--navy-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 10px 28px;
+      border-radius: 60px;
+      text-decoration: none;
+      border: 2px solid var(--gray-300);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ===== NAVBAR ===== */
     .navbar {
-      padding: 18px 0;
-      background: var(--white);
-      border-bottom: 1px solid var(--gray-border);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 16px 0;
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(4px);
-      background: rgba(255, 255, 255, 0.92);
+      z-index: 1000;
     }
 
     .navbar .container {
@@ -137,583 +203,903 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .logo-area {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      text-decoration: none;
     }
 
     .logo-icon {
-      background: var(--primary-dark);
-      color: var(--accent-gold);
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
+      background: var(--navy-dark);
+      color: var(--gold);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 14px;
       font-weight: 800;
-      font-size: 22px;
+      font-size: 20px;
       letter-spacing: -0.5px;
-      box-shadow: 0 4px 8px rgba(11, 26, 46, 0.08);
+      box-shadow: 0 4px 12px rgba(11, 26, 46, 0.1);
     }
 
     .logo-text {
       font-weight: 800;
-      font-size: 1.7rem;
+      font-size: 1.6rem;
+      color: var(--navy-dark);
       letter-spacing: -0.5px;
-      color: var(--primary-dark);
     }
 
     .logo-text span {
-      color: var(--accent-gold);
+      color: var(--gold);
     }
 
-    .slogan-tag {
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--text-soft);
-      background: var(--gray-light);
+    .logo-tagline {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      background: var(--gray-50);
       padding: 4px 14px;
       border-radius: 40px;
-      margin-left: 6px;
-      letter-spacing: 0.2px;
+      margin-left: 4px;
+      display: inline-block;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
-      font-weight: 500;
-      color: var(--text-soft);
+      align-items: center;
+      gap: 32px;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: var(--text-soft);
+      color: var(--gray-700);
+      font-weight: 500;
       font-size: 0.95rem;
-      transition: 0.15s;
+      transition: color 0.2s;
       border-bottom: 2px solid transparent;
       padding-bottom: 4px;
     }
 
     .nav-links a:hover {
-      color: var(--primary-dark);
-      border-bottom-color: var(--accent-gold);
+      color: var(--navy-dark);
+      border-bottom-color: var(--gold);
     }
 
-    .mobile-menu-toggle {
+    .mobile-toggle {
       display: none;
-      font-size: 1.6rem;
-      color: var(--primary-dark);
+      font-size: 1.5rem;
+      color: var(--navy-dark);
       cursor: pointer;
+      background: none;
+      border: none;
     }
 
-    /* ----- hero ----- */
+    /* ===== HERO ===== */
     .hero {
       padding: 80px 0 90px;
-      background: linear-gradient(145deg, #f5f9ff 0%, #e9eff9 100%);
-      border-bottom: 1px solid var(--gray-border);
+      background: linear-gradient(160deg, #f0f4fc 0%, #e8edf6 100%);
+      border-bottom: 1px solid var(--gray-200);
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
+      gap: 60px;
       align-items: center;
     }
 
-    .hero h1 {
-      font-size: 3.2rem;
-      line-height: 1.2;
+    .hero-content h1 {
       margin-bottom: 20px;
-      letter-spacing: -0.03em;
     }
 
-    .hero h1 .highlight {
-      color: var(--accent-gold);
-      background: rgba(212, 165, 74, 0.08);
-      padding: 0 6px;
+    .hero-content h1 .highlight {
+      color: var(--gold);
+      background: rgba(201, 168, 76, 0.1);
+      padding: 0 8px;
+      border-radius: 4px;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--text-soft);
-      max-width: 580px;
-      margin: 20px 0 36px;
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--gray-700);
+      max-width: 540px;
+      margin: 20px 0 32px;
     }
 
     .hero-stats {
       display: flex;
-      gap: 40px;
+      gap: 48px;
       margin-top: 40px;
-      flex-wrap: wrap;
     }
 
-    .hero-stats .stat-item {
+    .hero-stats .stat {
       display: flex;
-      align-items: center;
-      gap: 12px;
+      flex-direction: column;
     }
 
-    .stat-number {
-      font-weight: 800;
+    .hero-stats .stat-number {
       font-size: 2rem;
-      color: var(--primary-dark);
+      font-weight: 800;
+      color: var(--navy-dark);
+      line-height: 1.2;
     }
 
-    .stat-label {
-      color: var(--text-soft);
-      font-size: 0.9rem;
+    .hero-stats .stat-label {
+      font-size: 0.85rem;
+      color: var(--gray-600);
     }
 
-    .hero-image {
+    .hero-visual {
       background: var(--white);
       border-radius: 28px;
-      padding: 30px 20px;
-      box-shadow: var(--shadow-hover);
-      border: 1px solid rgba(212, 165, 74, 0.15);
+      padding: 40px 32px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      text-align: center;
+      min-height: 260px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 240px;
-      background-image: radial-gradient(circle at 30% 40%, rgba(212, 165, 74, 0.03) 0%, transparent 60%);
+      background-image: radial-gradient(circle at 30% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 60%);
     }
 
-    .hero-image i {
-      font-size: 4.2rem;
-      color: var(--primary-dark);
+    .hero-visual i {
+      font-size: 4rem;
+      color: var(--navy-light);
       opacity: 0.9;
       margin-bottom: 16px;
     }
 
-    .hero-image .badge {
-      background: var(--primary-dark);
-      color: var(--accent-gold);
-      padding: 10px 24px;
+    .hero-visual .badge {
+      background: var(--navy-dark);
+      color: var(--gold);
+      padding: 10px 28px;
       border-radius: 60px;
       font-weight: 600;
       font-size: 0.9rem;
+      margin-top: 8px;
     }
 
-    /* ----- sections common ----- */
+    .hero-visual .badge i {
+      font-size: 1rem;
+      margin-right: 8px;
+      color: var(--gold);
+    }
+
+    /* ===== SECTIONS ===== */
     section {
-      padding: 70px 0;
+      padding: 80px 0;
     }
 
-    .section-title-centered {
-      text-align: center;
-    }
-
-    .section-title-centered h2:after {
-      margin: 10px auto 0;
-    }
-
-    .grid-2col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .grid-3col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .card {
+    section:nth-child(even) {
       background: var(--white);
-      border-radius: 24px;
-      padding: 30px 26px;
-      box-shadow: var(--shadow-sm);
-      transition: 0.2s;
-      border: 1px solid var(--gray-border);
     }
 
-    .card:hover {
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-4px);
-      border-color: var(--accent-gold);
+    section:nth-child(odd) {
+      background: var(--gray-50);
     }
 
-    .card i {
-      font-size: 2.2rem;
-      color: var(--accent-gold);
-      margin-bottom: 20px;
-    }
-
-    .card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: var(--text-soft);
-      font-size: 0.98rem;
-    }
-
-    .list-check {
-      list-style: none;
-      margin-top: 12px;
-    }
-
-    .list-check li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 14px;
-      font-size: 0.98rem;
-    }
-
-    .list-check li i {
-      color: var(--accent-gold);
-      font-size: 1.2rem;
-      margin-top: 3px;
-    }
-
-    .badge-gold {
-      background: var(--accent-soft);
-      color: var(--primary-dark);
-      font-weight: 600;
-      padding: 4px 14px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-
-    /* about + founder */
+    /* ===== ABOUT ===== */
     .about-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.3fr 0.7fr;
       gap: 50px;
       align-items: start;
+    }
+
+    .about-text p {
+      color: var(--gray-700);
+      font-size: 1.05rem;
+      margin-top: 8px;
+    }
+
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+      background: var(--white);
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+    }
+
+    .mission-vision h4 {
+      color: var(--navy-dark);
+      margin-bottom: 4px;
+    }
+
+    .mission-vision p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
     }
 
     .founder-card {
       background: var(--white);
       border-radius: 24px;
-      padding: 30px;
-      border-left: 6px solid var(--accent-gold);
+      padding: 32px;
+      border-left: 6px solid var(--gold);
       box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      border-left-width: 6px;
     }
 
-    .founder-card h4 {
-      font-size: 1.5rem;
+    .founder-card h3 {
+      color: var(--navy-dark);
     }
 
-    .founder-card .title {
+    .founder-card .founder-title {
+      color: var(--gold);
       font-weight: 600;
-      color: var(--accent-gold);
       margin-bottom: 12px;
     }
 
-    /* approach */
+    .founder-card p {
+      color: var(--gray-700);
+    }
+
+    .founder-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .founder-tags span {
+      background: var(--navy-dark);
+      color: var(--white);
+      padding: 2px 16px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* ===== APPROACH ===== */
     .approach-steps {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 30px;
+      gap: 16px;
       justify-content: center;
+      margin-top: 32px;
     }
 
-    .step-item {
+    .approach-step {
       background: var(--white);
+      padding: 16px 32px;
       border-radius: 60px;
-      padding: 14px 34px;
-      border: 1px solid var(--gray-border);
+      border: 1px solid var(--gray-200);
       font-weight: 500;
+      color: var(--gray-700);
       box-shadow: var(--shadow-sm);
       display: inline-flex;
       align-items: center;
       gap: 12px;
+      transition: all 0.2s;
     }
 
-    .step-item i {
-      color: var(--accent-gold);
+    .approach-step:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
     }
 
-    /* industries */
-    .industry-tag {
-      background: var(--gray-light);
-      padding: 12px 22px;
-      border-radius: 60px;
-      font-weight: 500;
-      border: 1px solid transparent;
-      transition: 0.15s;
+    .approach-step i {
+      color: var(--gold);
+      font-size: 1.1rem;
     }
 
-    .industry-tag:hover {
-      border-color: var(--accent-gold);
-      background: var(--white);
+    /* ===== SERVICES ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
     }
 
-    /* CTA final */
-    .cta-final {
-      background: var(--primary-dark);
-      color: var(--white);
-      border-radius: 40px;
-      padding: 60px 50px;
-      margin: 30px 0 20px;
+    .why-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .why-list li {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+      color: var(--gray-700);
     }
 
-    .cta-final h3 {
-      color: var(--white);
-      font-size: 2rem;
+    .why-list li i {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .why-list li strong {
+      color: var(--navy-dark);
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 24px 22px;
+      border-radius: 20px;
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .service-card i {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .service-card h4 {
+      color: var(--navy-dark);
       margin-bottom: 6px;
     }
 
-    .cta-final p {
-      opacity: 0.8;
-      max-width: 500px;
+    .service-card p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
     }
 
-    .cta-final .btn-primary {
+    /* ===== INDUSTRIES ===== */
+    .industries-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .industry-tag {
       background: var(--white);
-      border-color: var(--white);
-      color: var(--primary-dark);
+      padding: 14px 28px;
+      border-radius: 60px;
+      font-weight: 500;
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
     }
 
-    .cta-final .btn-primary:hover {
+    .industry-tag:hover {
+      border-color: var(--gold);
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+    }
+
+    .industry-tag i {
+      color: var(--gold);
+    }
+
+    .industries-note {
+      text-align: center;
+      max-width: 700px;
+      margin: 32px auto 0;
+      color: var(--gray-600);
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: var(--navy-dark);
+      border-radius: 32px;
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin: 0 auto;
+    }
+
+    .cta-section h3 {
+      color: var(--white);
+      font-size: 2rem;
+      margin-bottom: 4px;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 520px;
+      font-size: 1.05rem;
+    }
+
+    .cta-section .btn-primary {
+      background: var(--white);
+      color: var(--navy-dark);
+      border-color: var(--white);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-section .btn-primary:hover {
       background: transparent;
       color: var(--white);
       border-color: var(--white);
+      box-shadow: none;
     }
 
-    /* footer */
+    /* ===== FOOTER ===== */
     .footer {
-      background: var(--primary-dark);
+      background: var(--navy-dark);
       color: rgba(255, 255, 255, 0.7);
-      padding: 40px 0;
-      border-top: 3px solid var(--accent-gold);
+      padding: 48px 0 32px;
+      border-top: 3px solid var(--gold);
+      margin-top: 40px;
     }
 
     .footer .container {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 32px;
     }
 
-    .footer-logo {
-      font-weight: 700;
-      font-size: 1.4rem;
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-brand .logo-text {
       color: var(--white);
+      font-size: 1.5rem;
     }
 
-    .footer-logo span {
-      color: var(--accent-gold);
+    .footer-brand .logo-text span {
+      color: var(--gold);
     }
 
-    /* responsiveness */
-    @media (max-width: 992px) {
+    .footer-brand p {
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-links i {
+      margin-right: 8px;
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 32px;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      h1 { font-size: 2.8rem; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
       }
-      .hero p {
+
+      .hero-content p {
         margin-left: auto;
         margin-right: auto;
       }
+
       .hero-stats {
         justify-content: center;
       }
+
+      .hero-visual {
+        min-height: 200px;
+        padding: 30px 20px;
+      }
+
       .about-grid {
         grid-template-columns: 1fr;
       }
-      .grid-2col, .grid-3col {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
 
-    @media (max-width: 700px) {
-      .grid-2col, .grid-3col {
+      .mission-vision {
         grid-template-columns: 1fr;
       }
+
+      .service-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section {
+        padding: 40px 28px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cta-section p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       .nav-links {
         display: none;
       }
-      .mobile-menu-toggle {
+
+      .mobile-toggle {
         display: block;
       }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .cta-final {
-        flex-direction: column;
-        text-align: center;
-        gap: 24px;
-      }
-      .step-item {
-        padding: 12px 24px;
-      }
-      .logo-text {
-        font-size: 1.3rem;
-      }
-      .slogan-tag {
+
+      .logo-tagline {
         display: none;
+      }
+
+      .footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 480px) {
+      .approach-step {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+
+      .industry-tag {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      .hero-stats {
+        gap: 24px;
+        flex-wrap: wrap;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+
+  <!-- ===== NAVBAR ===== -->
   <header class="navbar">
     <div class="container">
-      <div class="logo-area">
+      <a href="#" class="logo">
         <div class="logo-icon">FS</div>
-        <div class="logo-text">Fooncore<span>.</span></div>
-        <span class="slogan-tag"><i class="fas fa-shield-alt" style="margin-right: 6px;"></i> Your One-Stop IT Management Partner</span>
-      </div>
-      <div class="nav-links">
+        <span class="logo-text">Fooncore<span>.</span></span>
+        <span class="logo-tagline"><i class="fas fa-shield-alt"></i> Your One-Stop IT Management Partner</span>
+      </a>
+
+      <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#industries">Industries</a>
-        <a href="#contact" class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;">Consultation</a>
-      </div>
-      <div class="mobile-menu-toggle"><i class="fas fa-bars"></i></div>
+        <a href="#contact" class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;">
+          <i class="fas fa-calendar-check"></i> Consultation
+        </a>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
     <div class="container hero-grid">
-      <div>
-        <h1>Cybersecurity &amp; IT Infrastructure <span class="highlight">Consulting</span> for SMEs</h1>
-        <p>Helping clinics, professional firms, and growing organizations secure systems, protect sensitive data, and improve technology reliability.</p>
-        <a href="#" class="btn-primary"><i class="fas fa-calendar-check" style="margin-right: 10px;"></i>Book a Free 30-Minute Consultation</a>
+      <div class="hero-content">
+        <h1>
+          Cybersecurity &amp; IT Infrastructure <br />
+          <span class="highlight">Consulting</span> for SMEs
+        </h1>
+        <p>
+          Helping clinics, professional firms, and growing organizations secure systems,
+          protect sensitive data, and improve technology reliability.
+        </p>
+        <a href="#contact" class="btn-primary">
+          <i class="fas fa-calendar-check"></i> Book a Free 30-Minute Consultation
+        </a>
         <div class="hero-stats">
-          <div class="stat-item"><span class="stat-number">20+</span><span class="stat-label">Years experience</span></div>
-          <div class="stat-item"><span class="stat-number">100+</span><span class="stat-label">Businesses supported</span></div>
+          <div class="stat">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">Businesses Supported</span>
+          </div>
         </div>
       </div>
-      <div class="hero-image">
+
+      <div class="hero-visual">
         <i class="fas fa-network-wired"></i>
-        <div class="badge"><i class="fas fa-check-circle" style="margin-right: 8px;"></i>Edmonton · trusted advisor</div>
-        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-soft);">Practical, secure, cost-effective</p>
+        <div class="badge">
+          <i class="fas fa-check-circle"></i> Edmonton · Trusted Advisor
+        </div>
+        <p style="margin-top: 16px; color: var(--gray-600); font-size: 0.95rem;">
+          Practical, secure, cost-effective solutions
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- About + Founder -->
-  <section id="about" style="background: var(--white);">
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
     <div class="container about-grid">
-      <div>
-        <span class="badge-gold"><i class="fas fa-user-tie"></i> About Us</span>
-        <h2>Who We Are</h2>
-        <p style="font-size: 1.1rem; margin-top: 10px;">Based in Edmonton, we provide independent IT consulting to help small and medium-sized businesses improve security, reliability, and performance. With over 20 years of experience in IT infrastructure, network systems, and enterprise technology operations, we deliver practical expertise in cybersecurity, backup and disaster recovery, cloud security, and network consulting.</p>
-        <p style="margin-top: 16px; color: var(--text-soft);">We work closely with clients to identify technology risks, strengthen system resilience, and ensure IT solutions support long-term business goals.</p>
-        <!-- mission/vision inline -->
-        <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 30px; background: var(--gray-light); padding: 24px; border-radius: 20px;">
-          <div style="flex:1; min-width: 180px;"><strong style="color: var(--primary-dark);">Mission</strong><p style="font-size: 0.95rem;">Deliver reliable, secure, and cost-effective IT solutions that help small and medium-sized businesses grow while minimizing technology risks.</p></div>
-          <div style="flex:1; min-width: 180px;"><strong style="color: var(--primary-dark);">Vision</strong><p style="font-size: 0.95rem;">Become a trusted technology advisor for organizations without dedicated IT leadership, providing practical expertise to build secure, resilient, and future-ready technology environments.</p></div>
+      <div class="about-text">
+        <span class="section-label"><i class="fas fa-user-tie"></i> About Us</span>
+        <h2 class="section-title">Who We Are</h2>
+        <p>
+          Based in Edmonton, we provide independent IT consulting to help small and medium-sized
+          businesses improve security, reliability, and performance. With over 20 years of
+          experience in IT infrastructure, network systems, and enterprise technology operations,
+          we deliver practical expertise in cybersecurity, backup and disaster recovery,
+          cloud security, and network consulting.
+        </p>
+        <p style="margin-top: 16px;">
+          We work closely with clients to identify technology risks, strengthen system resilience,
+          and ensure IT solutions support long-term business goals.
+        </p>
+
+        <div class="mission-vision">
+          <div>
+            <h4>🎯 Mission</h4>
+            <p>Deliver reliable, secure, and cost-effective IT solutions that help small and medium-sized businesses grow while minimizing technology risks.</p>
+          </div>
+          <div>
+            <h4>🔭 Vision</h4>
+            <p>Become a trusted technology advisor for organizations without dedicated IT leadership, providing practical expertise to build secure, resilient, and future-ready technology environments.</p>
+          </div>
         </div>
       </div>
+
       <div class="founder-card">
-        <span class="badge-gold"><i class="fas fa-crown"></i> Founder</span>
-        <h4>Tony Siu</h4>
-        <div class="title">Senior IT Consultant</div>
-        <p>Tony is an IT professional with 20+ years of experience in enterprise technology. He held senior IT roles supporting regional and global operations for commercial companies.</p>
-        <p style="margin-top: 12px;">He now focuses on helping Edmonton businesses strengthen their IT environment with practical, secure, and cost-effective solutions.</p>
-        <div style="margin-top: 16px; display: flex; gap: 6px; flex-wrap: wrap;">
-          <span style="background: var(--primary-dark); color: white; padding: 2px 14px; border-radius: 40px; font-size: 0.75rem;">enterprise</span>
-          <span style="background: var(--primary-dark); color: white; padding: 2px 14px; border-radius: 40px; font-size: 0.75rem;">cybersecurity</span>
+        <span class="section-label" style="background: var(--gold-soft);"><i class="fas fa-crown"></i> Founder</span>
+        <h3>Tony Siu</h3>
+        <div class="founder-title">Senior IT Consultant</div>
+        <p>
+          Tony is an IT professional with 20+ years of experience in enterprise technology.
+          He held senior IT roles supporting regional and global operations for commercial companies.
+        </p>
+        <p style="margin-top: 12px;">
+          He now focuses on helping Edmonton businesses strengthen their IT environment with
+          practical, secure, and cost-effective solutions.
+        </p>
+        <div class="founder-tags">
+          <span>Enterprise</span>
+          <span>Cybersecurity</span>
+          <span>Infrastructure</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Approach -->
-  <section style="background: var(--gray-light);">
-    <div class="container section-title-centered">
-      <h2>Our Approach</h2>
-      <p class="section-subhead" style="margin: 8px auto 0;">Practical, transparent, and built around your business</p>
+  <!-- ===== APPROACH ===== -->
+  <section>
+    <div class="container" style="text-align: center;">
+      <span class="section-label"><i class="fas fa-route"></i> Our Approach</span>
+      <h2 class="section-title section-title-centered">How We Work</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Practical, transparent, and built around your business
+      </p>
+
       <div class="approach-steps">
-        <span class="step-item"><i class="fas fa-search"></i> Understand your business &amp; technology</span>
-        <span class="step-item"><i class="fas fa-exclamation-triangle"></i> Identify IT &amp; cybersecurity risks</span>
-        <span class="step-item"><i class="fas fa-lightbulb"></i> Provide practical, cost-effective recommendations</span>
-        <span class="step-item"><i class="fas fa-handshake"></i> Support implementation with internal teams or providers</span>
+        <span class="approach-step">
+          <i class="fas fa-search"></i> Understand your business &amp; technology
+        </span>
+        <span class="approach-step">
+          <i class="fas fa-exclamation-triangle"></i> Identify IT &amp; cybersecurity risks
+        </span>
+        <span class="approach-step">
+          <i class="fas fa-lightbulb"></i> Provide practical, cost-effective recommendations
+        </span>
+        <span class="approach-step">
+          <i class="fas fa-handshake"></i> Support implementation with internal teams or providers
+        </span>
       </div>
     </div>
   </section>
 
-  <!-- Why choose us + core services combined -->
+  <!-- ===== SERVICES ===== -->
   <section id="services">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 40px; align-items: start;">
-        <div>
-          <span class="badge-gold"><i class="fas fa-star"></i> Why Choose Us</span>
-          <ul class="list-check" style="margin-top: 12px;">
-            <li><i class="fas fa-check-circle"></i> <strong>Extensive IT Experience:</strong> 20+ years in IT infrastructure and enterprise technology</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Independent Advice:</strong> Recommendations focused on your business, not vendors</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Practical Solutions:</strong> Solutions that are secure, reliable, and cost-effective</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Personalized Service:</strong> Work closely with business owners to meet operational goals</li>
-          </ul>
-        </div>
-        <div>
-          <span class="badge-gold"><i class="fas fa-cogs"></i> Core Services</span>
-          <div class="grid-2col" style="margin-top: 8px;">
-            <div class="card"><i class="fas fa-shield-alt"></i><h4>Cybersecurity Risk Assessment</h4><p>Identify vulnerabilities that could expose your business to threats.</p></div>
-            <div class="card"><i class="fas fa-sitemap"></i><h4>IT Infrastructure Consulting</h4><p>Guidance on network architecture, system design, and technology planning.</p></div>
-            <div class="card"><i class="fas fa-database"></i><h4>Backup &amp; Disaster Recovery</h4><p>Protect critical business data and ensure recovery capability.</p></div>
-            <div class="card"><i class="fab fa-microsoft"></i><h4>Microsoft 365 Optimization</h4><p>Migration of on-premises systems to the cloud, enabling secure remote work and lower infrastructure costs.</p></div>
-            <div class="card"><i class="fas fa-handshake"></i><h4>IT Vendor Advisory</h4><p>Oversight and advice to ensure outsourced IT providers deliver secure, reliable services.</p></div>
+    <div class="container services-grid">
+      <div>
+        <span class="section-label"><i class="fas fa-star"></i> Why Choose Us</span>
+        <h2 class="section-title">Why Fooncore?</h2>
+        <ul class="why-list">
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div><strong>Extensive IT Experience:</strong> 20+ years in IT infrastructure and enterprise technology</div>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div><strong>Independent Advice:</strong> Recommendations focused on your business, not vendors</div>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div><strong>Practical Solutions:</strong> Solutions that are secure, reliable, and cost-effective</div>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div><strong>Personalized Service:</strong> Work closely with business owners to meet operational goals</div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="section-label"><i class="fas fa-cogs"></i> Core Services</span>
+        <h2 class="section-title">What We Offer</h2>
+        <div class="service-cards">
+          <div class="service-card">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Cybersecurity Risk Assessment</h4>
+            <p>Identify vulnerabilities that could expose your business to threats.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-sitemap"></i>
+            <h4>IT Infrastructure Consulting</h4>
+            <p>Guidance on network architecture, system design, and technology planning.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-database"></i>
+            <h4>Backup &amp; Disaster Recovery</h4>
+            <p>Protect critical business data and ensure recovery capability.</p>
+          </div>
+          <div class="service-card">
+            <i class="fab fa-microsoft"></i>
+            <h4>Microsoft 365 Optimization</h4>
+            <p>Migration of on-premises systems to the cloud, enabling secure remote work.</p>
+          </div>
+          <div class="service-card" style="grid-column: 1 / -1;">
+            <i class="fas fa-handshake"></i>
+            <h4>IT Vendor Advisory</h4>
+            <p>Oversight and advice to ensure outsourced IT providers deliver secure, reliable services.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Industries -->
-  <section id="industries" style="background: var(--gray-light);">
-    <div class="container section-title-centered">
-      <h2>Industries We Serve</h2>
-      <p class="section-subhead" style="margin: 8px auto 0;">Focused expertise for critical sectors</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 30px;">
-        <span class="industry-tag"><i class="fas fa-heartbeat" style="color: var(--accent-gold);"></i> Medical &amp; Healthcare Clinics</span>
-        <span class="industry-tag"><i class="fas fa-briefcase" style="color: var(--accent-gold);"></i> Professional Service Firms</span>
-        <span class="industry-tag"><i class="fas fa-hard-hat" style="color: var(--accent-gold);"></i> Engineering &amp; Construction</span>
-        <span class="industry-tag"><i class="fas fa-chart-line" style="color: var(--accent-gold);"></i> Small &amp; Growing Businesses</span>
+  <!-- ===== INDUSTRIES ===== -->
+  <section id="industries">
+    <div class="container" style="text-align: center;">
+      <span class="section-label"><i class="fas fa-building"></i> Industries We Serve</span>
+      <h2 class="section-title section-title-centered">Who We Help</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Focused expertise for critical sectors
+      </p>
+
+      <div class="industries-grid">
+        <span class="industry-tag">
+          <i class="fas fa-heartbeat"></i> Medical &amp; Healthcare Clinics
+        </span>
+        <span class="industry-tag">
+          <i class="fas fa-briefcase"></i> Professional Service Firms
+        </span>
+        <span class="industry-tag">
+          <i class="fas fa-hard-hat"></i> Engineering &amp; Construction
+        </span>
+        <span class="industry-tag">
+          <i class="fas fa-chart-line"></i> Small &amp; Growing Businesses
+        </span>
       </div>
-      <p style="max-width: 700px; margin: 30px auto 0; color: var(--text-soft);">Protect patient data, secure client information, safeguard project data, and establish reliable IT environments to support growth.</p>
+
+      <p class="industries-note">
+        Protect patient data, secure client information, safeguard project data,
+        and establish reliable IT environments to support growth.
+      </p>
     </div>
   </section>
 
-  <!-- final CTA -->
+  <!-- ===== CTA ===== -->
   <section id="contact">
     <div class="container">
-      <div class="cta-final">
+      <div class="cta-section">
         <div>
           <h3>Free 30-Minute Consultation</h3>
-          <p>Discuss your IT and cybersecurity needs with an experienced consultant and receive practical recommendations to improve your technology environment.</p>
+          <p>
+            Discuss your IT and cybersecurity needs with an experienced consultant and
+            receive practical recommendations to improve your technology environment.
+          </p>
         </div>
-        <a href="#" class="btn-primary"><i class="fas fa-calendar-plus" style="margin-right: 10px;"></i> Schedule Your Consultation</a>
+        <a href="#" class="btn-primary">
+          <i class="fas fa-calendar-plus"></i> Schedule Your Consultation
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-      <div>
-        <div class="footer-logo">Fooncore<span>.</span></div>
-        <div style="margin-top: 8px;"><i class="fas fa-map-pin"></i> Edmonton, Canada</div>
-        <div style="margin-top: 4px; font-size: 0.9rem;">&copy; 2026 Fooncore Solutions</div>
+      <div class="footer-brand">
+        <div class="logo-text">Fooncore<span>.</span></div>
+        <p><i class="fas fa-map-pin"></i> Edmonton, Canada</p>
+        <p style="font-size: 0.9rem;">&copy; 2026 Fooncore Solutions. All rights reserved.</p>
       </div>
-      <div style="display: flex; gap: 32px; flex-wrap: wrap;">
-        <div><i class="fas fa-envelope"></i> info@fooncore.ca</div>
-        <div><i class="fas fa-phone-alt"></i> +1 (780) 555‑IT4U</div>
-        <div><i class="fab fa-linkedin"></i> /fooncore</div>
+
+      <div class="footer-links">
+        <a href="#"><i class="fas fa-envelope"></i> info@fooncore.ca</a>
+        <a href="#"><i class="fas fa-phone-alt"></i> (780) 555-IT4U</a>
+        <a href="#"><i class="fab fa-linkedin"></i> /fooncore</a>
+        <a href="#"><i class="fab fa-twitter"></i> @fooncore</a>
       </div>
     </div>
+    <div class="footer-bottom">
+      <span>Your One-Stop IT Management Partner</span>
+    </div>
   </footer>
-</body>
-</html>
+
+  <!-- ===== MOBILE MENU TOGGLE (simple) ===== -->
+  <script>
+    document.querySelector('.mobile-toggle').addEventListener('click', function() {
+      const nav = document.querySelector('.nav-links');
+      if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.position = 'absolute';
+        nav.style.top = '80px';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.background = 'white';
+        nav.style.padding = '24px';
+        nav.style.boxShadow = '0 8px 30px rgba(0,0,0,0.1)';
+        nav.style.borderRadius = '0 0 20px 20px';
+        nav.style.gap = '16px';
+        nav.style.alignItems = 'center';
+        nav.style.borderBottom = '3px solid var(--gold)';
+        nav.style.zIndex = '999';
+      }
+    });
+
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        const nav
