@@ -1,68 +1,719 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Fooncore Solutions — Cybersecurity and IT infrastructure consulting for Edmonton SMEs.">
-  <title>Fooncore Solutions | IT Consulting in Edmonton</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fooncore Solutions · IT Consulting</title>
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- reset & base ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fafcff;
+      color: #1a2639;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- color palette (inspired by logo: deep navy + soft gold/amber) ----- */
+    :root {
+      --primary-dark: #0b1a2e;      /* deep navy */
+      --primary-mid: #1e3a5f;
+      --accent-gold: #d4a54a;       /* warm gold from logo */
+      --accent-soft: #f0e6d0;
+      --gray-light: #f2f6fc;
+      --gray-border: #dce3ed;
+      --text-dark: #141f2b;
+      --text-soft: #2c3e50;
+      --white: #ffffff;
+      --shadow-sm: 0 8px 20px rgba(11, 26, 46, 0.06);
+      --shadow-hover: 0 18px 36px rgba(11, 26, 46, 0.10);
+    }
+
+    /* ----- typography (logo-inspired) ----- */
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--primary-dark);
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    h2:after {
+      content: '';
+      display: block;
+      width: 64px;
+      height: 4px;
+      background: var(--accent-gold);
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    .section-title-centered h2:after {
+      margin: 10px auto 0;
+    }
+
+    .section-subhead {
+      color: var(--text-soft);
+      font-size: 1.1rem;
+      max-width: 700px;
+    }
+
+    /* ----- buttons & CTA ----- */
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 34px;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: 0.2s ease;
+      border: 2px solid var(--accent-gold);
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 10px rgba(212, 165, 74, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+      box-shadow: 0 8px 20px rgba(212, 165, 74, 0.15);
+    }
+
+    .btn-outline-light {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 12px 32px;
+      border-radius: 60px;
+      text-decoration: none;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      transition: 0.2s;
+    }
+
+    .btn-outline-light:hover {
+      background: var(--white);
+      color: var(--primary-dark);
+      border-color: var(--white);
+    }
+
+    /* ----- header / nav ----- */
+    .navbar {
+      padding: 18px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      background: var(--primary-dark);
+      color: var(--accent-gold);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      box-shadow: 0 4px 8px rgba(11, 26, 46, 0.08);
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.7rem;
+      letter-spacing: -0.5px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span {
+      color: var(--accent-gold);
+    }
+
+    .slogan-tag {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      background: var(--gray-light);
+      padding: 4px 14px;
+      border-radius: 40px;
+      margin-left: 6px;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-weight: 500;
+      color: var(--text-soft);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      transition: 0.15s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+      border-bottom-color: var(--accent-gold);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      cursor: pointer;
+    }
+
+    /* ----- hero ----- */
+    .hero {
+      padding: 80px 0 90px;
+      background: linear-gradient(145deg, #f5f9ff 0%, #e9eff9 100%);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 .highlight {
+      color: var(--accent-gold);
+      background: rgba(212, 165, 74, 0.08);
+      padding: 0 6px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-soft);
+      max-width: 580px;
+      margin: 20px 0 36px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat-number {
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--primary-dark);
+    }
+
+    .stat-label {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .hero-image {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 30px 20px;
+      box-shadow: var(--shadow-hover);
+      border: 1px solid rgba(212, 165, 74, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      background-image: radial-gradient(circle at 30% 40%, rgba(212, 165, 74, 0.03) 0%, transparent 60%);
+    }
+
+    .hero-image i {
+      font-size: 4.2rem;
+      color: var(--primary-dark);
+      opacity: 0.9;
+      margin-bottom: 16px;
+    }
+
+    .hero-image .badge {
+      background: var(--primary-dark);
+      color: var(--accent-gold);
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* ----- sections common ----- */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title-centered {
+      text-align: center;
+    }
+
+    .section-title-centered h2:after {
+      margin: 10px auto 0;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 30px 26px;
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
+      border: 1px solid var(--gray-border);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+      border-color: var(--accent-gold);
+    }
+
+    .card i {
+      font-size: 2.2rem;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+    }
+
+    .card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--text-soft);
+      font-size: 0.98rem;
+    }
+
+    .list-check {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .list-check li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-size: 0.98rem;
+    }
+
+    .list-check li i {
+      color: var(--accent-gold);
+      font-size: 1.2rem;
+      margin-top: 3px;
+    }
+
+    .badge-gold {
+      background: var(--accent-soft);
+      color: var(--primary-dark);
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    /* about + founder */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .founder-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 30px;
+      border-left: 6px solid var(--accent-gold);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .founder-card h4 {
+      font-size: 1.5rem;
+    }
+
+    .founder-card .title {
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+
+    /* approach */
+    .approach-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+      justify-content: center;
+    }
+
+    .step-item {
+      background: var(--white);
+      border-radius: 60px;
+      padding: 14px 34px;
+      border: 1px solid var(--gray-border);
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-item i {
+      color: var(--accent-gold);
+    }
+
+    /* industries */
+    .industry-tag {
+      background: var(--gray-light);
+      padding: 12px 22px;
+      border-radius: 60px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      transition: 0.15s;
+    }
+
+    .industry-tag:hover {
+      border-color: var(--accent-gold);
+      background: var(--white);
+    }
+
+    /* CTA final */
+    .cta-final {
+      background: var(--primary-dark);
+      color: var(--white);
+      border-radius: 40px;
+      padding: 60px 50px;
+      margin: 30px 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cta-final h3 {
+      color: var(--white);
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+
+    .cta-final p {
+      opacity: 0.8;
+      max-width: 500px;
+    }
+
+    .cta-final .btn-primary {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--primary-dark);
+    }
+
+    .cta-final .btn-primary:hover {
+      background: transparent;
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    /* footer */
+    .footer {
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 40px 0;
+      border-top: 3px solid var(--accent-gold);
+    }
+
+    .footer .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--white);
+    }
+
+    .footer-logo span {
+      color: var(--accent-gold);
+    }
+
+    /* responsiveness */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .grid-2col, .grid-3col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid-2col, .grid-3col {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .cta-final {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+      }
+      .step-item {
+        padding: 12px 24px;
+      }
+      .logo-text {
+        font-size: 1.3rem;
+      }
+      .slogan-tag {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="#top" aria-label="Fooncore Solutions home">
-    <img class="brand-mark" src="logo.png" alt="Fooncore Solutions">
-  </a>
-  <button class="menu-btn" aria-label="Open navigation" aria-expanded="false">☰</button>
-  <nav><a href="#about">About</a><a href="#services">Services</a><a href="#industries">Industries</a><a href="#contact" class="nav-cta">Free Consultation</a></nav>
-</header>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo-area">
+        <div class="logo-icon">FS</div>
+        <div class="logo-text">Fooncore<span>.</span></div>
+        <span class="slogan-tag"><i class="fas fa-shield-alt" style="margin-right: 6px;"></i> Your One-Stop IT Management Partner</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#contact" class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;">Consultation</a>
+      </div>
+      <div class="mobile-menu-toggle"><i class="fas fa-bars"></i></div>
+    </div>
+  </header>
 
-<main id="top">
-<section class="hero">
-  <div class="hero-copy">
-    <p class="eyebrow">EDMONTON IT CONSULTING</p>
-    <h1>Cybersecurity &amp; IT Infrastructure Consulting for SMEs</h1>
-    <p class="lead">Helping clinics, professional firms, and growing organizations secure systems, protect sensitive data, and improve technology reliability.</p>
-    <div class="hero-actions"><a class="button" href="#contact">Book a Free 30-Minute Consultation <b>→</b></a><a class="text-link" href="#services">Explore services ↓</a></div>
-  </div>
-  <div class="hero-panel">
-    <div class="status-card"><span class="pulse"></span><div><small>YOUR TECHNOLOGY</small><strong>Secure. Resilient. Ready.</strong></div></div>
-    <div class="grid-art"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  </div>
-</section>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Cybersecurity &amp; IT Infrastructure <span class="highlight">Consulting</span> for SMEs</h1>
+        <p>Helping clinics, professional firms, and growing organizations secure systems, protect sensitive data, and improve technology reliability.</p>
+        <a href="#" class="btn-primary"><i class="fas fa-calendar-check" style="margin-right: 10px;"></i>Book a Free 30-Minute Consultation</a>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-number">20+</span><span class="stat-label">Years experience</span></div>
+          <div class="stat-item"><span class="stat-number">100+</span><span class="stat-label">Businesses supported</span></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <i class="fas fa-network-wired"></i>
+        <div class="badge"><i class="fas fa-check-circle" style="margin-right: 8px;"></i>Edmonton · trusted advisor</div>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-soft);">Practical, secure, cost-effective</p>
+      </div>
+    </div>
+  </section>
 
-<section class="trust-bar"><p>Independent advice. Practical expertise. Technology that supports your business.</p><div><span>20+ YEARS EXPERIENCE</span><span>•</span><span>EDMONTON, CANADA</span><span>•</span><span>SME FOCUSED</span></div></section>
+  <!-- About + Founder -->
+  <section id="about" style="background: var(--white);">
+    <div class="container about-grid">
+      <div>
+        <span class="badge-gold"><i class="fas fa-user-tie"></i> About Us</span>
+        <h2>Who We Are</h2>
+        <p style="font-size: 1.1rem; margin-top: 10px;">Based in Edmonton, we provide independent IT consulting to help small and medium-sized businesses improve security, reliability, and performance. With over 20 years of experience in IT infrastructure, network systems, and enterprise technology operations, we deliver practical expertise in cybersecurity, backup and disaster recovery, cloud security, and network consulting.</p>
+        <p style="margin-top: 16px; color: var(--text-soft);">We work closely with clients to identify technology risks, strengthen system resilience, and ensure IT solutions support long-term business goals.</p>
+        <!-- mission/vision inline -->
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 30px; background: var(--gray-light); padding: 24px; border-radius: 20px;">
+          <div style="flex:1; min-width: 180px;"><strong style="color: var(--primary-dark);">Mission</strong><p style="font-size: 0.95rem;">Deliver reliable, secure, and cost-effective IT solutions that help small and medium-sized businesses grow while minimizing technology risks.</p></div>
+          <div style="flex:1; min-width: 180px;"><strong style="color: var(--primary-dark);">Vision</strong><p style="font-size: 0.95rem;">Become a trusted technology advisor for organizations without dedicated IT leadership, providing practical expertise to build secure, resilient, and future-ready technology environments.</p></div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <span class="badge-gold"><i class="fas fa-crown"></i> Founder</span>
+        <h4>Tony Siu</h4>
+        <div class="title">Senior IT Consultant</div>
+        <p>Tony is an IT professional with 20+ years of experience in enterprise technology. He held senior IT roles supporting regional and global operations for commercial companies.</p>
+        <p style="margin-top: 12px;">He now focuses on helping Edmonton businesses strengthen their IT environment with practical, secure, and cost-effective solutions.</p>
+        <div style="margin-top: 16px; display: flex; gap: 6px; flex-wrap: wrap;">
+          <span style="background: var(--primary-dark); color: white; padding: 2px 14px; border-radius: 40px; font-size: 0.75rem;">enterprise</span>
+          <span style="background: var(--primary-dark); color: white; padding: 2px 14px; border-radius: 40px; font-size: 0.75rem;">cybersecurity</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="about" class="section about">
-  <div class="section-label">01 / ABOUT FOONCORE</div>
-  <div class="split">
-    <h2>Technology should be a <span>business advantage.</span></h2>
-    <div><p>Based in Edmonton, we provide independent IT consulting to help small and medium-sized businesses improve security, reliability, and performance. With over 20 years of experience in IT infrastructure, network systems, and enterprise technology operations, we deliver practical expertise in cybersecurity, backup and disaster recovery, cloud security, and network consulting.</p><p>We work closely with clients to identify technology risks, strengthen system resilience, and ensure IT solutions support long-term business goals.</p></div>
-  </div>
-</section>
+  <!-- Our Approach -->
+  <section style="background: var(--gray-light);">
+    <div class="container section-title-centered">
+      <h2>Our Approach</h2>
+      <p class="section-subhead" style="margin: 8px auto 0;">Practical, transparent, and built around your business</p>
+      <div class="approach-steps">
+        <span class="step-item"><i class="fas fa-search"></i> Understand your business &amp; technology</span>
+        <span class="step-item"><i class="fas fa-exclamation-triangle"></i> Identify IT &amp; cybersecurity risks</span>
+        <span class="step-item"><i class="fas fa-lightbulb"></i> Provide practical, cost-effective recommendations</span>
+        <span class="step-item"><i class="fas fa-handshake"></i> Support implementation with internal teams or providers</span>
+      </div>
+    </div>
+  </section>
 
-<section class="section founder"><div class="founder-number">20<span>+</span></div><div><p class="eyebrow">FOUNDER / LEADERSHIP</p><h2>Tony Siu</h2><p>Tony is an IT professional with 20+ years of experience in enterprise technology. He held senior IT roles supporting regional and global operations for commercial companies.</p><p>He now focuses on helping Edmonton businesses strengthen their IT environment with practical, secure, and cost-effective solutions.</p></div></section>
+  <!-- Why choose us + core services combined -->
+  <section id="services">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 40px; align-items: start;">
+        <div>
+          <span class="badge-gold"><i class="fas fa-star"></i> Why Choose Us</span>
+          <ul class="list-check" style="margin-top: 12px;">
+            <li><i class="fas fa-check-circle"></i> <strong>Extensive IT Experience:</strong> 20+ years in IT infrastructure and enterprise technology</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Independent Advice:</strong> Recommendations focused on your business, not vendors</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Practical Solutions:</strong> Solutions that are secure, reliable, and cost-effective</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Personalized Service:</strong> Work closely with business owners to meet operational goals</li>
+          </ul>
+        </div>
+        <div>
+          <span class="badge-gold"><i class="fas fa-cogs"></i> Core Services</span>
+          <div class="grid-2col" style="margin-top: 8px;">
+            <div class="card"><i class="fas fa-shield-alt"></i><h4>Cybersecurity Risk Assessment</h4><p>Identify vulnerabilities that could expose your business to threats.</p></div>
+            <div class="card"><i class="fas fa-sitemap"></i><h4>IT Infrastructure Consulting</h4><p>Guidance on network architecture, system design, and technology planning.</p></div>
+            <div class="card"><i class="fas fa-database"></i><h4>Backup &amp; Disaster Recovery</h4><p>Protect critical business data and ensure recovery capability.</p></div>
+            <div class="card"><i class="fab fa-microsoft"></i><h4>Microsoft 365 Optimization</h4><p>Migration of on-premises systems to the cloud, enabling secure remote work and lower infrastructure costs.</p></div>
+            <div class="card"><i class="fas fa-handshake"></i><h4>IT Vendor Advisory</h4><p>Oversight and advice to ensure outsourced IT providers deliver secure, reliable services.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="section mission"><div><p class="section-label">02 / PURPOSE</p><h3>Our mission</h3><p>Deliver reliable, secure, and cost-effective IT solutions that help small and medium-sized businesses grow while minimizing technology risks.</p></div><div><p class="section-label">03 / DIRECTION</p><h3>Our vision</h3><p>Become a trusted technology advisor for organizations without dedicated IT leadership, providing practical expertise to build secure, resilient, and future-ready technology environments.</p></div></section>
+  <!-- Industries -->
+  <section id="industries" style="background: var(--gray-light);">
+    <div class="container section-title-centered">
+      <h2>Industries We Serve</h2>
+      <p class="section-subhead" style="margin: 8px auto 0;">Focused expertise for critical sectors</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 30px;">
+        <span class="industry-tag"><i class="fas fa-heartbeat" style="color: var(--accent-gold);"></i> Medical &amp; Healthcare Clinics</span>
+        <span class="industry-tag"><i class="fas fa-briefcase" style="color: var(--accent-gold);"></i> Professional Service Firms</span>
+        <span class="industry-tag"><i class="fas fa-hard-hat" style="color: var(--accent-gold);"></i> Engineering &amp; Construction</span>
+        <span class="industry-tag"><i class="fas fa-chart-line" style="color: var(--accent-gold);"></i> Small &amp; Growing Businesses</span>
+      </div>
+      <p style="max-width: 700px; margin: 30px auto 0; color: var(--text-soft);">Protect patient data, secure client information, safeguard project data, and establish reliable IT environments to support growth.</p>
+    </div>
+  </section>
 
-<section class="section approach"><p class="section-label">04 / OUR APPROACH</p><h2>A clear path from risk to <span>confidence.</span></h2><ol><li><b>01</b> Understand your business and technology environment</li><li><b>02</b> Identify IT and cybersecurity risks</li><li><b>03</b> Provide practical, cost-effective recommendations</li><li><b>04</b> Support implementation with internal teams or external IT providers</li></ol></section>
+  <!-- final CTA -->
+  <section id="contact">
+    <div class="container">
+      <div class="cta-final">
+        <div>
+          <h3>Free 30-Minute Consultation</h3>
+          <p>Discuss your IT and cybersecurity needs with an experienced consultant and receive practical recommendations to improve your technology environment.</p>
+        </div>
+        <a href="#" class="btn-primary"><i class="fas fa-calendar-plus" style="margin-right: 10px;"></i> Schedule Your Consultation</a>
+      </div>
+    </div>
+  </section>
 
-<section id="services" class="section services"><p class="section-label">05 / CORE SERVICES</p><h2>Focused expertise for the systems <span>you rely on.</span></h2><div class="service-grid">
-<article><em>01</em><h3>Cybersecurity Risk Assessment</h3><p>Identify vulnerabilities that could expose your business to threats.</p></article>
-<article><em>02</em><h3>IT Infrastructure Consulting</h3><p>Guidance on network architecture, system design, and technology planning.</p></article>
-<article><em>03</em><h3>Backup &amp; Disaster Recovery</h3><p>Protect critical business data and ensure recovery capability.</p></article>
-<article><em>04</em><h3>Microsoft 365 Optimization</h3><p>Migrate on-premises systems to the cloud for secure remote work, improved teamwork, and lower infrastructure costs.</p></article>
-<article><em>05</em><h3>IT Vendor Advisory</h3><p>Oversight and advice to ensure outsourced IT providers deliver secure, reliable services.</p></article>
-</div></section>
-
-<section class="section why"><div><p class="section-label">06 / WHY FOONCORE</p><h2>Advice that stays <span>on your side.</span></h2></div><div class="why-list"><div><b>Extensive IT Experience</b><span>20+ years in IT infrastructure and enterprise technology</span></div><div><b>Independent Advice</b><span>Recommendations focused on your business, not vendors</span></div><div><b>Practical Solutions</b><span>Secure, reliable, and cost-effective solutions</span></div><div><b>Personalized Service</b><span>Close collaboration with business owners and operational goals</span></div></div></section>
-
-<section id="industries" class="section industries"><p class="section-label">07 / INDUSTRIES WE SERVE</p><h2>Built for organizations where <span>trust matters.</span></h2><div class="industry-grid"><div><h3>Medical &amp; Healthcare Clinics</h3><p>Protect patient data, improve reliability, and support compliance.</p></div><div><h3>Professional Service Firms</h3><p>Secure client information for accounting, legal, and consulting firms.</p></div><div><h3>Engineering &amp; Construction</h3><p>Safeguard project data and remote access systems.</p></div><div><h3>Small &amp; Growing Businesses</h3><p>Build reliable, secure IT environments for growth.</p></div></div></section>
-
-<section id="contact" class="contact"><div><p class="eyebrow">FREE 30-MINUTE CONSULTATION</p><h2>Make your IT environment <span>work harder for you.</span></h2><p>Discuss your IT and cybersecurity needs with an experienced consultant and receive practical recommendations to improve your technology environment.</p><a class="button light" href="mailto:hello@fooncore.com?subject=Free%2030-Minute%20Consultation">Schedule Your Consultation <b>→</b></a><small>Replace hello@fooncore.com with your preferred business email before publishing.</small></div></section>
-</main>
-<footer><img src="logo.png" alt="Fooncore Solutions"><p>© 2026 Fooncore Solutions. Edmonton, Alberta, Canada.</p></footer>
-<script>const b=document.querySelector('.menu-btn'),n=document.querySelector('nav');b.onclick=()=>{n.classList.toggle('open');b.setAttribute('aria-expanded',n.classList.contains('open'))};</script>
-</body></html>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <div class="footer-logo">Fooncore<span>.</span></div>
+        <div style="margin-top: 8px;"><i class="fas fa-map-pin"></i> Edmonton, Canada</div>
+        <div style="margin-top: 4px; font-size: 0.9rem;">&copy; 2026 Fooncore Solutions</div>
+      </div>
+      <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+        <div><i class="fas fa-envelope"></i> info@fooncore.ca</div>
+        <div><i class="fas fa-phone-alt"></i> +1 (780) 555‑IT4U</div>
+        <div><i class="fab fa-linkedin"></i> /fooncore</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
