@@ -13,24 +13,36 @@
       color: #e2e8f0;
     }
 
+    /* HEADER */
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 60px;
+      padding: 15px 40px;
       background: #0b1220;
       border-bottom: 1px solid #1f2937;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
+    /* LOGO TOP LEFT */
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .logo img {
-      height: 45px;
+      height: 42px;
       width: auto;
+      display: block;
+    }
+
+    .brand-name {
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 0.5px;
     }
 
     nav a {
@@ -44,6 +56,7 @@
       color: #38bdf8;
     }
 
+    /* HERO */
     .hero {
       text-align: center;
       padding: 100px 20px;
@@ -103,11 +116,11 @@
 
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
     <div class="logo">
       <img src="logo.png" alt="Fooncore Logo">
-      <strong>Fooncore</strong>
+      <div class="brand-name">Fooncore</div>
     </div>
 
     <nav>
@@ -117,14 +130,14 @@
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="hero">
     <h1>Fooncore IT Consulting</h1>
     <p>We help businesses build secure, scalable, and modern technology solutions.</p>
     <a class="btn" href="#contact">Get in Touch</a>
   </section>
 
-  <!-- Services -->
+  <!-- SERVICES -->
   <section class="section" id="services">
     <h2>Our Services</h2>
     <div class="grid">
@@ -145,7 +158,7 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- ABOUT -->
   <section class="section" id="about">
     <h2>About Us</h2>
     <p>
@@ -154,14 +167,14 @@
     </p>
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT -->
   <section class="section" id="contact">
     <h2>Contact</h2>
     <p>Email: contact@fooncore.com</p>
     <p>Phone: +1 (xxx) xxx-xxxx</p>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     © 2026 Fooncore. All rights reserved.
   </footer>
