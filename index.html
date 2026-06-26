@@ -908,34 +908,74 @@
               <p>We've received your request and will reach out within 24 hours to schedule your consultation.</p>
               <button class="btn-ghost" id="reset-form-btn" style="margin-top:1.5rem;">Send Another Message</button>
             </div>
-            <form action="https://formsubmit.co/fooncoresolutions@gmail.com" method="POST">
+            <form action="https://formsubmit.co/fooncoresolutions@gmail.com" method="POST" id="contact-form">
 
   <!-- FormSubmit settings -->
   <input type="hidden" name="_subject" value="New Consultation Request">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="table">
 
+  <!-- Redirect after submission -->
+  <!-- Change this to your website URL -->
+  <input type="hidden" name="_next" value="https://fooncore.com/thank-you.html">
+
+  <!-- Auto reply to customer -->
+  <input type="hidden" name="_autoresponse"
+         value="Dear Customer,
+
+Thank you for contacting Fooncore Solutions.
+
+We have successfully received your consultation request.
+
+Our team will review your inquiry and contact you within one business day.
+
+If your request is urgent, please email us at fooncoresolutions@gmail.com.
+
+Best regards,
+Fooncore Solutions
+Your One-Stop IT Management Partner">
+
   <div class="form-row">
     <div class="form-group" style="margin-bottom:0;">
       <label for="name">Full Name *</label>
-      <input type="text" id="name" name="name" placeholder="John Doe" required />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="John Doe"
+        required>
     </div>
 
     <div class="form-group" style="margin-bottom:0;">
       <label for="email">Email Address *</label>
-      <input type="email" id="email" name="email" placeholder="john@company.com" required />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="john@company.com"
+        required>
     </div>
   </div>
 
   <div class="form-group">
     <label for="company">Company Name</label>
-    <input type="text" id="company" name="company" placeholder="Your company" />
+    <input
+      type="text"
+      id="company"
+      name="company"
+      placeholder="Your company">
   </div>
 
   <div class="form-group">
     <label for="message">How Can We Help? *</label>
-    <textarea id="message" name="message" rows="4" maxlength="500"
-      placeholder="Tell us about your IT challenges or goals..." required></textarea>
+
+    <textarea
+      id="message"
+      name="message"
+      rows="4"
+      maxlength="500"
+      placeholder="Tell us about your IT challenges or goals..."
+      required></textarea>
 
     <p class="char-count">
       <span id="char-count">0</span>/500
@@ -946,11 +986,16 @@
     Something went wrong. Please try again.
   </p>
 
-  <button type="submit" class="btn-primary" id="submit-btn"
+  <button
+    type="submit"
+    class="btn-primary"
+    id="submit-btn"
     style="width:100%;justify-content:center;">
+
     <span id="btn-label">Schedule Your Consultation</span>
     <i class="ri-arrow-right-up-line" id="btn-icon"></i>
     <span class="spinner" id="btn-spinner" style="display:none;"></span>
+
   </button>
 
   <p class="form-note">
