@@ -119,6 +119,14 @@
       border-bottom:1px solid rgba(42,51,80,.2); transition:color .3s;
     }
     .mobile-menu-inner a:hover { color:var(--f-cyan); }
+    /* Mobile-only: keep Book a Consultation button dark text, smaller font */
+    @media (max-width:767px) {
+      .mobile-menu-inner a.btn-cyan {
+        color: var(--f-dark) !important;
+        font-size: .75rem !important;
+      }
+      .mobile-menu-inner a.btn-cyan:hover { color: var(--f-dark) !important; }
+    }
 
     /* ── HERO ── */
     #hero {
