@@ -695,37 +695,68 @@
         </div>
       </div>
       <!-- Right: Form -->
-      <div class="reveal">
-        <div class="form-card">
-          <div id="form-success" class="success-box" style="display:none;">
-            <div class="success-icon"><i class="ri-check-double-line"></i></div>
-            <div class="success-title">Thank You!</div>
-            <p class="success-sub">We've received your request and will reach out within 24 hours to schedule your consultation.</p>
-            <button class="btn-reset" onclick="resetForm()">Send Another Message</button>
-          </div>
-          <form id="cform" class="form-stack" onsubmit="handleSubmit(event)">
-            <div class="form-row2">
-              <div class="form-grp"><label class="form-lbl">First Name *</label><input type="text" name="firstName" class="form-inp" placeholder="John" required /></div>
-              <div class="form-grp"><label class="form-lbl">Last Name *</label><input type="text" name="lastName" class="form-inp" placeholder="Doe" required /></div>
-            </div>
-            <div class="form-grp"><label class="form-lbl">Email *</label><input type="email" name="email" class="form-inp" placeholder="john@company.com" required /></div>
-            <div class="form-row2">
-              <div class="form-grp"><label class="form-lbl">Phone</label><input type="tel" name="phone" class="form-inp" placeholder="+1 (555) 000-0000" /></div>
-              <div class="form-grp"><label class="form-lbl">Company</label><input type="text" name="company" class="form-inp" placeholder="Your company" /></div>
-            </div>
-            <div class="form-grp">
-              <label class="form-lbl">Notes *</label>
-              <textarea name="notes" class="form-ta" rows="4" maxlength="500" required oninput="uc(this)"
-                placeholder="Tell us a bit about your business — we'll follow up to confirm a time that works."></textarea>
-              <div class="form-char" id="fcc">0/500</div>
-            </div>
-            <div class="hp-field"><input type="text" name="phone_alt" tabindex="-1" autocomplete="off" aria-hidden="true" /></div>
-            <div id="ferr" class="form-err" style="display:none;">Something went wrong. Please try again.</div>
-            <button type="submit" class="btn-submit" id="fsub">
-              Schedule Your Consultation <i class="ri-arrow-right-up-line"></i>
-            </button>
-            <p class="form-consent">By submitting this form, you agree to be contacted about your consultation request.</p>
-          </form>
+<div class="reveal">
+  <div class="form-card">
+    <div id="form-success" class="success-box" style="display:none;">
+      <div class="success-icon"><i class="ri-check-double-line"></i></div>
+      <div class="success-title">Thank You!</div>
+      <p class="success-sub">We've received your request and will reach out within 24 hours to schedule your consultation.</p>
+      <button class="btn-reset" onclick="resetForm()">Send Another Message</button>
+    </div>
+    <!-- Update the form action to Formsubmit's URL -->
+    <form id="cform" class="form-stack" 
+          action="https://formsubmit.co/fooncoresoultions@gmail.com" 
+          method="POST" 
+          onsubmit="return true;"> <!-- Remove custom handleSubmit if present -->
+      
+      <!-- Optional: Add hidden input to disable CAPTCHA -->
+      <input type="hidden" name="_captcha" value="false" />
+
+      <div class="form-row2">
+        <div class="form-grp">
+          <label class="form-lbl">First Name *</label>
+          <input type="text" name="firstName" class="form-inp" placeholder="John" required />
+        </div>
+        <div class="form-grp">
+          <label class="form-lbl">Last Name *</label>
+          <input type="text" name="lastName" class="form-inp" placeholder="Doe" required />
+        </div>
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">Email *</label>
+        <input type="email" name="email" class="form-inp" placeholder="john@company.com" required />
+      </div>
+      <div class="form-row2">
+        <div class="form-grp">
+          <label class="form-lbl">Phone</label>
+          <input type="tel" name="phone" class="form-inp" placeholder="+1 (555) 000-0000" />
+        </div>
+        <div class="form-grp">
+          <label class="form-lbl">Company</label>
+          <input type="text" name="company" class="form-inp" placeholder="Your company" />
+        </div>
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">Notes *</label>
+        <textarea name="notes" class="form-ta" rows="4" maxlength="500" required 
+                  placeholder="Tell us a bit about your business — we'll follow up to confirm a time that works."></textarea>
+        <div class="form-char" id="fcc">0/500</div>
+      </div>
+      <div class="hp-field">
+        <input type="text" name="phone_alt" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      </div>
+      <!-- Optional: Add a redirect URL -->
+      <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html" />
+      
+      <div id="ferr" class="form-err" style="display:none;">Something went wrong. Please try again.</div>
+      
+      <button type="submit" class="btn-submit" id="fsub">
+        Schedule Your Consultation <i class="ri-arrow-right-up-line"></i>
+      </button>
+      <p class="form-consent">By submitting this form, you agree to be contacted about your consultation request.</p>
+    </form>
+  </div>
+</div>
         </div>
       </div>
     </div>
