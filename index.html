@@ -3,1191 +3,873 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Foonex Solutions – Cybersecurity & IT Infrastructure Consulting</title>
+  <title>Fooncore Solutions — Your One-Stop IT Management Partner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
   <style>
-    /* ── Design tokens ── */
     :root {
-      --dark:       #0A0F1E;
-      --dark-2:     #0D1526;
-      --slate:      #1A2035;
-      --slate-light:#232B45;
-      --cyan:       #00D4D4;
-      --cyan-dark:  #00B8B8;
-      --text:       #E8F0F8;
-      --text-muted: #B4C8D8;
-      --text-dim:   #8BA3B8;
-      --border:     #2A3350;
-      --footer:     #080F1A;
+      --f-dark: #0A0F1E;
+      --f-slate: #1A2035;
+      --f-cyan: #00D4D4;
+      --f-cyan-dark: #00B8B8;
+      --f-text: #E8F0F8;
+      --f-text-muted: #B4C8D8;
+      --f-text-dim: #8BA3B8;
+      --f-border: #2A3350;
+      --f-footer: #080F1A;
+      --f-white-bg: #FFFFFF;
+      --f-text-dark-heading: #0A0F1E;
+      --f-text-dark-body: #334155;
+      --f-text-dark-muted: #64748B;
+      --f-border-light: #E2E8F0;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', 'DM Sans', system-ui, sans-serif;
-      background: var(--dark);
-      color: var(--text);
+      background-color: var(--f-dark);
+      color: var(--f-text);
       -webkit-font-smoothing: antialiased;
     }
 
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    button { border: none; background: none; cursor: pointer; font-family: inherit; }
-
-    /* ── Utility ── */
-    .font-display { font-family: 'DM Sans', 'Inter', system-ui, sans-serif; }
-    .section-pad { padding: 5rem 1rem; }
-    .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
-    @media (min-width: 640px)  { .section-pad { padding: 5rem 1.5rem; } .container { padding: 0 1.5rem; } }
-    @media (min-width: 1024px) { .section-pad { padding: 7rem 2.5rem; } .container { padding: 0 2.5rem; } }
-    @media (min-width: 1280px) { .section-pad { padding: 7rem 4rem; }   .container { padding: 0 4rem; } }
-
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-right { opacity: 0; transform: translateX(32px); transition: opacity .8s ease .3s, transform .8s ease .3s; }
-    .reveal-right.visible { opacity: 1; transform: none; }
-
-    /* ── Buttons ── */
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-      background: var(--cyan); color: var(--dark);
-      padding: .875rem 1.75rem; border-radius: 9999px;
-      font-size: .875rem; font-weight: 700; white-space: nowrap;
-      transition: background .3s, box-shadow .3s;
+    /* ── CONTAINER — generous, consistent side padding ── */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
-    .btn-primary:hover { background: var(--cyan-dark); box-shadow: 0 0 30px rgba(0,212,212,.25); }
-    .btn-ghost {
-      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-      border: 1px solid rgba(42,51,80,.6); color: var(--text-muted);
-      padding: .875rem 1.75rem; border-radius: 9999px;
-      font-size: .875rem; font-weight: 500; white-space: nowrap;
-      transition: border-color .3s, color .3s;
-    }
-    .btn-ghost:hover { border-color: rgba(0,212,212,.4); color: var(--text); }
+    @media (min-width: 640px)  { .container { padding-left: 2.5rem;  padding-right: 2.5rem;  } }
+    @media (min-width: 1024px) { .container { padding-left: 4rem;    padding-right: 4rem;    } }
+    @media (min-width: 1280px) { .container { padding-left: 5rem;    padding-right: 5rem;    } }
 
-    /* ── Label pill ── */
-    .label-pill {
-      display: inline-flex; align-items: center; gap: .5rem;
-      border: 1px solid rgba(42,51,80,.6); border-radius: 9999px;
-      padding: .375rem 1rem; margin-bottom: 1.5rem;
-      font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--cyan);
-    }
-    .label-pill.cyan-border { border-color: rgba(0,212,212,.3); }
-    .label-pulse { width: .375rem; height: .375rem; border-radius: 50%; background: var(--cyan); animation: pulse 2s ease-in-out infinite; }
+    /* ── ANIMATIONS ── */
+    @keyframes spin  { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+    .reveal       { opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform .9s ease; }
+    .reveal.vis   { opacity:1; transform:translateY(0); }
+    .reveal-r     { opacity:0; transform:translateX(32px); transition:opacity .9s .3s ease, transform .9s .3s ease; }
+    .reveal-r.vis { opacity:1; transform:translateX(0); }
 
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-
-    /* ──────────────────────────────────────────
-       NAVBAR
-    ────────────────────────────────────────── */
-    #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-      transition: background .5s, border-color .5s, backdrop-filter .5s;
+    /* ── NAVBAR ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:50;
+      transition: background .5s, border-bottom .5s;
     }
-    #navbar.scrolled {
-      background: rgba(10,15,30,.9);
+    nav.scrolled {
+      background: rgba(10,15,30,.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(42,51,80,.5);
     }
     .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 4rem; padding: 0 1rem;
+      display:flex; align-items:center; justify-content:space-between;
+      height:64px;
     }
-    @media (min-width: 640px)  { .nav-inner { padding: 0 1.5rem; height: 5rem; } }
-    @media (min-width: 1024px) { .nav-inner { padding: 0 2.5rem; } }
-    @media (min-width: 1280px) { .nav-inner { padding: 0 4rem; } }
-
-    .nav-logo img { height: 2.5rem; width: auto; }
-    @media (min-width: 640px) { .nav-logo img { height: 3rem; } }
-
-    .nav-links { display: none; gap: 2rem; }
-    @media (min-width: 768px) { .nav-links { display: flex; } }
+    @media (min-width:768px) { .nav-inner { height:80px; } }
+    .nav-logo img { height:32px; width:auto; display:block; }
+    @media (min-width:768px) { .nav-logo img { height:40px; } }
+    .nav-links { display:none; align-items:center; gap:2rem; }
+    @media (min-width:768px) { .nav-links { display:flex; } }
     .nav-links a {
-      position: relative; font-size: .875rem; font-weight: 500;
-      color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em;
-      padding: .25rem 0; transition: color .3s;
+      position:relative; font-size:.875rem; font-weight:500;
+      color:var(--f-text-muted); text-decoration:none;
+      text-transform:uppercase; letter-spacing:.05em;
+      transition:color .3s; padding:.25rem 0;
     }
     .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: var(--cyan); transition: width .3s;
+      content:''; position:absolute; bottom:0; left:0;
+      width:0; height:2px; background:var(--f-cyan); transition:width .3s;
     }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-cta { display: none; }
-    @media (min-width: 768px) { .nav-cta { display: inline-flex; } }
-
-    .nav-hamburger {
-      display: flex; align-items: center; justify-content: center;
-      width: 2.5rem; height: 2.5rem; color: var(--text);
+    .nav-links a:hover { color:#fff; }
+    .nav-links a:hover::after { width:100%; }
+    .btn-cyan {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:var(--f-cyan); color:var(--f-dark);
+      padding:.625rem 1.25rem; border-radius:9999px;
+      font-size:.875rem; font-weight:600; text-decoration:none;
+      border:none; cursor:pointer; white-space:nowrap;
+      transition:background .3s, box-shadow .3s;
     }
-    @media (min-width: 768px) { .nav-hamburger { display: none; } }
-
-    #mobile-menu {
-      max-height: 0; overflow: hidden; opacity: 0;
-      transition: max-height .5s ease, opacity .5s ease;
-      background: rgba(10,15,30,.95); backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(42,51,80,.3);
+    .btn-cyan:hover { background:var(--f-cyan-dark); box-shadow:0 0 20px rgba(0,212,212,.3); }
+    .nav-cta { display:none; }
+    @media (min-width:768px) { .nav-cta { display:inline-flex; } }
+    .nav-toggle {
+      display:flex; align-items:center; justify-content:center;
+      width:40px; height:40px; background:none; border:none;
+      color:white; cursor:pointer; font-size:1.25rem;
     }
-    #mobile-menu.open { max-height: 24rem; opacity: 1; }
-    .mobile-links { padding: .5rem 1rem 1.5rem; }
-    .mobile-links a {
-      display: block; padding: .75rem 0;
-      font-size: .875rem; font-weight: 500; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: .05em;
-      border-bottom: 1px solid rgba(42,51,80,.2);
-      transition: color .3s;
+    @media (min-width:768px) { .nav-toggle { display:none; } }
+    .mobile-menu { max-height:0; overflow:hidden; opacity:0; transition:max-height .5s, opacity .5s; }
+    .mobile-menu.open { max-height:420px; opacity:1; }
+    .mobile-menu-inner {
+      padding:.5rem 1.5rem 1.5rem;
+      background:rgba(10,15,30,.97);
+      backdrop-filter:blur(20px);
+      border-top:1px solid rgba(42,51,80,.3);
     }
-    .mobile-links a:hover { color: var(--cyan); }
-    .mobile-links .btn-primary { margin-top: 1rem; }
+    .mobile-menu-inner a {
+      display:block; padding:.75rem 0;
+      font-size:.875rem; font-weight:500; color:var(--f-text-muted);
+      text-decoration:none; text-transform:uppercase; letter-spacing:.05em;
+      border-bottom:1px solid rgba(42,51,80,.2); transition:color .3s;
+    }
+    .mobile-menu-inner a:hover { color:var(--f-cyan); }
 
-    /* ──────────────────────────────────────────
-       HERO
-    ────────────────────────────────────────── */
+    /* ── HERO ── */
     #hero {
-      position: relative; min-height: 100vh;
-      display: flex; align-items: center; overflow: hidden;
-      background: var(--dark);
+      position:relative; min-height:100vh;
+      display:flex; align-items:center;
+      overflow:hidden; background:var(--f-dark);
     }
-    .hero-bg-grid {
-      position: absolute; inset: 0; opacity: .04;
-      background-image:
-        linear-gradient(rgba(0,212,212,.5) .5px, transparent .5px),
-        linear-gradient(90deg, rgba(0,212,212,.5) .5px, transparent .5px);
-      background-size: 60px 60px;
+    .hero-grid-bg { position:absolute; inset:0; opacity:.04; pointer-events:none; }
+    .orb {
+      position:absolute; border-radius:9999px; pointer-events:none;
+      filter:blur(100px);
     }
-    .hero-orb-1 {
-      position: absolute; top: 5rem; right: 0;
-      width: 31rem; height: 31rem; border-radius: 50%;
-      background: rgba(0,212,212,.05); filter: blur(120px); pointer-events: none;
+    .orb-1 { top:80px;  right:0;   width:500px; height:500px; background:rgba(0,212,212,.06); filter:blur(120px); }
+    .orb-2 { bottom:0;  left:0;    width:400px; height:400px; background:rgba(0,212,212,.04); filter:blur(100px); }
+    .hero-inner { position:relative; z-index:1; width:100%; padding-top:6.5rem; padding-bottom:4rem; }
+    @media (min-width:768px) { .hero-inner { padding-top:8rem; } }
+    .hero-grid { display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:center; }
+    @media (min-width:1024px) { .hero-grid { grid-template-columns:7fr 5fr; gap:3rem; } }
+    .hero-label {
+      display:inline-flex; align-items:center; gap:.5rem;
+      border:1px solid rgba(42,51,80,.7); border-radius:9999px;
+      padding:.375rem 1rem; margin-bottom:1.5rem;
     }
-    .hero-orb-2 {
-      position: absolute; bottom: 0; left: 0;
-      width: 25rem; height: 25rem; border-radius: 50%;
-      background: rgba(0,212,212,.03); filter: blur(100px); pointer-events: none;
-    }
-    .hero-content {
-      position: relative; z-index: 10; width: 100%;
-      padding: 6rem 1rem 4rem;
-    }
-    @media (min-width: 640px)  { .hero-content { padding: 7rem 1.5rem 4rem; } }
-    @media (min-width: 1024px) { .hero-content { padding: 7rem 2.5rem 4rem; } }
-    @media (min-width: 1280px) { .hero-content { padding: 7rem 4rem 4rem; } }
-
-    .hero-grid {
-      display: grid; grid-template-columns: 1fr;
-      gap: 2rem; align-items: center;
-    }
-    @media (min-width: 1024px) {
-      .hero-grid { grid-template-columns: 7fr 5fr; gap: 1.5rem; }
-    }
-
-    .hero-h1 {
-      font-family: 'DM Sans', sans-serif; font-weight: 700;
-      font-size: 2rem; color: var(--text); line-height: 1.15; letter-spacing: -.02em;
-      margin-bottom: 1.5rem;
-    }
-    @media (min-width: 640px)  { .hero-h1 { font-size: 2.5rem; } }
-    @media (min-width: 768px)  { .hero-h1 { font-size: 3rem; } }
-    @media (min-width: 1024px) { .hero-h1 { font-size: 3.25rem; } }
-    @media (min-width: 1280px) { .hero-h1 { font-size: 3.5rem; } }
-    .hero-h1 .accent { color: var(--cyan); }
-
+    .hero-dot { width:6px; height:6px; border-radius:9999px; background:var(--f-cyan); animation:pulse 2s infinite; }
+    .hero-label span { color:var(--f-cyan); font-size:.75rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; }
     .hero-slogan {
-      font-family: 'DM Sans', sans-serif; font-weight: 600;
-      color: var(--cyan); font-size: 1.25rem; margin-bottom: 1.5rem; letter-spacing: -.01em;
+      color:var(--f-cyan); font-family:'Arial',sans-serif;
+      font-size:clamp(1.4rem,2.8vw,2.35rem); font-weight:700;
+      letter-spacing:.04em; margin-bottom:1rem; line-height:1.2;
     }
-    @media (min-width: 640px)  { .hero-slogan { font-size: 1.5rem; } }
-    @media (min-width: 768px)  { .hero-slogan { font-size: 1.75rem; } }
-    @media (min-width: 1024px) { .hero-slogan { font-size: 2rem; } }
+    .hero-h1 {
+      font-family:'DM Sans',sans-serif; font-weight:700;
+      font-size:clamp(1.5rem,3vw,2.5rem); color:white;
+      line-height:1.15; letter-spacing:-.02em; margin-bottom:1.5rem;
+    }
+    .hero-sub {
+      color:var(--f-text-muted); font-size:clamp(.95rem,1.4vw,1.125rem);
+      line-height:1.75; max-width:560px; margin-bottom:2rem;
+    }
+    .hero-btns { display:flex; flex-direction:column; gap:1rem; flex-wrap:wrap; }
+    @media (min-width:640px) { .hero-btns { flex-direction:row; } }
+    .btn-hero-primary {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:var(--f-cyan); color:var(--f-dark);
+      padding:.875rem 1.75rem; border-radius:9999px;
+      font-size:.875rem; font-weight:600; text-decoration:none;
+      transition:background .3s, box-shadow .3s; white-space:nowrap; cursor:pointer;
+    }
+    .btn-hero-primary:hover { background:var(--f-cyan-dark); box-shadow:0 0 30px rgba(0,212,212,.25); }
+    .btn-outline {
+      display:inline-flex; align-items:center; gap:.5rem;
+      border:1px solid rgba(42,51,80,.7); color:var(--f-text-muted);
+      padding:.875rem 1.75rem; border-radius:9999px;
+      font-size:.875rem; font-weight:500; text-decoration:none;
+      transition:border-color .3s, color .3s; white-space:nowrap; cursor:pointer;
+    }
+    .btn-outline:hover { border-color:rgba(0,212,212,.45); color:white; }
 
-    .hero-sub { color: var(--text-muted); font-size: 1rem; line-height: 1.7; max-width: 36rem; margin-bottom: 2rem; }
+    /* Hero image */
+    .hero-img-card { border-radius:1rem; overflow:hidden; border:1px solid rgba(42,51,80,.35); }
+    .hero-img-wrap { position:relative; }
+    .hero-img-wrap img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+    .hero-img-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,15,30,.55),transparent); }
 
-    .hero-btns { display: flex; flex-direction: column; gap: 1rem; }
-    @media (min-width: 640px) { .hero-btns { flex-direction: row; } }
-
-    .hero-img-wrap {
-      position: relative; border-radius: 1rem; overflow: hidden;
-      border: 1px solid rgba(42,51,80,.3);
+    /* ── SECTION COMMON ── */
+    section { position:relative; overflow:hidden; }
+    .z1 { position:relative; z-index:1; }
+    .section-py { padding-top:5rem; padding-bottom:5rem; }
+    @media (min-width:768px) { .section-py { padding-top:7rem; padding-bottom:7rem; } }
+    .label-cyan {
+      display:inline-flex; align-items:center;
+      background:var(--f-cyan); border-radius:9999px;
+      padding:.375rem 1rem; margin-bottom:1.25rem;
     }
-    .hero-img-inner { aspect-ratio: 4/3; background: var(--slate); position: relative; }
-    .hero-img-inner img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,15,30,.6), transparent);
+    .label-cyan span { color:white; font-size:.75rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; }
+    .label-border {
+      display:inline-flex; align-items:center;
+      border:1px solid rgba(0,212,212,.35); border-radius:9999px;
+      padding:.375rem 1rem; margin-bottom:1rem;
     }
-
-    /* ──────────────────────────────────────────
-       ABOUT
-    ────────────────────────────────────────── */
-    #about {
-      position: relative; background: var(--dark); overflow: hidden;
+    .label-border span { color:var(--f-cyan); font-size:.75rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; }
+    .sh2 {
+      font-family:'DM Sans',sans-serif; font-weight:700;
+      font-size:clamp(1.875rem,3.5vw,3rem);
+      line-height:1.15; letter-spacing:-.02em;
     }
-    .about-orb {
-      position: absolute; top: 50%; left: 0;
-      width: 18rem; height: 18rem; border-radius: 50%;
-      background: rgba(0,212,212,.03); filter: blur(100px);
-      transform: translateY(-50%); pointer-events: none;
-    }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start;
-    }
-    @media (min-width: 1024px) { .about-grid { grid-template-columns: 5fr 7fr; gap: 4rem; } }
-
-    .founder-img-wrap {
-      position: relative; border-radius: 1rem; overflow: hidden;
-      border: 1px solid rgba(42,51,80,.3);
-    }
-    .founder-img-inner { aspect-ratio: 3/4; background: var(--slate); position: relative; }
-    .founder-img-inner img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .founder-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(10,15,30,.9), rgba(10,15,30,.4), transparent);
-      padding: 1.5rem;
-    }
-    .founder-caption p:first-child { color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.25rem; }
-    .founder-caption p:last-child { color: var(--cyan); font-size: .875rem; margin-top: .125rem; }
-
-    .about-h2 {
-      font-family: 'DM Sans', sans-serif; font-weight: 700;
-      font-size: 1.875rem; color: var(--text); line-height: 1.2; margin-bottom: 1.5rem;
-    }
-    @media (min-width: 768px)  { .about-h2 { font-size: 2.25rem; } }
-    @media (min-width: 1024px) { .about-h2 { font-size: 2.75rem; } }
-    .about-h2 .accent { color: var(--cyan); }
-
-    .bio-card {
-      background: rgba(26,32,53,.5); border: 1px solid rgba(42,51,80,.3);
-      border-radius: .75rem; padding: 1.25rem 1.5rem;
-    }
-    .bio-card-inner { display: flex; align-items: flex-start; gap: 1rem; }
-    .bio-icon {
-      width: 3rem; height: 3rem; border-radius: 50%;
-      background: rgba(0,212,212,.1); display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); flex-shrink: 0; font-size: 1.25rem;
-    }
-
-    /* ──────────────────────────────────────────
-       SERVICES
-    ────────────────────────────────────────── */
-    #services { position: relative; background: var(--dark-2); overflow: hidden; }
-    #services .accent-orb {
-      position: absolute; top: 0; right: 25%;
-      width: 25rem; height: 25rem; border-radius: 50%;
-      background: rgba(0,212,212,.03); filter: blur(120px); pointer-events: none;
+    .tc  { color:var(--f-cyan); }
+    .tw  { color:white; }
+    .tdh { color:var(--f-text-dark-heading); }
+    .tdb { color:var(--f-text-dark-body); }
+    .tdm { color:var(--f-text-dark-muted); }
+    .tm  { color:var(--f-text-muted); }
+    .td  { color:var(--f-text-dim); }
+    .accent-orb {
+      position:absolute; border-radius:9999px; pointer-events:none;
+      filter:blur(100px);
     }
 
-    .section-h2 {
-      font-family: 'DM Sans', sans-serif; font-weight: 700;
-      font-size: 1.875rem; color: var(--text); line-height: 1.2;
-    }
-    @media (min-width: 768px)  { .section-h2 { font-size: 2.25rem; } }
-    @media (min-width: 1024px) { .section-h2 { font-size: 2.75rem; } }
-    .section-h2 .accent { color: var(--cyan); }
+    /* ── ABOUT ── */
+    #about { background:var(--f-white-bg); }
+    .about-layout { display:flex; flex-direction:column; gap:2.5rem; align-items:flex-start; }
+    @media (min-width:1024px) { .about-layout { flex-direction:row; gap:4rem; } }
+    .about-img { width:100%; }
+    @media (min-width:1024px) { .about-img { width:45%; flex-shrink:0; } }
+    .about-img-inner { border-radius:1rem; overflow:hidden; border:1px solid var(--f-border-light); }
+    .about-img-inner img { width:100%; aspect-ratio:4/3; object-fit:cover; object-position:top; display:block; }
+    .about-content { width:100%; }
+    @media (min-width:1024px) { .about-content { width:55%; } }
+    .about-p1 { color:var(--f-text-dark-body); font-size:clamp(1rem,1.4vw,1.2rem); line-height:1.75; margin-bottom:1.5rem; }
+    .about-p2 { color:var(--f-text-dark-muted); font-size:1rem; line-height:1.75; }
 
-    .section-eyebrow {
-      font-size: .75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .1em; color: var(--cyan); margin-bottom: .75rem;
-    }
+    /* ── FOUNDER ── */
+    #founder { background:var(--f-dark); }
+    .founder-layout { display:flex; flex-direction:column; gap:2.5rem; }
+    @media (min-width:1024px) { .founder-layout { flex-direction:row; gap:3rem; } }
+    .founder-hl { width:100%; }
+    @media (min-width:1024px) { .founder-hl { width:35%; flex-shrink:0; } }
+    .founder-card { width:100%; background:rgba(26,32,53,.55); border:1px solid rgba(42,51,80,.35); border-radius:.75rem; padding:1.75rem; }
+    @media (min-width:768px) { .founder-card { padding:2.5rem; } }
+    .founder-top { display:flex; align-items:flex-start; gap:1.25rem; }
+    .founder-avatar { width:56px; height:56px; border-radius:9999px; background:rgba(0,212,212,.1); display:flex; align-items:center; justify-content:center; color:var(--f-cyan); flex-shrink:0; font-size:1.5rem; }
+    .founder-name { color:white; font-weight:600; font-size:1.125rem; margin-bottom:.25rem; }
+    .founder-role { color:var(--f-cyan); font-size:.875rem; font-weight:500; margin-bottom:1rem; }
+    .founder-bio { color:var(--f-text-dim); font-size:.9375rem; line-height:1.7; margin-bottom:.75rem; }
+    .founder-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(42,51,80,.35); margin-top:1.25rem; }
+    @media (max-width:480px) { .founder-stats { grid-template-columns:1fr; } }
+    .founder-stat { display:flex; align-items:flex-start; gap:.75rem; }
+    .fsi { color:var(--f-cyan); font-size:1.125rem; margin-top:.1rem; }
+    .fsl { color:var(--f-cyan); font-size:.75rem; font-weight:500; text-transform:uppercase; letter-spacing:.05em; margin-bottom:.25rem; }
+    .fsv { color:var(--f-text-dim); font-size:.875rem; line-height:1.5; }
 
-    .services-grid {
-      display: grid; grid-template-columns: 1fr; gap: 1.25rem;
-      margin-top: 3.5rem;
+    /* ── PHILOSOPHY ── */
+    #philosophy { background:var(--f-white-bg); }
+    .phil-cards { display:grid; grid-template-columns:1fr; gap:1.5rem; margin-bottom:4rem; }
+    @media (min-width:1024px) { .phil-cards { grid-template-columns:1fr 1fr; } }
+    .phil-card {
+      background:var(--f-dark); border:1px solid var(--f-border);
+      border-radius:1rem; padding:2rem;
+      transition:border-color .3s, transform .3s, box-shadow .3s;
     }
-    @media (min-width: 768px)  { .services-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .services-grid { grid-template-columns: 1fr 1fr 1fr; } }
-
-    .card {
-      background: rgba(26,32,53,.4); border: 1px solid rgba(42,51,80,.3);
-      border-radius: .75rem; padding: 1.5rem 1.75rem;
-      transition: background .3s, border-color .3s;
+    @media (min-width:768px) { .phil-card { padding:2.5rem; } }
+    .phil-card:hover { border-color:rgba(0,212,212,.4); transform:scale(1.02); box-shadow:0 0 25px rgba(0,229,183,.1); }
+    .phil-card-top { display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem; }
+    .phil-icon {
+      width:48px; height:48px; border-radius:.75rem;
+      background:rgba(0,212,212,.1); border:1px solid rgba(0,212,212,.2);
+      display:flex; align-items:center; justify-content:center; color:var(--f-cyan); font-size:1.25rem; flex-shrink:0;
     }
-    .card:hover { background: rgba(26,32,53,.6); border-color: rgba(0,212,212,.3); }
-    .card-icon {
-      width: 3rem; height: 3rem; border-radius: .75rem;
-      background: rgba(0,212,212,.1); border: 1px solid rgba(0,212,212,.2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); font-size: 1.25rem; margin-bottom: 1.25rem;
-      transition: background .3s;
-    }
-    .card:hover .card-icon { background: rgba(0,212,212,.15); }
-    .card h3 {
-      font-family: 'DM Sans', sans-serif; font-weight: 600;
-      color: var(--text); font-size: 1.125rem; margin-bottom: .75rem;
-      transition: color .3s;
-    }
-    .card:hover h3 { color: var(--cyan); }
-    .card p { color: var(--text-dim); font-size: .875rem; line-height: 1.65; }
-
-    /* ──────────────────────────────────────────
-       PHILOSOPHY
-    ────────────────────────────────────────── */
-    #philosophy { position: relative; background: var(--dark-2); overflow: hidden; }
-    #philosophy .orb-1 {
-      position: absolute; top: 0; left: 25%;
-      width: 25rem; height: 25rem; border-radius: 50%;
-      background: rgba(0,212,212,.03); filter: blur(120px); pointer-events: none;
-    }
-    #philosophy .orb-2 {
-      position: absolute; bottom: 0; right: 25%;
-      width: 18rem; height: 18rem; border-radius: 50%;
-      background: rgba(0,212,212,.02); filter: blur(100px); pointer-events: none;
-    }
-
-    .mission-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 4rem; }
-    @media (min-width: 1024px) { .mission-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
-
-    .mv-card {
-      background: rgba(26,32,53,.4); border: 1px solid rgba(42,51,80,.3);
-      border-radius: 1rem; padding: 2rem 2.5rem;
-      transition: background .3s, border-color .3s;
-    }
-    .mv-card:hover { background: rgba(26,32,53,.6); border-color: rgba(0,212,212,.25); }
-    .mv-card-header { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; }
-    .mv-icon {
-      width: 3rem; height: 3rem; border-radius: .75rem;
-      background: rgba(0,212,212,.1); border: 1px solid rgba(0,212,212,.2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); font-size: 1.25rem;
-    }
-    .mv-card h3 {
-      font-family: 'DM Sans', sans-serif; font-weight: 700;
-      color: var(--text); font-size: 1.375rem;
-    }
-    .mv-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
-
-    .approach-steps {
-      display: grid; grid-template-columns: 1fr; gap: 1.25rem;
-    }
-    @media (min-width: 640px)  { .approach-steps { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .approach-steps { grid-template-columns: repeat(4, 1fr); } }
-
+    .phil-title { color:white; font-family:'DM Sans',sans-serif; font-weight:700; font-size:1.25rem; }
+    .phil-p1 { color:var(--f-cyan); font-size:clamp(1rem,1.3vw,1.1rem); line-height:1.7; margin-bottom:1rem; }
+    .phil-p2 { color:var(--f-text-muted); font-size:.9375rem; line-height:1.7; }
+    .approach-title { font-family:'DM Sans',sans-serif; font-weight:700; font-size:clamp(1.5rem,2.5vw,1.875rem); color:var(--f-text-dark-heading); margin-bottom:.75rem; }
+    .approach-sub { color:var(--f-text-dark-body); font-size:clamp(1rem,1.3vw,1.1rem); margin-bottom:2rem; }
+    .steps-grid { display:grid; grid-template-columns:1fr; gap:1.25rem; }
+    @media (min-width:640px)  { .steps-grid { grid-template-columns:1fr 1fr; } }
+    @media (min-width:1024px) { .steps-grid { grid-template-columns:repeat(4,1fr); } }
     .step-card {
-      position: relative; background: rgba(26,32,53,.3); border: 1px solid rgba(42,51,80,.3);
-      border-radius: .75rem; padding: 1.5rem 1.75rem;
-      transition: background .3s, border-color .3s;
+      position:relative; border-radius:.75rem; padding:1.5rem 1.75rem;
+      background:var(--f-dark); border:1px solid var(--f-border);
+      transition:transform .3s, box-shadow .3s;
     }
-    .step-card:hover { background: rgba(26,32,53,.5); border-color: rgba(0,212,212,.25); }
-    .step-num {
-      font-family: 'DM Sans', sans-serif; font-weight: 700;
-      font-size: 3rem; color: rgba(0,212,212,.15); display: block; margin-bottom: 1rem;
-      transition: color .3s;
-    }
-    .step-card:hover .step-num { color: rgba(0,212,212,.25); }
-    .step-card h4 {
-      font-family: 'DM Sans', sans-serif; font-weight: 600;
-      color: var(--text); font-size: 1.125rem; margin-bottom: .5rem;
-      transition: color .3s;
-    }
-    .step-card:hover h4 { color: var(--cyan); }
-    .step-card p { color: var(--text-muted); font-size: .875rem; }
+    .step-card:hover { transform:scale(1.02); box-shadow:0 0 25px rgba(0,229,183,.1); }
+    .step-conn { display:none; position:absolute; top:2.5rem; right:-.75rem; width:1.5rem; height:2px; background:var(--f-border); }
+    @media (min-width:1024px) { .step-conn { display:block; } }
+    .step-num { font-family:'DM Sans',sans-serif; font-weight:700; font-size:clamp(2.5rem,4vw,3.5rem); display:block; margin-bottom:1rem; color:rgba(0,212,212,.22); }
+    .step-t { font-weight:600; font-size:1.1rem; margin-bottom:.5rem; color:var(--f-cyan); }
+    .step-d { font-size:.875rem; line-height:1.7; color:var(--f-text-muted); }
 
-    .step-connector {
-      display: none; position: absolute; top: 2.5rem; right: -.75rem;
-      width: 1.5rem; height: 2px; background: rgba(42,51,80,.4);
-      transition: background .3s;
+    /* ── WHY US ── */
+    #why-us { background:var(--f-dark); }
+    .whyus-hdr { max-width:48rem; margin-bottom:3.5rem; }
+    .whyus-grid { display:grid; grid-template-columns:1fr; gap:1.25rem; }
+    @media (min-width:768px) { .whyus-grid { grid-template-columns:1fr 1fr; } }
+    .whyus-card {
+      background:var(--f-dark); border:1px solid var(--f-border); border-radius:.75rem;
+      padding:1.5rem 1.75rem;
+      transition:border-color .3s, transform .3s, box-shadow .3s;
     }
-    @media (min-width: 1024px) { .step-connector { display: block; } }
-    .step-card:hover .step-connector { background: rgba(0,212,212,.3); }
+    .whyus-card:hover { border-color:rgba(0,212,212,.4); transform:scale(1.02); box-shadow:0 0 25px rgba(0,229,183,.1); }
+    .whyus-inner { display:flex; align-items:flex-start; gap:1rem; }
+    .whyus-icon { width:44px; height:44px; border-radius:.75rem; background:var(--f-cyan); display:flex; align-items:center; justify-content:center; color:var(--f-dark); flex-shrink:0; font-size:1.125rem; }
+    .whyus-title { color:white; font-weight:600; font-size:1rem; margin-bottom:.375rem; }
+    .whyus-desc { color:var(--f-text-muted); font-size:.875rem; line-height:1.7; }
 
-    /* ──────────────────────────────────────────
-       INDUSTRIES
-    ────────────────────────────────────────── */
-    #industries { position: relative; background: var(--dark); overflow: hidden; }
-    #industries .accent-orb {
-      position: absolute; bottom: 0; left: 33%;
-      width: 22rem; height: 22rem; border-radius: 50%;
-      background: rgba(0,212,212,.03); filter: blur(100px); pointer-events: none;
+    /* ── SERVICES ── */
+    #services { background:var(--f-white-bg); }
+    .services-sub { color:var(--f-text-dark-body); font-size:clamp(1rem,1.3vw,1.1rem); line-height:1.7; margin-top:1rem; }
+    .services-grid { display:grid; grid-template-columns:1fr; gap:1.25rem; margin-top:2rem; }
+    @media (min-width:768px)  { .services-grid { grid-template-columns:1fr 1fr; } }
+    @media (min-width:1024px) { .services-grid { grid-template-columns:repeat(3,1fr); } }
+    .svc-card {
+      border:1px solid var(--f-border); border-radius:.75rem; padding:1.5rem 1.75rem;
+      background:var(--f-dark); color:white;
+      transition:border-color .3s, transform .3s, box-shadow .3s;
     }
+    .svc-card:hover { border-color:rgba(0,212,212,.4); transform:scale(1.02); box-shadow:0 0 25px rgba(0,229,183,.1); }
+    .svc-top { display:flex; align-items:center; justify-content:space-between; gap:.75rem; margin-bottom:1rem; }
+    .svc-icon { width:44px; height:44px; border-radius:.75rem; background:var(--f-cyan); display:flex; align-items:center; justify-content:center; color:var(--f-dark); flex-shrink:0; font-size:1.125rem; }
+    .svc-cat { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; border-radius:9999px; padding:.25rem .75rem; background:rgba(0,212,212,.1); border:1px solid rgba(0,212,212,.2); color:var(--f-cyan); }
+    .svc-body { min-height:110px; }
+    .svc-title { font-weight:600; font-size:1rem; margin-bottom:.5rem; }
+    .svc-desc { font-size:.875rem; line-height:1.7; color:var(--f-text-muted); }
+    .svc-divider { width:100%; height:1px; background:rgba(42,51,80,.45); margin:1rem 0 .75rem; }
+    .svc-bullets { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    .svc-bullets li { display:flex; align-items:flex-start; gap:.5rem; font-size:.875rem; color:var(--f-text-muted); }
+    .svc-check { color:var(--f-cyan); font-size:.8rem; margin-top:.15rem; flex-shrink:0; }
 
-    .industries-grid {
-      display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 3.5rem;
+    /* ── CONTACT ── */
+    #contact { position:relative; padding:5rem 0; }
+    @media (min-width:768px) { #contact { padding:7rem 0; } }
+    .cta-bg { position:absolute; inset:0; }
+    .cta-bg img { width:100%; height:100%; object-fit:cover; }
+    .cta-overlay { position:absolute; inset:0; background:rgba(10,15,30,.86); }
+    .cta-grid { display:grid; grid-template-columns:1fr; gap:3rem; align-items:center; }
+    @media (min-width:1024px) { .cta-grid { grid-template-columns:1fr 1fr; gap:4rem; } }
+    .cta-lbl { color:var(--f-cyan); font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.1em; margin-bottom:1rem; }
+    .cta-h2 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:clamp(1.875rem,3vw,2.75rem); color:white; line-height:1.15; margin-bottom:.75rem; }
+    .cta-tag { color:var(--f-cyan); font-family:'DM Sans',sans-serif; font-size:clamp(1rem,1.4vw,1.2rem); font-weight:600; margin-bottom:1.5rem; }
+    .cta-sub { color:var(--f-text-muted); font-size:clamp(1rem,1.3vw,1.1rem); line-height:1.7; max-width:32rem; margin-bottom:2rem; }
+    .cta-loc { display:flex; align-items:center; gap:.75rem; color:var(--f-text-dim); font-size:.875rem; }
+    .cta-loc-icon { width:36px; height:36px; border-radius:.5rem; background:rgba(0,212,212,.1); display:flex; align-items:center; justify-content:center; color:var(--f-cyan); flex-shrink:0; }
+    .form-card { background:rgba(10,15,30,.82); backdrop-filter:blur(20px); border:1px solid rgba(42,51,80,.45); border-radius:1rem; padding:1.75rem; }
+    @media (min-width:768px) { .form-card { padding:2.25rem; } }
+    .form-stack { display:flex; flex-direction:column; gap:1rem; }
+    .form-row2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media (max-width:560px) { .form-row2 { grid-template-columns:1fr; } }
+    .form-grp { display:flex; flex-direction:column; }
+    .form-lbl { color:var(--f-text-dim); font-size:.75rem; font-weight:500; margin-bottom:.375rem; }
+    .form-inp, .form-ta {
+      width:100%; background:rgba(26,32,53,.55); border:1px solid rgba(42,51,80,.45);
+      border-radius:.5rem; padding:.75rem 1rem; color:white; font-size:.875rem;
+      font-family:inherit; outline:none; transition:border-color .3s, box-shadow .3s;
     }
-    @media (min-width: 640px)  { .industries-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .industries-grid { grid-template-columns: repeat(4, 1fr); } }
+    .form-inp::placeholder, .form-ta::placeholder { color:rgba(139,163,184,.55); }
+    .form-inp:focus, .form-ta:focus { border-color:rgba(0,212,212,.45); box-shadow:0 0 0 3px rgba(0,212,212,.1); }
+    .form-ta { resize:none; }
+    .form-char { color:rgba(139,163,184,.65); font-size:.75rem; text-align:right; margin-top:.25rem; }
+    .form-err { color:#f87171; font-size:.875rem; }
+    .form-consent { color:rgba(139,163,184,.65); font-size:.75rem; text-align:center; }
+    .btn-submit {
+      width:100%; display:inline-flex; align-items:center; justify-content:center;
+      gap:.5rem; background:var(--f-cyan); color:var(--f-dark);
+      padding:.875rem 1.5rem; border-radius:9999px;
+      font-size:.875rem; font-weight:600; border:none; cursor:pointer;
+      transition:background .3s, box-shadow .3s;
+    }
+    .btn-submit:hover:not(:disabled) { background:var(--f-cyan-dark); box-shadow:0 0 30px rgba(0,212,212,.25); }
+    .btn-submit:disabled { opacity:.6; cursor:not-allowed; }
+    .spinner { width:16px; height:16px; border:2px solid rgba(10,15,30,.3); border-top-color:var(--f-dark); border-radius:9999px; animation:spin .65s linear infinite; }
+    .success-box { text-align:center; padding:2rem 0; }
+    .success-icon { width:64px; height:64px; border-radius:9999px; background:rgba(0,212,212,.1); display:flex; align-items:center; justify-content:center; color:var(--f-cyan); font-size:1.5rem; margin:0 auto 1rem; }
+    .success-title { color:white; font-weight:600; font-size:1.25rem; margin-bottom:.5rem; }
+    .success-sub { color:var(--f-text-muted); font-size:.875rem; line-height:1.65; }
+    .btn-reset { margin-top:1.5rem; display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(42,51,80,.65); color:var(--f-text-muted); padding:.625rem 1.25rem; border-radius:9999px; font-size:.875rem; font-weight:500; background:none; cursor:pointer; transition:border-color .3s, color .3s; }
+    .btn-reset:hover { border-color:rgba(0,212,212,.4); color:white; }
+    .hp-field { position:absolute; left:-9999px; opacity:0; pointer-events:none; height:0; width:0; overflow:hidden; }
 
-    .industry-card {
-      background: rgba(26,32,53,.3); border: 1px solid rgba(42,51,80,.3);
-      border-radius: .75rem; overflow: hidden;
-      transition: background .3s, border-color .3s;
-    }
-    .industry-card:hover { background: rgba(26,32,53,.5); border-color: rgba(0,212,212,.3); }
-    .industry-img { aspect-ratio: 4/3; position: relative; overflow: hidden; background: var(--slate); }
-    .industry-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform .7s;
-    }
-    .industry-card:hover .industry-img img { transform: scale(1.05); }
-    .industry-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,15,30,.7), rgba(10,15,30,.2), transparent);
-    }
-    .industry-icon-badge {
-      position: absolute; top: .75rem; left: .75rem;
-      width: 2.25rem; height: 2.25rem; border-radius: .5rem;
-      background: rgba(10,15,30,.7); backdrop-filter: blur(4px);
-      border: 1px solid rgba(42,51,80,.3);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); font-size: 1rem;
-    }
-    .industry-card-body { padding: 1.25rem; }
-    .industry-card-body h3 {
-      font-family: 'DM Sans', sans-serif; font-weight: 600;
-      color: var(--text); font-size: 1rem; margin-bottom: .5rem;
-      transition: color .3s;
-    }
-    .industry-card:hover .industry-card-body h3 { color: var(--cyan); }
-    .industry-card-body p { color: var(--text-dim); font-size: .8125rem; line-height: 1.6; }
-
-    /* ──────────────────────────────────────────
-       WHY US
-    ────────────────────────────────────────── */
-    #why-us { position: relative; background: var(--dark-2); overflow: hidden; }
-    #why-us .accent-orb {
-      position: absolute; top: 50%; right: 0;
-      width: 18rem; height: 18rem; border-radius: 50%;
-      background: rgba(0,212,212,.03); filter: blur(100px);
-      transform: translateY(-50%); pointer-events: none;
-    }
-
-    .why-grid {
-      display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 3.5rem;
-    }
-    @media (min-width: 768px)  { .why-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
-
-    .why-card {
-      background: rgba(26,32,53,.3); border: 1px solid rgba(42,51,80,.3);
-      border-radius: .75rem; padding: 1.5rem;
-      transition: background .3s, border-color .3s;
-    }
-    .why-card:hover { background: rgba(26,32,53,.5); border-color: rgba(0,212,212,.25); }
-    .why-card-inner { display: flex; align-items: flex-start; gap: 1rem; }
-    .why-icon {
-      width: 2.75rem; height: 2.75rem; border-radius: .75rem; flex-shrink: 0;
-      background: rgba(0,212,212,.1); border: 1px solid rgba(0,212,212,.2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); font-size: 1.125rem; transition: background .3s;
-    }
-    .why-card:hover .why-icon { background: rgba(0,212,212,.15); }
-    .why-card h3 {
-      font-family: 'DM Sans', sans-serif; font-weight: 600;
-      color: var(--text); font-size: 1rem; margin-bottom: .375rem;
-      transition: color .3s;
-    }
-    .why-card:hover h3 { color: var(--cyan); }
-    .why-card p { color: var(--text-dim); font-size: .875rem; line-height: 1.6; }
-
-    /* ──────────────────────────────────────────
-       CTA / CONTACT
-    ────────────────────────────────────────── */
-    #contact { position: relative; overflow: hidden; }
-    .cta-bg {
-      position: absolute; inset: 0;
-    }
-    .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
-    .cta-bg-overlay { position: absolute; inset: 0; background: rgba(10,15,30,.85); }
-
-    .cta-grid {
-      position: relative; z-index: 10;
-      display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;
-    }
-    @media (min-width: 1024px) { .cta-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
-
-    .cta-benefits { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; }
-    .benefit-row { display: flex; align-items: center; gap: .75rem; }
-    .benefit-check {
-      width: 1.25rem; height: 1.25rem; border-radius: 50%;
-      background: rgba(0,212,212,.1); display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); flex-shrink: 0; font-size: .75rem;
-    }
-    .benefit-row span:last-child { color: var(--text-muted); font-size: .875rem; }
-
-    .contact-location { display: flex; align-items: center; gap: .75rem; color: var(--text-dim); font-size: .875rem; }
-    .location-icon {
-      width: 2.25rem; height: 2.25rem; border-radius: .5rem;
-      background: rgba(0,212,212,.1); display: flex; align-items: center; justify-content: center;
-      color: var(--cyan);
-    }
-
-    .form-card {
-      background: rgba(10,15,30,.8); backdrop-filter: blur(20px);
-      border: 1px solid rgba(42,51,80,.4); border-radius: 1rem; padding: 1.5rem 2rem;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
-    @media (min-width: 640px) { .form-row { grid-template-columns: 1fr 1fr; } }
-    .form-group { display: flex; flex-direction: column; gap: .375rem; margin-bottom: 1rem; }
-    .form-group label { color: var(--text-dim); font-size: .75rem; font-weight: 500; }
-    .form-group input,
-    .form-group textarea {
-      width: 100%; background: rgba(26,32,53,.5); border: 1px solid rgba(42,51,80,.4);
-      border-radius: .5rem; padding: .75rem 1rem;
-      color: var(--text); font-size: .875rem; font-family: inherit;
-      outline: none; transition: border-color .3s, box-shadow .3s;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(139,163,184,.6); }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: rgba(0,212,212,.4);
-      box-shadow: 0 0 0 3px rgba(0,212,212,.08);
-    }
-    .form-group textarea { resize: none; }
-    .char-count { text-align: right; font-size: .75rem; color: rgba(139,163,184,.7); margin-top: .25rem; }
-    .form-note { text-align: center; font-size: .75rem; color: rgba(139,163,184,.7); margin-top: .75rem; }
-    .form-error { color: #f87171; font-size: .875rem; margin-bottom: .5rem; }
-
-    .success-state { text-align: center; padding: 2rem 0; }
-    .success-icon {
-      width: 4rem; height: 4rem; border-radius: 50%;
-      background: rgba(0,212,212,.1); display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); font-size: 1.5rem; margin: 0 auto 1rem;
-    }
-    .success-state h3 { color: var(--text); font-size: 1.25rem; font-weight: 600; margin-bottom: .5rem; }
-    .success-state p { color: var(--text-muted); font-size: .875rem; }
-
-    /* ──────────────────────────────────────────
-       FOOTER
-    ────────────────────────────────────────── */
-    footer {
-      background: var(--footer); border-top: 1px solid rgba(42,51,80,.3);
-      padding: 3.5rem 1rem 2rem;
-    }
-    @media (min-width: 640px)  { footer { padding: 5rem 1.5rem 2rem; } }
-    @media (min-width: 1024px) { footer { padding: 5rem 2.5rem 2rem; } }
-    @media (min-width: 1280px) { footer { padding: 5rem 4rem 2rem; } }
-
-    .footer-grid {
-      display: grid; grid-template-columns: 1fr; gap: 2.5rem;
-    }
-    @media (min-width: 768px)  { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; } }
-
-    .footer-brand img { height: 2.5rem; width: auto; margin-bottom: 1.25rem; }
-    .footer-brand p { color: var(--text-dim); font-size: .875rem; line-height: 1.65; max-width: 16rem; margin-bottom: 1.5rem; }
-    .footer-brand .location { color: var(--text-dim); font-size: .75rem; }
-
-    .footer-col h4 {
-      color: var(--cyan); font-size: .75rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .625rem; }
-    .footer-col ul li { color: var(--text-dim); font-size: .875rem; cursor: default; transition: color .3s; }
-    .footer-col ul li:hover { color: var(--text); }
-
-    .footer-bottom {
-      margin-top: 3.5rem; padding-top: 2rem;
-      border-top: 1px solid rgba(42,51,80,.2);
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: space-between; gap: 1rem;
-    }
-    @media (min-width: 640px) { .footer-bottom { flex-direction: row; } }
-
-    .footer-bottom p { color: var(--text-dim); font-size: .75rem; }
-    .social-icons { display: flex; align-items: center; gap: .75rem; }
-    .social-icon {
-      width: 2.25rem; height: 2.25rem; border-radius: .5rem;
-      border: 1px solid rgba(42,51,80,.4);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-dim); font-size: .875rem;
-      transition: color .3s, border-color .3s;
-    }
-    .social-icon:hover { color: var(--cyan); border-color: rgba(0,212,212,.4); }
-    .privacy-link { color: var(--text-dim); font-size: .75rem; cursor: default; transition: color .3s; }
-    .privacy-link:hover { color: var(--text-muted); }
-
-    .spinner {
-      width: 1rem; height: 1rem; border-radius: 50%;
-      border: 2px solid rgba(10,15,30,.3); border-top-color: var(--dark);
-      animation: spin .7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .section-header { max-width: 42rem; margin-bottom: 3.5rem; }
-    .section-header.centered { text-align: center; margin-left: auto; margin-right: auto; }
-    .section-header p.subtitle { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-top: 1rem; }
+    /* ── FOOTER ── */
+    footer { background:var(--f-footer); border-top:1px solid rgba(42,51,80,.3); }
+    .footer-py { padding-top:3.5rem; padding-bottom:3.5rem; }
+    @media (min-width:768px) { .footer-py { padding-top:5rem; padding-bottom:5rem; } }
+    .footer-layout { display:flex; flex-direction:column; gap:2.5rem; }
+    @media (min-width:1024px) { .footer-layout { flex-direction:row; justify-content:space-between; gap:3rem; } }
+    .footer-brand { max-width:22rem; }
+    .footer-logo img { height:60px; width:auto; display:block; margin-bottom:1.25rem; }
+    @media (min-width:768px) { .footer-logo img { height:72px; } }
+    .footer-slogan { color:var(--f-cyan); font-size:1rem; font-family:'Arial',sans-serif; letter-spacing:.02em; margin-bottom:.5rem; }
+    .footer-tag { color:var(--f-text-dim); font-size:.875rem; }
+    .footer-cols { display:flex; flex-direction:column; gap:2.5rem; }
+    @media (min-width:640px) { .footer-cols { flex-direction:row; gap:4rem; } }
+    .fcol-title { color:var(--f-cyan); font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.1em; margin-bottom:1rem; }
+    .fcol ul { list-style:none; display:flex; flex-direction:column; gap:.625rem; }
+    .fcol a { color:var(--f-text-dim); font-size:.875rem; text-decoration:none; transition:color .3s; cursor:pointer; }
+    .fcol a:hover { color:white; }
+    .footer-bar { margin-top:3.5rem; padding-top:2rem; border-top:1px solid rgba(42,51,80,.22); display:flex; flex-direction:column; align-items:center; justify-content:space-between; gap:1rem; }
+    @media (min-width:640px) { .footer-bar { flex-direction:row; } }
+    .footer-copy { color:var(--f-text-dim); font-size:.75rem; }
+    .socials { display:flex; align-items:center; gap:.75rem; }
+    .social { width:36px; height:36px; border-radius:.5rem; border:1px solid rgba(42,51,80,.45); display:flex; align-items:center; justify-content:center; color:var(--f-text-dim); text-decoration:none; transition:color .3s, border-color .3s; }
+    .social:hover { color:var(--f-cyan); border-color:rgba(0,212,212,.4); }
+    .footer-priv { color:var(--f-text-dim); font-size:.75rem; }
   </style>
 </head>
 <body>
 
-  <nav id="navbar">
+<!-- ── NAVBAR ── -->
+<nav id="navbar">
+  <div class="container">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <img src="https://storage.readdy-site.link/project_files/a07f9136-071b-4b00-af3a-2032f334ca2f/aa0bf8b6-0366-4049-805e-905230cd9c78_compressed_Fooncore-4.webp" alt="Foonex Solutions" />
+      <a href="#hero" class="nav-logo" onclick="ss(event,'#hero')">
+        <img src="https://storage.readdy-site.link/project_files/a07f9136-071b-4b00-af3a-2032f334ca2f/aa0bf8b6-0366-4049-805e-905230cd9c78_compressed_Fooncore-4.webp"
+             alt="Fooncore Solutions"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+        />
+        <span style="display:none;color:var(--f-cyan);font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.04em;">FOONCORE</span>
       </a>
       <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#philosophy">Mission</a>
-        <a href="#industries">Industries</a>
-        <a href="#why-us">Why Us</a>
-        <a href="#contact">Contact</a>
+        <a href="#about"      onclick="ss(event,'#about')">About</a>
+        <a href="#services"   onclick="ss(event,'#services')">Services</a>
+        <a href="#philosophy" onclick="ss(event,'#philosophy')">Mission</a>
+        <a href="#why-us"     onclick="ss(event,'#why-us')">Why Us</a>
+        <a href="#contact"    onclick="ss(event,'#contact')">Contact</a>
       </div>
-      <a href="#contact" class="btn-primary nav-cta">
+      <a href="#contact" class="btn-cyan nav-cta" onclick="ss(event,'#contact')">
         Book a Consultation <i class="ri-arrow-right-up-line"></i>
       </a>
-      <button class="nav-hamburger" id="hamburger-btn" aria-label="Toggle menu">
-        <i class="ri-menu-line" id="hamburger-icon" style="font-size:1.25rem;"></i>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <i id="micon" class="ri-menu-line"></i>
       </button>
     </div>
-    <div id="mobile-menu">
-      <div class="mobile-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#philosophy">Mission</a>
-        <a href="#industries">Industries</a>
-        <a href="#why-us">Why Us</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="btn-primary" style="margin-top:1rem;display:inline-flex;">Book a Consultation <i class="ri-arrow-right-up-line"></i></a>
-      </div>
+  </div>
+  <div id="mmenu" class="mobile-menu">
+    <div class="mobile-menu-inner">
+      <a href="#about"      onclick="ss(event,'#about');cm()">About</a>
+      <a href="#services"   onclick="ss(event,'#services');cm()">Services</a>
+      <a href="#philosophy" onclick="ss(event,'#philosophy');cm()">Mission</a>
+      <a href="#why-us"     onclick="ss(event,'#why-us');cm()">Why Us</a>
+      <a href="#contact"    onclick="ss(event,'#contact');cm()">Contact</a>
+      <a href="#contact" class="btn-cyan" style="margin-top:1rem;display:inline-flex;" onclick="ss(event,'#contact');cm()">
+        Book a Consultation <i class="ri-arrow-right-up-line"></i>
+      </a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <section id="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-orb-1"></div>
-    <div class="hero-orb-2"></div>
-    <div class="hero-content">
-      <div class="hero-grid">
-        <div class="reveal">
-          <div class="label-pill">
-            <span class="label-pulse"></span>
-            Edmonton, Canada
-          </div>
-          <h1 class="hero-h1 font-display">
-            Cybersecurity &amp; <span class="accent">IT Infrastructure</span> Consulting for SMEs
-          </h1>
-          <p class="hero-slogan font-display">Your One-Stop IT Management Partner</p>
-          <p class="hero-sub">
-            Helping clinics, professional firms, and growing organizations secure systems,
-            protect sensitive data, and improve technology reliability.
-          </p>
-          <div class="hero-btns">
-            <a href="#contact" class="btn-primary">
-              Book a Free 30-Minute Consultation <i class="ri-arrow-right-up-line"></i>
-            </a>
-            <a href="#services" class="btn-ghost">
-              Explore Our Services <i class="ri-arrow-down-line"></i>
-            </a>
-          </div>
-        </div>
-        <div class="reveal-right">
-          <div class="hero-img-wrap">
-            <div class="hero-img-inner">
-              <img
-                src="https://readdy.ai/api/search-image?query=Abstract%20cybersecurity%20digital%20shield%20with%20network%20nodes%20and%20data%20streams%20dark%20blue%20background%20cyan%20glowing%20accents%20modern%20tech%20illustration%20minimal%20clean%20professional%20corporate%20aesthetic%20high%20quality%203D%20render&width=600&height=450&seq=hero1&orientation=landscape"
-                alt="Cybersecurity and IT Infrastructure"
-                loading="eager"
-              />
-              <div class="hero-img-overlay"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-grid-bg">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#00D4D4" stroke-width="0.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
 
-  <section id="about" class="section-pad">
-    <div class="about-orb"></div>
-    <div class="about-grid container" style="position:relative;z-index:10;">
+  <div class="hero-inner container">
+    <div class="hero-grid">
+      <!-- Left -->
       <div class="reveal">
-        <div class="label-pill cyan-border">About Us</div>
-        <div class="founder-img-wrap">
-          <div class="founder-img-inner">
+        <div class="hero-label">
+          <span class="hero-dot"></span>
+          <span>Edmonton, Canada</span>
+        </div>
+        <p class="hero-slogan">Your One-Stop IT<br>Management Partner</p>
+        <h1 class="hero-h1">Cybersecurity &amp; IT Infrastructure<br>Consulting for SMEs</h1>
+        <p class="hero-sub">Helping clinics, professional firms, and growing organizations secure systems, protect sensitive data, and improve technology reliability.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-hero-primary" onclick="ss(event,'#contact')">
+            Book a Free 30-Minute Consultation <i class="ri-arrow-right-up-line"></i>
+          </a>
+          <a href="#services" class="btn-outline" onclick="ss(event,'#services')">
+            Explore Our Services <i class="ri-arrow-down-line"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Right image -->
+      <div class="reveal-r">
+        <div class="hero-img-card">
+          <div class="hero-img-wrap">
+            <!-- Cybersecurity / tech hero image via Unsplash source (no auth needed) -->
             <img
-              src="https://readdy.ai/api/search-image?query=Professional%20male%20business%20executive%20portrait%20in%20modern%20office%20setting%20dark%20ambient%20lighting%20confident%20expression%20formal%20attire%20high%20quality%20headshot%20photography%20minimal%20clean%20background%20subtle%20cyan%20lighting%20accent&width=450&height=600&seq=founder1&orientation=portrait"
-              alt="Tony Siu – Founder of Foonex Solutions"
+              src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80&auto=format&fit=crop"
+              alt="Cybersecurity and IT Infrastructure"
+              loading="eager"
+              onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop'"
+            />
+            <div class="hero-img-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about" class="section-py">
+  <div class="accent-orb" style="top:50%;left:0;width:300px;height:300px;background:rgba(0,212,212,.05);transform:translateY(-50%);"></div>
+  <div class="container z1">
+    <div class="reveal">
+      <div class="label-cyan"><span>About Us</span></div>
+      <div class="about-layout">
+        <div class="about-img">
+          <div class="about-img-inner">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&auto=format&fit=crop"
+              alt="Edmonton Cityscape"
               loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=800&q=80&auto=format&fit=crop'"
             />
           </div>
-          <div class="founder-caption">
-            <p>Tony Siu</p>
-            <p>Founder &amp; Lead Consultant</p>
-          </div>
+        </div>
+        <div class="about-content">
+          <p class="about-p1">Based in Edmonton, we provide independent IT consulting to help small and medium-sized businesses improve security, reliability, and performance. With over 20 years of experience in IT infrastructure, network systems, and enterprise technology operations, we deliver practical expertise in cybersecurity, backup and disaster recovery, cloud security, and network consulting.</p>
+          <p class="about-p2">We work closely with clients to identify technology risks, strengthen system resilience, and ensure IT solutions support long-term business goals.</p>
         </div>
       </div>
-      <div class="reveal" style="transition-delay:.2s;">
-        <h2 class="about-h2 font-display">
-          Independent IT Consulting Built on <span class="accent">20 Years</span> of Enterprise Experience
-        </h2>
-        <p style="color:var(--text-muted);font-size:1rem;line-height:1.7;margin-bottom:1.5rem;">
-          Based in Edmonton, we provide independent IT consulting to help small and
-          medium-sized businesses improve security, reliability, and performance.
-          With over 20 years of experience in IT infrastructure, network systems, and
-          enterprise technology operations, we deliver practical expertise in
-          cybersecurity, backup and disaster recovery, cloud security, and network consulting.
-        </p>
-        <p style="color:var(--text-dim);font-size:1rem;line-height:1.7;margin-bottom:2rem;">
-          We work closely with clients to identify technology risks, strengthen system
-          resilience, and ensure IT solutions support long-term business goals. Our
-          approach is rooted in understanding your unique environment before recommending solutions.
-        </p>
-        <div class="bio-card">
-          <div class="bio-card-inner">
-            <div class="bio-icon"><i class="ri-user-star-line"></i></div>
-            <div>
-              <h4 style="color:var(--text);font-weight:600;font-size:1rem;margin-bottom:.25rem;">Tony Siu</h4>
-              <p style="color:var(--text-dim);font-size:.875rem;line-height:1.65;">
-                An IT infrastructure professional with 20+ years of experience in enterprise technology.
-                He held senior IT roles supporting regional and global operations for companies such as
-                Godiva and Lee Kum Kee. He now focuses on helping Edmonton businesses strengthen their
-                IT environment with practical, secure, and cost-effective solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="section-pad">
-    <div class="accent-orb"></div>
-    <div class="container" style="position:relative;z-index:10;">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">What We Do</p>
-        <h2 class="section-h2 font-display">
-          Core Services to Protect &amp; <span class="accent">Strengthen</span> Your Business
-        </h2>
-        <p class="subtitle">
-          From risk assessment to ongoing advisory, we provide the IT expertise your business
-          needs to stay secure, compliant, and resilient.
-        </p>
-      </div>
-      <div class="services-grid" id="services-grid"></div>
-    </div>
-  </section>
-
-  <section id="philosophy" class="section-pad">
-    <div class="orb-1"></div>
-    <div class="orb-2"></div>
-    <div class="container" style="position:relative;z-index:10;">
-      <div class="section-header centered reveal">
-        <div class="label-pill cyan-border" style="display:inline-flex;margin-left:auto;margin-right:auto;">What Drives Us</div>
-        <h2 class="section-h2 font-display">
-          Mission, Vision &amp; <span class="accent">Our Approach</span>
-        </h2>
-      </div>
-      <div class="mission-grid">
-        <div class="mv-card reveal">
-          <div class="mv-card-header">
-            <div class="mv-icon"><i class="ri-focus-3-line"></i></div>
-            <h3 class="font-display">Our Mission</h3>
-          </div>
-          <p>Deliver reliable, secure, and cost-effective IT solutions that help small and
-             medium-sized businesses grow while minimizing technology risks.</p>
-        </div>
-        <div class="mv-card reveal" style="transition-delay:.15s;">
-          <div class="mv-card-header">
-            <div class="mv-icon"><i class="ri-eye-line"></i></div>
-            <h3 class="font-display">Our Vision</h3>
-          </div>
-          <p>Become a trusted technology advisor for organizations without dedicated IT leadership,
-             providing practical expertise to build secure, resilient, and future-ready technology environments.</p>
-        </div>
-      </div>
-      <div class="reveal" style="transition-delay:.3s;">
-        <div style="text-align:center;margin-bottom:2.5rem;">
-          <h3 class="font-display" style="font-weight:700;font-size:1.75rem;color:var(--text);margin-bottom:.75rem;">
-            How We <span style="color:var(--cyan);">Work</span>
-          </h3>
-          <p style="color:var(--text-muted);font-size:1rem;max-width:36rem;margin:0 auto;line-height:1.7;">
-            A structured, four-step process designed to understand your needs and deliver practical results.
-          </p>
-        </div>
-        <div class="approach-steps">
-          <div class="step-card">
-            <span class="step-num">01</span>
-            <h4>Understand</h4>
-            <p>Your business and technology environment</p>
-            <div class="step-connector"></div>
-          </div>
-          <div class="step-card">
-            <span class="step-num">02</span>
-            <h4>Identify</h4>
-            <p>IT and cybersecurity risks</p>
-            <div class="step-connector"></div>
-          </div>
-          <div class="step-card">
-            <span class="step-num">03</span>
-            <h4>Recommend</h4>
-            <p>Practical, cost-effective solutions</p>
-            <div class="step-connector"></div>
-          </div>
-          <div class="step-card">
-            <span class="step-num">04</span>
-            <h4>Support</h4>
-            <p>Implementation with internal or external teams</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="industries" class="section-pad">
-    <div class="accent-orb"></div>
-    <div class="container" style="position:relative;z-index:10;">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">Who We Help</p>
-        <h2 class="section-h2 font-display">Industries We <span class="accent">Serve</span></h2>
-        <p class="subtitle">
-          We understand the unique technology challenges of different industries and tailor our
-          approach to meet specific compliance, security, and operational requirements.
-        </p>
-      </div>
-      <div class="industries-grid" id="industries-grid"></div>
-    </div>
-  </section>
-
-  <section id="why-us" class="section-pad">
-    <div class="accent-orb"></div>
-    <div class="container" style="position:relative;z-index:10;">
-      <div class="section-header reveal">
-        <div class="label-pill cyan-border">Why Foonex Solutions</div>
-        <h2 class="section-h2 font-display">
-          Trusted Expertise, <span class="accent">Personalized</span> Approach
-        </h2>
-      </div>
-      <div class="why-grid" id="why-grid"></div>
-    </div>
-  </section>
-
-  <section id="contact" class="section-pad">
-    <div class="cta-bg">
-      <img
-        src="https://readdy.ai/api/search-image?query=Modern%20server%20room%20with%20blue%20LED%20lighting%20data%20center%20racks%20dark%20atmosphere%20professional%20technology%20infrastructure%20cybersecurity%20environment%20high%20quality%20photography%20minimal%20clean%20composition&width=1400&height=600&seq=cta1&orientation=landscape"
-        alt="Technology Infrastructure"
-      />
-      <div class="cta-bg-overlay"></div>
-    </div>
-    <div class="container">
-      <div class="cta-grid">
-        <div class="reveal">
-          <p class="section-eyebrow">Get Started</p>
-          <h2 class="section-h2 font-display" style="margin-bottom:1.5rem;">
-            Book Your Free <span class="accent">30-Minute</span> Consultation
-          </h2>
-          <p style="color:var(--text-muted);font-size:1rem;line-height:1.7;margin-bottom:2rem;max-width:32rem;">
-            Discuss your IT and cybersecurity needs with an experienced consultant and receive
-            practical recommendations to improve your technology environment. No obligation,
-            no pressure — just expert advice.
-          </p>
-          <div class="cta-benefits">
-            <div class="benefit-row">
-              <div class="benefit-check"><i class="ri-check-line"></i></div>
-              <span>No-cost initial assessment</span>
-            </div>
-            <div class="benefit-row">
-              <div class="benefit-check"><i class="ri-check-line"></i></div>
-              <span>Personalized recommendations</span>
-            </div>
-            <div class="benefit-row">
-              <div class="benefit-check"><i class="ri-check-line"></i></div>
-              <span>Actionable next steps</span>
-            </div>
-            <div class="benefit-row">
-              <div class="benefit-check"><i class="ri-check-line"></i></div>
-              <span>Flexible scheduling</span>
-            </div>
-          </div>
-          <div class="contact-location">
-            <div class="location-icon"><i class="ri-map-pin-line"></i></div>
-            Edmonton, AB, Canada
-          </div>
-        </div>
-        <div class="reveal" style="transition-delay:.2s;">
-          <div class="form-card">
-            <div id="form-success" class="success-state" style="display:none;">
-              <div class="success-icon"><i class="ri-check-double-line"></i></div>
-              <h3>Thank You!</h3>
-              <p>We've received your request and will reach out within 24 hours to schedule your consultation.</p>
-              <button class="btn-ghost" id="reset-form-btn" style="margin-top:1.5rem;">Send Another Message</button>
-            </div>
-           <form action="https://formsubmit.co/fooncoresolutions@gmail.com" method="POST">
-
-  <!-- FormSubmit settings -->
-  <input type="hidden" name="_subject" value="New Consultation Request">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-
-  <!-- Anti-spam honeypot -->
-  <input type="hidden" name="_honey" style="display:none">
-
-  <!-- Redirect -->
-  <input type="hidden" name="_next" value="https://fooncore.github.io/Testing/thankyou.html">
-
-  <!-- Auto reply -->
-  <input type="hidden" name="_autoresponse" value="
-Dear Customer,
-
-Thank you for contacting Fooncore Solutions.
-
-We have received your consultation request.
-
-Our team will respond within 1 business day.
-
-For urgent matters, email: fooncoresolutions@gmail.com
-
-Best regards,
-Fooncore Solutions
-Your One-Stop IT Management Partner
-">
-
-  <div class="form-row">
-    <div class="form-group">
-      <label for="name">Full Name *</label>
-      <input type="text" id="name" name="name" placeholder="John Doe" required>
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email Address *</label>
-      <input type="email" id="email" name="email" placeholder="john@company.com" required>
     </div>
   </div>
+</section>
 
-  <div class="form-group">
-    <label for="company">Company Name</label>
-    <input type="text" id="company" name="company" placeholder="Your company">
-  </div>
-
-  <div class="form-group">
-    <label for="message">How Can We Help? *</label>
-
-    <textarea id="message" name="message" rows="4" maxlength="500"
-      placeholder="Tell us about your IT challenges or goals..." required></textarea>
-
-    <p class="char-count">
-      <span id="char-count">0</span>/500
-    </p>
-  </div>
-
-  <p id="form-error" class="form-error" style="display:none;">
-    Something went wrong. Please try again.
-  </p>
-
-  <button type="submit" class="btn-primary" id="submit-btn">
-    <span id="btn-label">Schedule Your Consultation</span>
-  </button>
-
-  <p class="form-note">
-    We respect your privacy. Your information will never be shared.
-  </p>
-
-</form>
+<!-- ── FOUNDER ── -->
+<section id="founder" class="section-py">
+  <div class="accent-orb" style="top:50%;right:0;width:300px;height:300px;background:rgba(0,212,212,.03);transform:translateY(-50%);"></div>
+  <div class="container z1">
+    <div class="reveal">
+      <div class="label-border"><span>Founder &amp; Leadership</span></div>
+      <div class="founder-layout">
+        <div class="founder-hl">
+          <h2 class="sh2 tw">Meet the experience behind every <span class="tc">recommendation</span></h2>
+        </div>
+        <div style="flex:1;">
+          <div class="founder-card">
+            <div class="founder-top">
+              <div class="founder-avatar"><i class="ri-user-star-line"></i></div>
+              <div style="flex:1;">
+                <div class="founder-name">Tony Siu</div>
+                <div class="founder-role">Founder &amp; Principal IT Consultant</div>
+                <p class="founder-bio">Tony is an IT professional with 20+ years of experience in enterprise technology. He held senior IT roles supporting regional and global operations for commercial companies.</p>
+                <p class="founder-bio">He now focuses on helping Edmonton businesses strengthen their IT environment with practical, secure, and cost-effective solutions.</p>
+                <div class="founder-stats">
+                  <div class="founder-stat">
+                    <i class="ri-global-line fsi"></i>
+                    <div><div class="fsl">Background</div><div class="fsv">Regional &amp; global enterprise IT</div></div>
+                  </div>
+                  <div class="founder-stat">
+                    <i class="ri-focus-3-line fsi"></i>
+                    <div><div class="fsl">Focus</div><div class="fsv">SME cybersecurity &amp; infrastructure</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div class="footer-grid">
+<!-- ── PHILOSOPHY ── -->
+<section id="philosophy" class="section-py">
+  <div class="accent-orb" style="top:0;left:25%;width:400px;height:400px;background:rgba(0,212,212,.05);filter:blur(120px);"></div>
+  <div class="accent-orb" style="bottom:0;right:25%;width:300px;height:300px;background:rgba(0,212,212,.03);filter:blur(100px);"></div>
+  <div class="container z1">
+    <div class="reveal" style="margin-bottom:3.5rem;">
+      <div class="label-cyan"><span>Mission &amp; Vision</span></div>
+      <h2 class="sh2 tdh">Building secure, resilient, and <span class="tc">future-ready</span> technology environments</h2>
+    </div>
+    <div class="phil-cards">
+      <div class="phil-card reveal">
+        <div class="phil-card-top">
+          <div class="phil-icon"><i class="ri-focus-3-line"></i></div>
+          <div class="phil-title">Our Mission</div>
+        </div>
+        <p class="phil-p1">Deliver reliable, secure, and cost-effective IT solutions that help small and medium-sized businesses grow.</p>
+        <p class="phil-p2">We minimize technology risk while keeping operations efficient — so your team can focus on running the business, not firefighting IT.</p>
+      </div>
+      <div class="phil-card reveal">
+        <div class="phil-card-top">
+          <div class="phil-icon"><i class="ri-eye-line"></i></div>
+          <div class="phil-title">Our Vision</div>
+        </div>
+        <p class="phil-p1">Become a trusted technology advisor for organizations without dedicated IT leadership.</p>
+        <p class="phil-p2">Providing practical expertise to build secure, resilient, and future-ready technology environments for Edmonton's growing businesses.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="approach-title">How We <span class="tc">Work</span></div>
+      <div class="approach-sub">A structured, four-step process designed to understand your needs and deliver practical results.</div>
+      <div class="steps-grid">
+        <div class="step-card"><div class="step-conn"></div><span class="step-num">01</span><div class="step-t">Understand</div><p class="step-d">Your business and technology environment</p></div>
+        <div class="step-card"><div class="step-conn"></div><span class="step-num">02</span><div class="step-t">Identify</div><p class="step-d">IT and cybersecurity risks</p></div>
+        <div class="step-card"><div class="step-conn"></div><span class="step-num">03</span><div class="step-t">Recommend</div><p class="step-d">Practical, cost-effective recommendations tailored to your size, budget, and growth plans — never one-size-fits-all.</p></div>
+        <div class="step-card"><span class="step-num">04</span><div class="step-t">Support</div><p class="step-d">We support implementation with your internal team or external IT providers, ensuring solutions land cleanly and stay reliable.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section id="why-us" class="section-py">
+  <div class="accent-orb" style="top:50%;right:0;width:300px;height:300px;background:rgba(0,212,212,.03);transform:translateY(-50%);"></div>
+  <div class="container z1">
+    <div class="whyus-hdr reveal">
+      <div class="label-border"><span>Why Choose Us</span></div>
+      <h2 class="sh2 tw">The <span class="tc">IT advisor</span> SMEs actually need</h2>
+    </div>
+    <div class="whyus-grid">
+      <div class="whyus-card reveal">
+        <div class="whyus-inner"><div class="whyus-icon"><i class="ri-trophy-line"></i></div><div><div class="whyus-title">Extensive IT Experience</div><p class="whyus-desc">20+ years across IT infrastructure, enterprise systems, and global technology operations.</p></div></div>
+      </div>
+      <div class="whyus-card reveal">
+        <div class="whyus-inner"><div class="whyus-icon"><i class="ri-scales-3-line"></i></div><div><div class="whyus-title">Independent Advice</div><p class="whyus-desc">Recommendations focused on your business — never on selling vendor products or hardware.</p></div></div>
+      </div>
+      <div class="whyus-card reveal">
+        <div class="whyus-inner"><div class="whyus-icon"><i class="ri-tools-line"></i></div><div><div class="whyus-title">Practical Solutions</div><p class="whyus-desc">Right-sized solutions that are secure, reliable, and cost-effective for SMEs.</p></div></div>
+      </div>
+      <div class="whyus-card reveal">
+        <div class="whyus-inner"><div class="whyus-icon"><i class="ri-user-heart-line"></i></div><div><div class="whyus-title">Personalized Service</div><p class="whyus-desc">We work directly with business owners to align IT with real operational goals.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" class="section-py">
+  <div class="accent-orb" style="top:0;right:25%;width:400px;height:400px;background:rgba(0,212,212,.05);filter:blur(120px);"></div>
+  <div class="container z1">
+    <div class="reveal" style="margin-bottom:0;">
+      <div class="label-cyan"><span>Core Services</span></div>
+      <h2 class="sh2 tdh">Practical expertise across <span class="tc">five critical areas</span></h2>
+      <p class="services-sub">From assessing risk to executing modernization, Fooncore Solutions covers the IT capabilities most SMEs need but rarely have in-house.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="svc-top"><div class="svc-icon"><i class="ri-shield-keyhole-line"></i></div><span class="svc-cat">Security</span></div>
+        <div class="svc-body"><div class="svc-title">Cybersecurity Risk Assessment</div><p class="svc-desc">Identify vulnerabilities that could expose your business to threats — across endpoints, networks, identity, and access.</p></div>
+        <div class="svc-divider"></div>
+        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Threat &amp; vulnerability review</li><li><i class="ri-check-line svc-check"></i>Identity &amp; access audit</li><li><i class="ri-check-line svc-check"></i>Practical remediation roadmap</li></ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-top"><div class="svc-icon"><i class="ri-server-line"></i></div><span class="svc-cat">Infrastructure</span></div>
+        <div class="svc-body"><div class="svc-title">IT Infrastructure Consulting</div><p class="svc-desc">Guidance on network architecture, system design, and technology planning that scales with your business.</p></div>
+        <div class="svc-divider"></div>
+        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Network architecture review</li><li><i class="ri-check-line svc-check"></i>System &amp; technology planning</li><li><i class="ri-check-line svc-check"></i>Hardware lifecycle advisory</li></ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-top"><div class="svc-icon"><i class="ri-database-2-line"></i></div><span class="svc-cat">Resilience</span></div>
+        <div class="svc-body"><div class="svc-title">Backup &amp; Disaster Recovery</div><p class="svc-desc">Protect critical business data and ensure recovery capability when (not if) something goes wrong.</p></div>
+        <div class="svc-divider"></div>
+        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Backup strategy design</li><li><i class="ri-check-line svc-check"></i>Recovery time objectives</li><li><i class="ri-check-line svc-check"></i>Disaster recovery testing</li></ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-top"><div class="svc-icon"><i class="ri-cloud-line"></i></div><span class="svc-cat">Cloud</span></div>
+        <div class="svc-body"><div class="svc-title">Microsoft 365 Optimization</div><p class="svc-desc">Migrate on-premises systems to the cloud — enabling secure remote work, improved teamwork, and lower infrastructure costs.</p></div>
+        <div class="svc-divider"></div>
+        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Cloud migration planning</li><li><i class="ri-check-line svc-check"></i>Secure remote work setup</li><li><i class="ri-check-line svc-check"></i>Cost &amp; licensing review</li></ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-top"><div class="svc-icon"><i class="ri-service-line"></i></div><span class="svc-cat">Advisory</span></div>
+        <div class="svc-body"><div class="svc-title">IT Vendor Advisory</div><p class="svc-desc">Oversight and advice to ensure outsourced IT providers deliver secure, reliable services on your behalf.</p></div>
+        <div class="svc-divider"></div>
+        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Vendor performance review</li><li><i class="ri-check-line svc-check"></i>Contract &amp; SLA guidance</li><li><i class="ri-check-line svc-check"></i>Independent oversight</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="cta-bg">
+    <img
+      src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80&auto=format&fit=crop"
+      alt="Server room"
+      loading="lazy"
+      onerror="this.src='https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1400&q=80&auto=format&fit=crop'"
+    />
+    <div class="cta-overlay"></div>
+  </div>
+  <div class="container z1">
+    <div class="cta-grid">
+      <!-- Left -->
+      <div class="reveal">
+        <p class="cta-lbl">Get Started</p>
+        <h2 class="cta-h2">Free <span class="tc">30-Minute</span> Consultation</h2>
+        <p class="cta-tag">Let's talk about your IT environment.</p>
+        <p class="cta-sub">Discuss your IT and cybersecurity needs with an experienced consultant and receive practical recommendations to improve your technology environment.</p>
+        <div class="cta-loc">
+          <div class="cta-loc-icon"><i class="ri-map-pin-line"></i></div>
+          Edmonton, AB, Canada
+        </div>
+      </div>
+      <!-- Right: Form -->
+      <div class="reveal">
+        <div class="form-card">
+          <div id="form-success" class="success-box" style="display:none;">
+            <div class="success-icon"><i class="ri-check-double-line"></i></div>
+            <div class="success-title">Thank You!</div>
+            <p class="success-sub">We've received your request and will reach out within 24 hours to schedule your consultation.</p>
+            <button class="btn-reset" onclick="resetForm()">Send Another Message</button>
+          </div>
+          <form id="cform" class="form-stack" onsubmit="handleSubmit(event)">
+            <div class="form-row2">
+              <div class="form-grp"><label class="form-lbl">First Name *</label><input type="text" name="firstName" class="form-inp" placeholder="John" required /></div>
+              <div class="form-grp"><label class="form-lbl">Last Name *</label><input type="text" name="lastName" class="form-inp" placeholder="Doe" required /></div>
+            </div>
+            <div class="form-grp"><label class="form-lbl">Email *</label><input type="email" name="email" class="form-inp" placeholder="john@company.com" required /></div>
+            <div class="form-row2">
+              <div class="form-grp"><label class="form-lbl">Phone</label><input type="tel" name="phone" class="form-inp" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-grp"><label class="form-lbl">Company</label><input type="text" name="company" class="form-inp" placeholder="Your company" /></div>
+            </div>
+            <div class="form-grp">
+              <label class="form-lbl">Notes *</label>
+              <textarea name="notes" class="form-ta" rows="4" maxlength="500" required oninput="uc(this)"
+                placeholder="Tell us a bit about your business — we'll follow up to confirm a time that works."></textarea>
+              <div class="form-char" id="fcc">0/500</div>
+            </div>
+            <div class="hp-field"><input type="text" name="phone_alt" tabindex="-1" autocomplete="off" aria-hidden="true" /></div>
+            <div id="ferr" class="form-err" style="display:none;">Something went wrong. Please try again.</div>
+            <button type="submit" class="btn-submit" id="fsub">
+              Schedule Your Consultation <i class="ri-arrow-right-up-line"></i>
+            </button>
+            <p class="form-consent">By submitting this form, you agree to be contacted about your consultation request.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container footer-py">
+    <div class="footer-layout">
       <div class="footer-brand">
-        <img src="https://storage.readdy-site.link/project_files/a07f9136-071b-4b00-af3a-2032f334ca2f/aa0bf8b6-0366-4049-805e-905230cd9c78_compressed_Fooncore-4.webp" alt="Foonex Solutions" />
-        <p>Trusted IT Consulting. Built for Edmonton. Independent cybersecurity and infrastructure advisory for growing organizations.</p>
-        <p class="location">Edmonton, Alberta, Canada</p>
+        <div class="footer-logo">
+          <a href="#hero" onclick="ss(event,'#hero')">
+            <img src="https://storage.readdy-site.link/project_files/a07f9136-071b-4b00-af3a-2032f334ca2f/c81dca67-268a-485c-8111-82f359369404_compressed_Fooncore_footer_transparent.webp"
+                 alt="Fooncore Solutions"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+            <span style="display:none;color:var(--f-cyan);font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:.05em;">FOONCORE</span>
+          </a>
+        </div>
+        <p class="footer-slogan">Your One-Stop IT Management Partner</p>
+        <p class="footer-tag">Cybersecurity &amp; IT Infrastructure Consulting for SMEs</p>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li>Cybersecurity Risk Assessment</li>
-          <li>IT Infrastructure Consulting</li>
-          <li>Backup &amp; Disaster Recovery</li>
-          <li>Microsoft 365 Security</li>
-          <li>IT Vendor Advisory</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Industries</h4>
-        <ul>
-          <li>Healthcare Clinics</li>
-          <li>Professional Services</li>
-          <li>Engineering &amp; Construction</li>
-          <li>Small Businesses</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>About</h4>
-        <ul>
-          <li>Our Story</li>
-          <li>Our Approach</li>
-          <li>Mission &amp; Vision</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li>Book a Consultation</li>
-          <li>Email Us</li>
-          <li>Edmonton, AB, Canada</li>
-        </ul>
+      <div class="footer-cols">
+        <div class="fcol">
+          <div class="fcol-title">Services</div>
+          <ul>
+            <li><a href="#services" onclick="ss(event,'#services')">Cybersecurity Risk Assessment</a></li>
+            <li><a href="#services" onclick="ss(event,'#services')">IT Infrastructure Consulting</a></li>
+            <li><a href="#services" onclick="ss(event,'#services')">Backup &amp; Disaster Recovery</a></li>
+            <li><a href="#services" onclick="ss(event,'#services')">Microsoft 365 Optimization</a></li>
+            <li><a href="#services" onclick="ss(event,'#services')">IT Vendor Advisory</a></li>
+          </ul>
+        </div>
+        <div class="fcol">
+          <div class="fcol-title">About</div>
+          <ul>
+            <li><a href="#about"      onclick="ss(event,'#about')">Who We Are</a></li>
+            <li><a href="#founder"    onclick="ss(event,'#founder')">Founder &amp; Leadership</a></li>
+            <li><a href="#philosophy" onclick="ss(event,'#philosophy')">Mission &amp; Vision</a></li>
+          </ul>
+        </div>
+        <div class="fcol">
+          <div class="fcol-title">Contact</div>
+          <ul>
+            <li><a href="#contact" onclick="ss(event,'#contact')">Book a Consultation</a></li>
+            <li><a href="mailto:services@fooncore.com">Email Us</a></li>
+            <li><a href="#hero" onclick="ss(event,'#hero')">Edmonton, AB, Canada</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="footer-year"></span> Foonex Solutions. All rights reserved.</p>
-      <div class="social-icons">
-        <span class="social-icon"><i class="ri-linkedin-fill"></i></span>
-        <span class="social-icon"><i class="ri-mail-line"></i></span>
+    <div class="footer-bar">
+      <p class="footer-copy">&copy; <span id="yr"></span> Fooncore Solutions. All rights reserved.</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+        <a href="https://www.google.com/business" target="_blank" rel="noopener noreferrer" class="social" aria-label="Google Business"><i class="ri-google-fill"></i></a>
+        <a href="mailto:services@fooncore.com" class="social" aria-label="Email"><i class="ri-mail-line"></i></a>
       </div>
-      <span class="privacy-link">Privacy Policy</span>
+      <span class="footer-priv">Privacy Policy</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    const servicesData = [
-      { title:'Cybersecurity Risk Assessment',    icon:'ri-shield-keyhole-line', description:'Identify vulnerabilities that could expose your business to threats. We evaluate your systems, networks, and practices to uncover risks before attackers do.' },
-      { title:'IT Infrastructure Consulting',     icon:'ri-server-line',         description:'Guidance on network architecture, system design, and technology planning. We help you build scalable, reliable infrastructure that supports your growth.' },
-      { title:'Backup & Disaster Recovery',       icon:'ri-database-2-line',     description:'Protect critical business data and ensure recovery capability. We design backup strategies and disaster recovery plans tailored to your operations.' },
-      { title:'Microsoft 365 Security',           icon:'ri-cloud-line',          description:'Enhance cloud and email security with MFA, conditional access, and best practices. Secure your Microsoft environment against modern threats.' },
-      { title:'IT Vendor Advisory',               icon:'ri-service-line',        description:'Oversight and advice to ensure outsourced IT providers deliver secure, reliable services. We act as your independent technology advocate.' },
-      { title:'Compliance & Governance',          icon:'ri-file-shield-line',    description:'Navigate regulatory requirements with confidence. We help establish IT policies, audit readiness, and governance frameworks for your industry.' },
-    ];
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-    const industriesData = [
-      { name:'Medical & Healthcare Clinics',  icon:'ri-hospital-line',  description:'Protect patient data, improve system reliability, and ensure compliance with healthcare privacy regulations.', image:'https://readdy.ai/api/search-image?query=Bright%20modern%20medical%20clinic%20interior%20with%20friendly%20healthcare%20professionals%20interacting%20with%20patients%20warm%20natural%20lighting%20clean%20welcoming%20environment%20lifestyle%20photography%20colorful%20professional%20atmosphere%20high%20quality&width=400&height=280&seq=ind1v2&orientation=landscape' },
-      { name:'Professional Service Firms',    icon:'ri-briefcase-line', description:'Secure client information for accounting, legal, and consulting firms with tailored cybersecurity strategies.', image:'https://readdy.ai/api/search-image?query=Diverse%20group%20of%20professional%20business%20people%20having%20a%20collaborative%20meeting%20in%20a%20bright%20modern%20office%20with%20large%20windows%20natural%20sunlight%20colorful%20professional%20lifestyle%20photography%20warm%20tones%20high%20quality&width=400&height=280&seq=ind2v2&orientation=landscape' },
-      { name:'Engineering & Construction',    icon:'ri-building-line',  description:'Safeguard project data, technical drawings, and remote access systems for distributed teams.', image:'https://readdy.ai/api/search-image?query=Construction%20team%20reviewing%20building%20plans%20at%20an%20active%20construction%20site%20wearing%20safety%20gear%20bright%20daylight%20outdoor%20scene%20colorful%20professional%20lifestyle%20photography%20industrial%20atmosphere%20high%20quality&width=400&height=280&seq=ind3v2&orientation=landscape' },
-      { name:'Small & Growing Businesses',    icon:'ri-store-2-line',   description:'Establish reliable, secure IT environments that scale with your business as you grow.', image:'https://readdy.ai/api/search-image?query=Happy%20small%20business%20owner%20greeting%20customers%20in%20a%20bright%20modern%20local%20shop%20or%20cafe%20with%20warm%20colorful%20interior%20design%20natural%20lighting%20welcoming%20atmosphere%20lifestyle%20photography%20high%20quality&width=400&height=280&seq=ind4v2&orientation=landscape' },
-    ];
+  // Smooth scroll
+  function ss(e, sel) {
+    e.preventDefault();
+    var el = document.querySelector(sel);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
-    const whyUsData = [
-      { title:'20+ Years Experience',  icon:'ri-trophy-line',        description:'Deep expertise in IT infrastructure and enterprise technology operations across regional and global environments.' },
-      { title:'Independent Advice',    icon:'ri-scales-3-line',      description:'Recommendations focused on your business goals, not vendor incentives. Unbiased guidance you can trust.' },
-      { title:'Practical Solutions',   icon:'ri-tools-line',         description:'Solutions that are secure, reliable, and cost-effective. No unnecessary complexity — just what works.' },
-      { title:'Personalized Service',  icon:'ri-user-heart-line',    description:'Work closely with business owners to understand operational goals and deliver tailored IT strategies.' },
-      { title:'Edmonton Based',        icon:'ri-map-pin-line',       description:'Local presence means responsive support and a genuine understanding of the Alberta business landscape.' },
-      { title:'Proven Results',        icon:'ri-bar-chart-box-line', description:'Track record of strengthening IT environments for organizations in healthcare, professional services, and more.' },
-    ];
+  // Navbar
+  window.addEventListener('scroll', function() {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
 
-    const $ = id => document.getElementById(id);
+  // Mobile menu
+  var mOpen = false;
+  function toggleMenu() {
+    mOpen = !mOpen;
+    document.getElementById('mmenu').classList.toggle('open', mOpen);
+    document.getElementById('micon').className = mOpen ? 'ri-close-line' : 'ri-menu-line';
+  }
+  function cm() {
+    mOpen = false;
+    document.getElementById('mmenu').classList.remove('open');
+    document.getElementById('micon').className = 'ri-menu-line';
+  }
 
-    $('services-grid').innerHTML = servicesData.map((s, i) => `
-      <div class="card reveal" style="transition-delay:${150 + i * 100}ms">
-        <div class="card-icon"><i class="${s.icon}"></i></div>
-        <h3>${s.title}</h3>
-        <p>${s.description}</p>
-      </div>`).join('');
-
-    $('industries-grid').innerHTML = industriesData.map((ind, i) => `
-      <div class="industry-card reveal" style="transition-delay:${150 + i * 100}ms">
-        <div class="industry-img">
-          <img src="${ind.image}" alt="${ind.name}" loading="lazy" />
-          <div class="industry-img-overlay"></div>
-          <div class="industry-icon-badge"><i class="${ind.icon}"></i></div>
-        </div>
-        <div class="industry-card-body">
-          <h3>${ind.name}</h3>
-          <p>${ind.description}</p>
-        </div>
-      </div>`).join('');
-
-    $('why-grid').innerHTML = whyUsData.map((w, i) => `
-      <div class="why-card reveal" style="transition-delay:${150 + i * 100}ms">
-        <div class="why-card-inner">
-          <div class="why-icon"><i class="${w.icon}"></i></div>
-          <div>
-            <h3>${w.title}</h3>
-            <p>${w.description}</p>
-          </div>
-        </div>
-      </div>`).join('');
-
-    $('footer-year').textContent = new Date().getFullYear();
-
-    const navbar = $('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    const hamburger = $('hamburger-btn');
-    const mobileMenu = $('mobile-menu');
-    const hamburgerIcon = $('hamburger-icon');
-    let menuOpen = false;
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      mobileMenu.classList.toggle('open', menuOpen);
-      hamburgerIcon.className = menuOpen ? 'ri-close-line' : 'ri-menu-line';
-      hamburgerIcon.style.fontSize = '1.25rem';
+  // Scroll reveal
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(en) {
+      if (en.isIntersecting) { en.target.classList.add('vis'); obs.unobserve(en.target); }
     });
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      menuOpen = false;
-      mobileMenu.classList.remove('open');
-      hamburgerIcon.className = 'ri-menu-line';
-    }));
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal, .reveal-r').forEach(function(el) { obs.observe(el); });
 
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  // Char counter
+  function uc(el) { document.getElementById('fcc').textContent = el.value.length + '/500'; }
+
+  // Form
+  async function handleSubmit(e) {
+    e.preventDefault();
+    var f = e.target;
+    if (f.phone_alt.value.trim()) { showOk(); return; }
+    var fn = f.firstName.value.trim(), ln = f.lastName.value.trim(),
+        em = f.email.value.trim(), nt = f.notes.value.trim();
+    if (!fn || !ln || !em || !nt) return;
+
+    var btn = document.getElementById('fsub');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Submitting…';
+    document.getElementById('ferr').style.display = 'none';
+
+    try {
+      var d = new URLSearchParams();
+      d.append('firstName', fn); d.append('lastName', ln);
+      d.append('email', em); d.append('phone', f.phone.value);
+      d.append('company', f.company.value); d.append('notes', nt);
+      var r = await fetch('https://readdy.ai/api/form/d8uq5lou8fvptuidq24g', {
+        method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:d.toString()
       });
-    });
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal, .reveal-right').forEach(el => observer.observe(el));
-
-    const form      = $('contact-form');
-    const msgArea   = $('message');
-    const charCount = $('char-count');
-    const submitBtn = $('submit-btn');
-    const btnLabel  = $('btn-label');
-    const btnIcon   = $('btn-icon');
-    const btnSpinner= $('btn-spinner');
-    const formError = $('form-error');
-    const formSuccess = $('form-success');
-
-    msgArea.addEventListener('input', () => { charCount.textContent = msgArea.value.length; });
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      if (!form.name.value || !form.email.value || !form.message.value) return;
-      btnLabel.textContent = 'Submitting...';
-      btnIcon.style.display = 'none';
-      btnSpinner.style.display = 'block';
-      submitBtn.disabled = true;
-      formError.style.display = 'none';
-      try {
-        const data = new URLSearchParams();
-        data.append('name',    form.name.value);
-        data.append('email',   form.email.value);
-        data.append('company', form.company.value);
-        data.append('message', form.message.value);
-        const res = await fetch('https://formsubmit.co/fooncoresolutions@gmail.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: data.toString(),
-        });
-        if (res.ok) {
-          form.style.display = 'none';
-          formSuccess.style.display = 'block';
-        } else { throw new Error(); }
-      } catch {
-        formError.style.display = 'block';
-        btnLabel.textContent = 'Schedule Your Consultation';
-        btnIcon.style.display = 'inline-block';
-        btnSpinner.style.display = 'none';
-        submitBtn.disabled = false;
-      }
-    });
-
-    $('reset-form-btn').addEventListener('click', () => {
-      formSuccess.style.display = 'none';
-      form.style.display = 'block';
-      form.reset();
-      charCount.textContent = '0';
-      btnLabel.textContent = 'Schedule Your Consultation';
-      btnIcon.style.display = 'inline-block';
-      btnSpinner.style.display = 'none';
-      submitBtn.disabled = false;
-    });
-  </script>
+      r.ok ? showOk() : showErr(btn);
+    } catch { showErr(btn); }
+  }
+  function showOk() {
+    document.getElementById('cform').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+  function showErr(btn) {
+    document.getElementById('ferr').style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = 'Schedule Your Consultation <i class="ri-arrow-right-up-line"></i>';
+  }
+  function resetForm() {
+    document.getElementById('cform').reset();
+    document.getElementById('fcc').textContent = '0/500';
+    document.getElementById('form-success').style.display = 'none';
+    document.getElementById('cform').style.display = 'flex';
+    var btn = document.getElementById('fsub');
+    btn.disabled = false;
+    btn.innerHTML = 'Schedule Your Consultation <i class="ri-arrow-right-up-line"></i>';
+  }
+</script>
 </body>
 </html>
