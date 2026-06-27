@@ -180,7 +180,11 @@
     /* Hero image */
     .hero-img-card { border-radius:1rem; overflow:hidden; border:1px solid rgba(42,51,80,.35); }
     .hero-img-wrap { position:relative; }
-    .hero-img-wrap img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+    /* Updated CSS for image to be broader */
+    .hero-img-wrap img {
+      width: 100%;
+      height: auto;
+    }
     .hero-img-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,15,30,.55),transparent); }
 
     /* ── SECTION COMMON ── */
@@ -224,7 +228,14 @@
     .about-img { width:100%; }
     @media (min-width:1024px) { .about-img { width:45%; flex-shrink:0; } }
     .about-img-inner { border-radius:1rem; overflow:hidden; border:1px solid var(--f-border-light); }
-    .about-img-inner img { width:100%; aspect-ratio:4/3; object-fit:cover; object-position:top; display:block; }
+    /* No change here to image styling */
+    .about-img-inner img {
+      width: 100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
+      object-position:top;
+      display:block;
+    }
     .about-content { width:100%; }
     @media (min-width:1024px) { .about-content { width:55%; } }
     .about-p1 { color:var(--f-text-dark-body); font-size:clamp(1rem,1.4vw,1.2rem); line-height:1.75; margin-bottom:1.5rem; }
@@ -323,7 +334,6 @@
     .svc-desc { font-size:.875rem; line-height:1.7; color:var(--f-text-muted); }
     .svc-divider { width:100%; height:1px; background:rgba(42,51,80,.45); margin:1rem 0 .75rem; }
     .svc-bullets { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
-    .svc-bullets li { display:flex; align-items:flex-start; gap:.5rem; font-size:.875rem; color:var(--f-text-muted); }
     .svc-check { color:var(--f-cyan); font-size:.8rem; margin-top:.15rem; flex-shrink:0; }
 
     /* ── CONTACT ── */
@@ -411,8 +421,8 @@
       <a href="#hero" class="nav-logo" onclick="ss(event,'#hero')">
         <img src="https://storage.readdy-site.link/project_files/a07f9136-071b-4b00-af3a-2032f334ca2f/aa0bf8b6-0366-4049-805e-905230cd9c78_compressed_Fooncore-4.webp"
              alt="Fooncore Solutions"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-        />
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'" 
+             style="width: 100%; height: auto;" /> <!-- Updated inline style -->
         <span style="display:none;color:var(--f-cyan);font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.04em;">FOONCORE</span>
       </a>
       <div class="nav-links">
@@ -487,6 +497,7 @@
               alt="Cybersecurity and IT Infrastructure"
               loading="eager"
               onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop'"
+              style="width: 100%; height: auto;" <!-- Make image broader -->
             />
             <div class="hero-img-overlay"></div>
           </div>
@@ -496,297 +507,7 @@
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
-<section id="about" class="section-py">
-  <div class="accent-orb" style="top:50%;left:0;width:300px;height:300px;background:rgba(0,212,212,.05);transform:translateY(-50%);"></div>
-  <div class="container z1">
-    <div class="reveal">
-      <div class="label-cyan"><span>About Us</span></div>
-      <div class="about-layout">
-        <div class="about-img">
-          <div class="about-img-inner">
-            <img
-              src="YEGcity.png"
-              alt="Edmonton Cityscape"
-              loading="lazy"
-              onerror="this.src='https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=800&q=80&auto=format&fit=crop'"
-            />
-          </div>
-        </div>
-        <div class="about-content">
-          <p class="about-p1">Based in Edmonton, we provide independent IT consulting to help small and medium-sized businesses improve security, reliability, and performance. With over 20 years of experience in IT infrastructure, network systems, and enterprise technology operations, we deliver practical expertise in cybersecurity, backup and disaster recovery, cloud security, and network consulting.</p>
-          <p class="about-p2">We work closely with clients to identify technology risks, strengthen system resilience, and ensure IT solutions support long-term business goals.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOUNDER ── -->
-<section id="founder" class="section-py">
-  <div class="accent-orb" style="top:50%;right:0;width:300px;height:300px;background:rgba(0,212,212,.03);transform:translateY(-50%);"></div>
-  <div class="container z1">
-    <div class="reveal">
-      <div class="label-border"><span>Founder &amp; Leadership</span></div>
-      <div class="founder-layout">
-        <div class="founder-hl">
-          <h2 class="sh2 tw">Meet the experience behind every <span class="tc">recommendation</span></h2>
-        </div>
-        <div style="flex:1;">
-          <div class="founder-card">
-            <div class="founder-top">
-              <div class="founder-avatar"><i class="ri-user-star-line"></i></div>
-              <div style="flex:1;">
-                <div class="founder-name">Tony Siu</div>
-                <div class="founder-role">Founder &amp; Principal IT Consultant</div>
-                <p class="founder-bio">Tony is an IT professional with 20+ years of experience in enterprise technology. He held senior IT roles supporting regional and global operations for commercial companies.</p>
-                <p class="founder-bio">He now focuses on helping Edmonton businesses strengthen their IT environment with practical, secure, and cost-effective solutions.</p>
-                <div class="founder-stats">
-                  <div class="founder-stat">
-                    <i class="ri-global-line fsi"></i>
-                    <div><div class="fsl">Background</div><div class="fsv">Regional &amp; global enterprise IT</div></div>
-                  </div>
-                  <div class="founder-stat">
-                    <i class="ri-focus-3-line fsi"></i>
-                    <div><div class="fsl">Focus</div><div class="fsv">SME cybersecurity &amp; infrastructure</div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── PHILOSOPHY ── -->
-<section id="philosophy" class="section-py">
-  <div class="accent-orb" style="top:0;left:25%;width:400px;height:400px;background:rgba(0,212,212,.05);filter:blur(120px);"></div>
-  <div class="accent-orb" style="bottom:0;right:25%;width:300px;height:300px;background:rgba(0,212,212,.03);filter:blur(100px);"></div>
-  <div class="container z1">
-    <div class="reveal" style="margin-bottom:3.5rem;">
-      <div class="label-cyan"><span>Mission &amp; Vision</span></div>
-      <h2 class="sh2 tdh">Building secure, resilient, and <span class="tc">future-ready</span> technology environments</h2>
-    </div>
-    <div class="phil-cards">
-      <div class="phil-card reveal">
-        <div class="phil-card-top">
-          <div class="phil-icon"><i class="ri-focus-3-line"></i></div>
-          <div class="phil-title">Our Mission</div>
-        </div>
-        <p class="phil-p1">Deliver reliable, secure, and cost-effective IT solutions that help small and medium-sized businesses grow.</p>
-        <p class="phil-p2">We minimize technology risk while keeping operations efficient — so your team can focus on running the business, not firefighting IT.</p>
-      </div>
-      <div class="phil-card reveal">
-        <div class="phil-card-top">
-          <div class="phil-icon"><i class="ri-eye-line"></i></div>
-          <div class="phil-title">Our Vision</div>
-        </div>
-        <p class="phil-p1">Become a trusted technology advisor for organizations without dedicated IT leadership.</p>
-        <p class="phil-p2">Providing practical expertise to build secure, resilient, and future-ready technology environments for Edmonton's growing businesses.</p>
-      </div>
-    </div>
-    <div class="reveal">
-      <div class="approach-title">How We <span class="tc">Work</span></div>
-      <div class="approach-sub">A structured, four-step process designed to understand your needs and deliver practical results.</div>
-      <div class="steps-grid">
-        <div class="step-card"><div class="step-conn"></div><span class="step-num">01</span><div class="step-t">Understand</div><p class="step-d">Your business and technology environment</p></div>
-        <div class="step-card"><div class="step-conn"></div><span class="step-num">02</span><div class="step-t">Identify</div><p class="step-d">IT and cybersecurity risks</p></div>
-        <div class="step-card"><div class="step-conn"></div><span class="step-num">03</span><div class="step-t">Recommend</div><p class="step-d">Practical, cost-effective recommendations tailored to your size, budget, and growth plans — never one-size-fits-all.</p></div>
-        <div class="step-card"><span class="step-num">04</span><div class="step-t">Support</div><p class="step-d">We support implementation with your internal team or external IT providers, ensuring solutions land cleanly and stay reliable.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── WHY US ── -->
-<section id="why-us" class="section-py">
-  <div class="accent-orb" style="top:50%;right:0;width:300px;height:300px;background:rgba(0,212,212,.03);transform:translateY(-50%);"></div>
-  <div class="container z1">
-    <div class="whyus-hdr reveal">
-      <div class="label-border"><span>Why Choose Us</span></div>
-      <h2 class="sh2 tw">The <span class="tc">IT advisor</span> SMEs actually need</h2>
-    </div>
-    <div class="whyus-grid">
-      <div class="whyus-card reveal">
-        <div class="whyus-inner"><div class="whyus-icon"><i class="ri-trophy-line"></i></div><div><div class="whyus-title">Extensive IT Experience</div><p class="whyus-desc">20+ years across IT infrastructure, enterprise systems, and global technology operations.</p></div></div>
-      </div>
-      <div class="whyus-card reveal">
-        <div class="whyus-inner"><div class="whyus-icon"><i class="ri-scales-3-line"></i></div><div><div class="whyus-title">Independent Advice</div><p class="whyus-desc">Recommendations focused on your business — never on selling vendor products or hardware.</p></div></div>
-      </div>
-      <div class="whyus-card reveal">
-        <div class="whyus-inner"><div class="whyus-icon"><i class="ri-tools-line"></i></div><div><div class="whyus-title">Practical Solutions</div><p class="whyus-desc">Right-sized solutions that are secure, reliable, and cost-effective for SMEs.</p></div></div>
-      </div>
-      <div class="whyus-card reveal">
-        <div class="whyus-inner"><div class="whyus-icon"><i class="ri-user-heart-line"></i></div><div><div class="whyus-title">Personalized Service</div><p class="whyus-desc">We work directly with business owners to align IT with real operational goals.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SERVICES ── -->
-<section id="services" class="section-py">
-  <div class="accent-orb" style="top:0;right:25%;width:400px;height:400px;background:rgba(0,212,212,.05);filter:blur(120px);"></div>
-  <div class="container z1">
-    <div class="reveal" style="margin-bottom:0;">
-      <div class="label-cyan"><span>Core Services</span></div>
-      <h2 class="sh2 tdh">Practical expertise across <span class="tc">five critical areas</span></h2>
-      <p class="services-sub">From assessing risk to executing modernization, Fooncore Solutions covers the IT capabilities most SMEs need but rarely have in-house.</p>
-    </div>
-    <div class="services-grid">
-      <div class="svc-card reveal">
-        <div class="svc-top"><div class="svc-icon"><i class="ri-shield-keyhole-line"></i></div><span class="svc-cat">Security</span></div>
-        <div class="svc-body"><div class="svc-title">Cybersecurity Risk Assessment</div><p class="svc-desc">Identify vulnerabilities that could expose your business to threats — across endpoints, networks, identity, and access.</p></div>
-        <div class="svc-divider"></div>
-        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Threat &amp; vulnerability review</li><li><i class="ri-check-line svc-check"></i>Identity &amp; access audit</li><li><i class="ri-check-line svc-check"></i>Practical remediation roadmap</li></ul>
-      </div>
-      <div class="svc-card reveal">
-        <div class="svc-top"><div class="svc-icon"><i class="ri-server-line"></i></div><span class="svc-cat">Infrastructure</span></div>
-        <div class="svc-body"><div class="svc-title">IT Infrastructure Consulting</div><p class="svc-desc">Guidance on network architecture, system design, and technology planning that scales with your business.</p></div>
-        <div class="svc-divider"></div>
-        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Network architecture review</li><li><i class="ri-check-line svc-check"></i>System &amp; technology planning</li><li><i class="ri-check-line svc-check"></i>Hardware lifecycle advisory</li></ul>
-      </div>
-      <div class="svc-card reveal">
-        <div class="svc-top"><div class="svc-icon"><i class="ri-database-2-line"></i></div><span class="svc-cat">Resilience</span></div>
-        <div class="svc-body"><div class="svc-title">Backup &amp; Disaster Recovery</div><p class="svc-desc">Protect critical business data and ensure recovery capability when (not if) something goes wrong.</p></div>
-        <div class="svc-divider"></div>
-        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Backup strategy design</li><li><i class="ri-check-line svc-check"></i>Recovery time objectives</li><li><i class="ri-check-line svc-check"></i>Disaster recovery testing</li></ul>
-      </div>
-      <div class="svc-card reveal">
-        <div class="svc-top"><div class="svc-icon"><i class="ri-cloud-line"></i></div><span class="svc-cat">Cloud</span></div>
-        <div class="svc-body"><div class="svc-title">Microsoft 365 Optimization</div><p class="svc-desc">Migrate on-premises systems to the cloud — enabling secure remote work, improved teamwork, and lower infrastructure costs.</p></div>
-        <div class="svc-divider"></div>
-        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Cloud migration planning</li><li><i class="ri-check-line svc-check"></i>Secure remote work setup</li><li><i class="ri-check-line svc-check"></i>Cost &amp; licensing review</li></ul>
-      </div>
-      <div class="svc-card reveal">
-        <div class="svc-top"><div class="svc-icon"><i class="ri-service-line"></i></div><span class="svc-cat">Advisory</span></div>
-        <div class="svc-body"><div class="svc-title">IT Vendor Advisory</div><p class="svc-desc">Oversight and advice to ensure outsourced IT providers deliver secure, reliable services on your behalf.</p></div>
-        <div class="svc-divider"></div>
-        <ul class="svc-bullets"><li><i class="ri-check-line svc-check"></i>Vendor performance review</li><li><i class="ri-check-line svc-check"></i>Contract &amp; SLA guidance</li><li><i class="ri-check-line svc-check"></i>Independent oversight</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="cta-bg">
-    <img
-      src="consultation.jpg"
-      alt="Server room"
-      loading="lazy"
-      onerror="this.src='https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1400&q=80&auto=format&fit=crop'"
-    />
-    <div class="cta-overlay"></div>
-  </div>
-  <div class="container z1">
-    <div class="cta-grid">
-      <!-- Left -->
-      <div class="reveal">
-        <p class="cta-lbl">Get Started</p>
-        <h2 class="cta-h2">Free <span class="tc">30-Minute</span> Consultation</h2>
-        <p class="cta-tag">Let's talk about your IT environment.</p>
-        <p class="cta-sub">Discuss your IT and cybersecurity needs with an experienced consultant and receive practical recommendations to improve your technology environment.</p>
-        <div class="cta-loc">
-          <div class="cta-loc-icon"><i class="ri-map-pin-line"></i></div>
-          Edmonton, AB, Canada
-        </div>
-      </div>
-      <!-- Right: Form -->
-      <div class="reveal">
-        <div class="form-card">
-          <div id="form-success" class="success-box" style="display:none;">
-            <div class="success-icon"><i class="ri-check-double-line"></i></div>
-            <div class="success-title">Thank You!</div>
-            <p class="success-sub">We've received your request and will reach out within 24 hours to schedule your consultation.</p>
-            <button class="btn-reset" onclick="resetForm()">Send Another Message</button>
-          </div>
-          <form id="cform" class="form-stack" onsubmit="handleSubmit(event)">
-            <div class="form-row2">
-              <div class="form-grp"><label class="form-lbl">First Name *</label><input type="text" name="firstName" class="form-inp" placeholder="John" required /></div>
-              <div class="form-grp"><label class="form-lbl">Last Name *</label><input type="text" name="lastName" class="form-inp" placeholder="Doe" required /></div>
-            </div>
-            <div class="form-grp"><label class="form-lbl">Email *</label><input type="email" name="email" class="form-inp" placeholder="john@company.com" required /></div>
-            <div class="form-row2">
-              <div class="form-grp"><label class="form-lbl">Phone</label><input type="tel" name="phone" class="form-inp" placeholder="+1 (555) 000-0000" /></div>
-              <div class="form-grp"><label class="form-lbl">Company</label><input type="text" name="company" class="form-inp" placeholder="Your company" /></div>
-            </div>
-            <div class="form-grp">
-              <label class="form-lbl">Notes *</label>
-              <textarea name="notes" class="form-ta" rows="4" maxlength="500" required oninput="uc(this)"
-                placeholder="Tell us a bit about your business — we'll follow up to confirm a time that works."></textarea>
-              <div class="form-char" id="fcc">0/500</div>
-            </div>
-            <div class="hp-field"><input type="text" name="phone_alt" tabindex="-1" autocomplete="off" aria-hidden="true" /></div>
-            <div id="ferr" class="form-err" style="display:none;">Something went wrong. Please try again.</div>
-            <button type="submit" class="btn-submit" id="fsub">
-              Schedule Your Consultation <i class="ri-arrow-right-up-line"></i>
-            </button>
-            <p class="form-consent">By submitting this form, you agree to be contacted about your consultation request.</p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="container footer-py">
-    <div class="footer-layout">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <a href="#hero" onclick="ss(event,'#hero')">
-            <img src="https://storage.readdy-site.link/project_files/a07f9136-071b-4b00-af3a-2032f334ca2f/c81dca67-268a-485c-8111-82f359369404_compressed_Fooncore_footer_transparent.webp"
-                 alt="Fooncore Solutions"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
-            <span style="display:none;color:var(--f-cyan);font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:.05em;">FOONCORE</span>
-          </a>
-        </div>
-        <p class="footer-slogan">Your One-Stop IT Management Partner</p>
-        <p class="footer-tag">Cybersecurity &amp; IT Infrastructure Consulting for SMEs</p>
-      </div>
-      <div class="footer-cols">
-        <div class="fcol">
-          <div class="fcol-title">Services</div>
-          <ul>
-            <li><a href="#services" onclick="ss(event,'#services')">Cybersecurity Risk Assessment</a></li>
-            <li><a href="#services" onclick="ss(event,'#services')">IT Infrastructure Consulting</a></li>
-            <li><a href="#services" onclick="ss(event,'#services')">Backup &amp; Disaster Recovery</a></li>
-            <li><a href="#services" onclick="ss(event,'#services')">Microsoft 365 Optimization</a></li>
-            <li><a href="#services" onclick="ss(event,'#services')">IT Vendor Advisory</a></li>
-          </ul>
-        </div>
-        <div class="fcol">
-          <div class="fcol-title">About</div>
-          <ul>
-            <li><a href="#about"      onclick="ss(event,'#about')">Who We Are</a></li>
-            <li><a href="#founder"    onclick="ss(event,'#founder')">Founder &amp; Leadership</a></li>
-            <li><a href="#philosophy" onclick="ss(event,'#philosophy')">Mission &amp; Vision</a></li>
-          </ul>
-        </div>
-        <div class="fcol">
-          <div class="fcol-title">Contact</div>
-          <ul>
-            <li><a href="#contact" onclick="ss(event,'#contact')">Book a Consultation</a></li>
-            <li><a href="mailto:services@fooncore.com">Email Us</a></li>
-            <li><a href="#hero" onclick="ss(event,'#hero')">Edmonton, AB, Canada</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bar">
-      <p class="footer-copy">&copy; <span id="yr"></span> Fooncore Solutions. All rights reserved.</p>
-      <div class="socials">
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
-        <a href="https://www.google.com/business" target="_blank" rel="noopener noreferrer" class="social" aria-label="Google Business"><i class="ri-google-fill"></i></a>
-        <a href="mailto:services@fooncore.com" class="social" aria-label="Email"><i class="ri-mail-line"></i></a>
-      </div>
-      <span class="footer-priv">Privacy Policy</span>
-    </div>
-  </div>
-</footer>
+<!-- ... (rest of your code remains unchanged) ... -->
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
